@@ -40,11 +40,18 @@
                 meshTask.onError = function (task, message, exception) {
                     console.log(message, exception);
                 }*/
-                BABYLON.SceneLoader.ImportMesh("", "https://github.com/BabylonJS/Babylon.js/tree/master/Playground/scenes/", "skull.babylon", scene, function (meshes) {          
-                scene.createDefaultCameraOrLight(true, true, true);
-                scene.createDefaultEnvironment();
-        
-                });
+                var assetsManager = new BABYLON.AssetsManager(scene);
+                var meshCollisionerTask = assetsManager.addMeshTask("collisioners task", "", "../assets/", "ball.babylon");
+                meshCollisionerTask.onSuccess = function (task) {
+                var newMeshes = task.loadedMeshes;
+                newMeshes.forEach(function (element) {
+                     element.physicsImpostor = new BABYLON.PhysicsImpostor(element, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0 });
+                    element.visibility = false; //invisible block
+        });
+    };
+    meshCollisionerTask.onError = function (task, message, exception) {
+        console.log(message, exception);
+    };
                 var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene);
 
                 // return the created scene
