@@ -28,7 +28,7 @@
                 var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
                 
                 meshBallTask.onSuccess = function (task) {
-                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                    task.loadedMeshes[0].position= BABYLON.Vector3.(0,1,1);
                 };
                
                 meshBallTask.onError = function (task, message, exception) {
@@ -39,7 +39,7 @@
                 var meshCarrotTask = assetsManager.addMeshTask("carrott task", "", "assets/", "carrot.babylon");
                 
                 meshCarrotTask.onSuccess = function (task) {
-                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                    task.loadedMeshes[0].position= BABYLON.Vector3.(1,0,0);
                 };
                
                 meshCarrotTask.onError = function (task, message, exception) {
@@ -49,7 +49,7 @@
                 var meshHatTask = assetsManager.addMeshTask("hat task", "", "assets/", "hat.babylon");
                 
                 meshHatTask.onSuccess = function (task) {
-                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                    task.loadedMeshes[0].position= BABYLON.Vector3.(0,2,0);
                 };
                
                 meshHatTask.onError = function (task, message, exception) {
@@ -59,7 +59,7 @@
                 var meshRockTask = assetsManager.addMeshTask("rock task", "", "assets/", "hordes-rock.babylon");
                 
                 meshRockTask.onSuccess = function (task) {
-                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                    task.loadedMeshes[0].position= BABYLON.Vector3.(2,0,1);
                 };
                
                 meshRockTask.onError = function (task, message, exception) {
@@ -69,7 +69,7 @@
                 var meshRockBisTask = assetsManager.addMeshTask("rock bis task", "", "assets/", "rock.babylon");
                 
                 meshRockBisTask.onSuccess = function (task) {
-                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                    task.loadedMeshes[0].position= BABYLON.Vector3.(-3,0,-1);
                 };
                
                 meshRockBisTask.onError = function (task, message, exception) {
@@ -79,7 +79,7 @@
                 var meshTreeTask = assetsManager.addMeshTask("tree task", "", "assets/", "tree.babylon");
                 
                 meshTreeTask.onSuccess = function (task) {
-                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                    task.loadedMeshes[0].position= BABYLON.Vector3.(0,-3,-5);
                 };
                
                 meshTreeTask.onError = function (task, message, exception) {
@@ -89,7 +89,7 @@
                 var meshTreeBisTask = assetsManager.addMeshTask("tree bis task", "", "assets/", "tree2.babylon");
                 
                 meshTreeBisTask.onSuccess = function (task) {
-                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                    task.loadedMeshes[0].position= BABYLON.Vector3.(-1,-1,-1);
                 };
                
                 meshTreeBisTask.onError = function (task, message, exception) {
@@ -99,7 +99,7 @@
                 var meshTreeToonTask = assetsManager.addMeshTask("tree toon task", "", "assets/", "tree-toon.babylon");
                 
                 meshTreeToonTask.onSuccess = function (task) {
-                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                    task.loadedMeshes[0].position= BABYLON.Vector3.(4,3,3);
                 };
                
                 meshTreeToonTask.onError = function (task, message, exception) {
