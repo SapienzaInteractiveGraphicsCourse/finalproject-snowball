@@ -30,7 +30,8 @@
 
                 // create a built-in "ground" shape;
                 // The first parameter can be used to specify which mesh to import. Here we import all meshes
-                /*var assetsManager = new BABYLON.AssetsManager(scene);
+                /*
+                var assetsManager = new BABYLON.AssetsManager(scene);
 
                 var meshTask = assetsManager.addMeshTask("ball task", "", "C:/Users/franco/Desktop/Interactive Graphics/project/ball-babylon/", "ball.babylon");
 
@@ -40,23 +41,23 @@
                 meshTask.onError = function (task, message, exception) {
                     console.log(message, exception);
                 }*/
-                /*var assetsManager = new BABYLON.AssetsManager(scene);
+                var assetsManager = new BABYLON.AssetsManager(scene);
                 var meshCollisionerTask = assetsManager.addMeshTask("collisioners task", "", "../assets/", "ball.babylon");
+                
                 meshCollisionerTask.onSuccess = function (task) {
-                var newMeshes = task.loadedMeshes;
-                newMeshes.forEach(function (element) {
+                var newMeshes = task.loadedMeshes[0].position = BABYLON.Vector3.Zero();
+                /*newMeshes.forEach(function (element) {
                      element.physicsImpostor = new BABYLON.PhysicsImpostor(element, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0 });
                     element.visibility = false; //invisible block
-                });
+                });*/
                 };
+               
                 meshCollisionerTask.onError = function (task, message, exception) {
                     console.log(message, exception);
                 };
 
-    assetsManager.load();*/
-                BABYLON.SceneLoader.ImportMesh("", "../assets/", "ball.babylon", scene, function(newMeshes){
-                    camera.target = newMeshes[0];
-                });
+                assetsManager.load();
+                
                 //var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene);
 
                 // return the created scene
