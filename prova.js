@@ -17,7 +17,7 @@
                 camera.setTarget(BABYLON.Vector3.Zero());
 
                 // attach the camera to the canvas
-                camera.attachControl(canvas, false);
+                camera.attachControl(canvas, true);
 
                 // create a basic light, aiming 0,1,0 - meaning, to the sky
                 var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), scene);
@@ -62,7 +62,7 @@
 
                 // return the created scene
                 return scene;
-            }
+            };
 
             // call the createScene function
             var scene = createScene();
