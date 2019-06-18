@@ -24,7 +24,7 @@
                 });
 
                 var assetsManager = new BABYLON.AssetsManager(scene);
-                var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "hordes-rock.babylon");
+                var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "carrot.babylon");
                 
                 meshBallTask.onSuccess = function (task) {
                     task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
