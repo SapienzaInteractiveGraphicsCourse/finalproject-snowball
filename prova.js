@@ -24,13 +24,85 @@
                 });
 
                 var assetsManager = new BABYLON.AssetsManager(scene);
-                var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "carrot.babylon");
+
+                var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
                 
                 meshBallTask.onSuccess = function (task) {
                     task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
                 };
                
                 meshBallTask.onError = function (task, message, exception) {
+                    console.log(message, exception);
+                };
+
+
+                var meshCarrotTask = assetsManager.addMeshTask("carrott task", "", "assets/", "carrot.babylon");
+                
+                meshCarrotTask.onSuccess = function (task) {
+                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                };
+               
+                meshCarrotTask.onError = function (task, message, exception) {
+                    console.log(message, exception);
+                };
+
+                var meshHatTask = assetsManager.addMeshTask("hat task", "", "assets/", "hat.babylon");
+                
+                meshHatTask.onSuccess = function (task) {
+                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                };
+               
+                meshHatTask.onError = function (task, message, exception) {
+                    console.log(message, exception);
+                };
+
+                var meshRockTask = assetsManager.addMeshTask("rock task", "", "assets/", "hordes-rock.babylon");
+                
+                meshRockTask.onSuccess = function (task) {
+                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                };
+               
+                meshRockTask.onError = function (task, message, exception) {
+                    console.log(message, exception);
+                };
+
+                var meshRockBisTask = assetsManager.addMeshTask("rock bis task", "", "assets/", "rock.babylon");
+                
+                meshRockBisTask.onSuccess = function (task) {
+                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                };
+               
+                meshRockBisTask.onError = function (task, message, exception) {
+                    console.log(message, exception);
+                };
+
+                var meshTreeTask = assetsManager.addMeshTask("tree task", "", "assets/", "tree.babylon");
+                
+                meshTreeTask.onSuccess = function (task) {
+                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                };
+               
+                meshTreeTask.onError = function (task, message, exception) {
+                    console.log(message, exception);
+                };
+
+                var meshTreeBisTask = assetsManager.addMeshTask("tree bis task", "", "assets/", "tree2.babylon");
+                
+                meshTreeBisTask.onSuccess = function (task) {
+                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                };
+               
+                meshTreeBisTask.onError = function (task, message, exception) {
+                    console.log(message, exception);
+                };
+
+                var meshTreeToonTask = assetsManager.addMeshTask("tree toon task", "", "assets/", "tree-toon.babylon");
+                
+                meshTreeToonTask.onSuccess = function (task) {
+                    task.loadedMeshes[0].position= BABYLON.Vector3.Zero();
+                };
+               
+                meshTreeToonTask.onError = function (task, message, exception) {
                     console.log(message, exception);
                 };
 
