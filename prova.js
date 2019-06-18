@@ -40,7 +40,7 @@
                 meshTask.onError = function (task, message, exception) {
                     console.log(message, exception);
                 }*/
-                var assetsManager = new BABYLON.AssetsManager(scene);
+                /*var assetsManager = new BABYLON.AssetsManager(scene);
                 var meshCollisionerTask = assetsManager.addMeshTask("collisioners task", "", "../assets/", "ball.babylon");
                 meshCollisionerTask.onSuccess = function (task) {
                 var newMeshes = task.loadedMeshes;
@@ -53,8 +53,11 @@
                     console.log(message, exception);
                 };
 
-    assetsManager.load();
-                var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene);
+    assetsManager.load();*/
+                BABYLON.SceneLoader.ImportMesh("", "../assets/", "ball.babylon", scene, function(newMeshes){
+                    camera.target = newMeshes[0];
+                });
+                //var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene);
 
                 // return the created scene
                 return scene;
