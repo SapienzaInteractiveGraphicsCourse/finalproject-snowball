@@ -42,7 +42,7 @@
                     console.log(message, exception);
                 }*/
                 var assetsManager = new BABYLON.AssetsManager(scene);
-                var meshCollisionerTask = assetsManager.addMeshTask("collisioners task", "", "https://github.com/SapienzaInteractiveGraphicsCourse/finalproject-snowball/tree/master/assets/", "ball.babylon");
+                var meshCollisionerTask = assetsManager.addMeshTask("collisioners task", "", "/assets/", "ball.babylon");
                 
                 meshCollisionerTask.onSuccess = function (task) {
                 var newMeshes = task.loadedMeshes[0].position = BABYLON.Vector3.Zero();
