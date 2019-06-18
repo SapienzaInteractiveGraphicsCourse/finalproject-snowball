@@ -47,11 +47,13 @@
                 newMeshes.forEach(function (element) {
                      element.physicsImpostor = new BABYLON.PhysicsImpostor(element, BABYLON.PhysicsImpostor.BoxImpostor, { mass: 0, restitution: 0 });
                     element.visibility = false; //invisible block
-        });
-    };
-    meshCollisionerTask.onError = function (task, message, exception) {
-        console.log(message, exception);
-    };
+                });
+                };
+                meshCollisionerTask.onError = function (task, message, exception) {
+                    console.log(message, exception);
+                };
+
+    assetsManager.load();
                 var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene);
 
                 // return the created scene
