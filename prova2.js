@@ -1,10 +1,16 @@
 // script importation
+            var scene;
+            var canvas ;
+            var engine ;
+
 var url = "https://cdn.rawgit.com/BabylonJS/Extensions/master/DynamicTerrain/dist/babylon.dynamicTerrain.min.js";
 var s = document.createElement("script");
 s.src = url;
 document.head.appendChild(s);
 
 var createScene = function() {
+    canvas= document.getElementById('renderCanvas');
+    engine= new BABYLON.Engine(canvas, true);
     var scene = new BABYLON.Scene(engine);
     var skyColor = new BABYLON.Color4( .4, .6, .9, 1.0);
     scene.clearColor = skyColor;
