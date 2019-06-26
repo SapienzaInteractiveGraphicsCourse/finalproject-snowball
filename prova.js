@@ -17,7 +17,7 @@
                 scene.clearColor = skyColor;
 
                  scene.fogMode = BABYLON.Scene.FOGMODE_EXP2;
-                 scene.fogDensity = 0.013;
+                 scene.fogDensity = 0.001;
                  scene.fogColor = new BABYLON.Color3(0.8,0.83,0.8);
 
 
@@ -29,12 +29,38 @@
                 camera.maxZ = 1000;
                 camera.speed = 4;
                 // create a basic light, aiming 0,1,0 - meaning, to the sky
-                var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,0), scene);
-                light.intensity = 0.75;
+                var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,-1), scene);
+                light.position = new BABYLON.Vector3(0,10,10);
+                //light.intensity = 0.75;
                 light.specular = BABYLON.Color3.Black();
 
+                var d1 = new BABYLON.DirectionalLight("dir", new BABYLON.Vector3(1, -1, 4), scene);
+                d1.position = new BABYLON.Vector3(-300,300,600);
+                var shadowGenerator = new BABYLON.ShadowGenerator(2048, d1);
+                
 
-                 var mapSubX = 1000;             // point number on X axis
+                var image = new BABYLON.StandardMaterial('groundimage', scene);
+                var texture = new BABYLON.Texture('https://thumbs.dreamstime.com/t/groomed-snow-ski-slope-close-up-groomed-snow-ski-resort-slope-banner-background-texture-125764946.jpg', scene);
+                image.diffuseTexture = texture;
+
+                var ground = BABYLON.Mesh.CreateGround("ground", 100, 30000, 1, scene);
+                ground.material =image;
+                //ground.material.diffuseColor = BABYLON.Color3.FromInts(255, 255, 255);
+                ground.material.specularColor = BABYLON.Color3.Black();
+
+                ground.receiveShadows = true;
+                
+                
+
+                 //var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "https://www.babylonjs-playground.com/textures/worldHeightMap.jpg", 100, 100, 100, 0, 10, scene, false);
+                //var ground = BABYLON.Mesh.CreateGround("ground1", 30, 30, 2, scene);
+                //ground.material = terrainMaterial;
+                //shadowGenerator.getShadowMap().renderList.push(ball);
+                //shadowGenerator.usePoissonSampling=true;
+                //ground.receiveShadows = true;
+
+                 //TERRAIN 
+                 /*var mapSubX = 1000;             // point number on X axis
                  var mapSubZ = 800;              // point number on Z axis
 
 
@@ -74,7 +100,7 @@
 
                 var mapData = new Float32Array(nbPoints * nbPoints * 3); // the array that will store the generated data
                 BABYLON.DynamicTerrain.CreateMapFromHeightMapToRef(hmURL, hmOptions, mapData, scene);
-                
+                */
 
                 window.addEventListener('resize', function(){
                 engine.resize();
@@ -83,11 +109,12 @@
                 //ball movement
                 //var sphere = BABYLON.VertexData.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
                 //sphere.position =new BABYLON.Vector3(0,1.6,2);
-                ball = new SnowBall(scene);
+                ball = new SnowBall(scene,shadowGenerator);
 
-
-
-
+                var tg = new TreeGenerator(scene, shadowGenerator, ball);
+                
+                //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
+                //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
                 var assetsManager = new BABYLON.AssetsManager(scene);
 
                 /*var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");

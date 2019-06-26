@@ -7,21 +7,25 @@
  */
 
 
-SnowBall = function(scene) {
+SnowBall = function(scene,sd) {
     BABYLON.Mesh.call(this, "ball", scene);
     var sphere = BABYLON.VertexData.CreateSphere({diameter:3}, scene);
     // Move the sphere upward 1/2 its height
     //sphere.position =new BABYLON.Vector3(0,1.6,2);
     //sphere.convertToFlatShadedMesh();
+
     sphere.applyToMesh(this, false);
+    this.sd=sd;
+    sd.getShadowMap().renderList.push(this);
     this.position.x = 0;
-    this.position.y = 3;
+    this.position.y = 1;
     this.position.z = -20;
     this.crash = false;
                 this.speed = 1;
                 this.moveLeft = false;
                 this.moveRight = false;
                 this._initMovement();
+
 
 };
 
