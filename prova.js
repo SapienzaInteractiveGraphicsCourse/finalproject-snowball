@@ -21,6 +21,64 @@
                  scene.fogColor = new BABYLON.Color3(0.8,0.83,0.8);
 
 
+
+
+                 ///////////////////////////////////////////////////////////////////////////////
+
+    var sky = BABYLON.Mesh.CreatePlane("sky", {width:100, heigth:30000}, scene);
+    sky.position = new BABYLON.Vector3(0, 50, 0);
+
+    // Create a particle system
+    var particleSystem = new BABYLON.ParticleSystem("particles", 50000, scene);
+
+    //Texture of each particle
+    particleSystem.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/flare.png", scene);
+
+    // Where the particles come from
+    particleSystem.emitter = sky; // the starting object, the emitter
+    particleSystem.minEmitBox = new BABYLON.Vector3(-100, 0, -100); // Starting all from
+    particleSystem.maxEmitBox = new BABYLON.Vector3(100, 0, 30000); // To...
+
+    // Colors of all particles
+    particleSystem.color1 = new BABYLON.Color4(1, 1, 1.0, 1.0);
+    particleSystem.color2 = new BABYLON.Color4(1, 1, 1.0, 0.5);
+    particleSystem.colorDead = new BABYLON.Color4(0, 0, 0.2, 0.0);
+
+    // Size of each particle (random between...
+    particleSystem.minSize = 0.1;
+    particleSystem.maxSize = 0.5;
+
+    // Life time of each particle (random between...
+    particleSystem.minLifeTime = 3;
+    particleSystem.maxLifeTime = 15;
+
+    // Emission rate
+    particleSystem.emitRate = 5000;
+
+    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+    particleSystem.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    // Set the gravity of all particles
+    particleSystem.gravity = new BABYLON.Vector3(0, -15, 0);
+
+    // Direction of each particle after it has been emitted
+    particleSystem.direction1 = new BABYLON.Vector3(-7, -8, 3);
+    particleSystem.direction2 = new BABYLON.Vector3(7, -8, -3);
+
+    // Angular speed, in radians
+    particleSystem.minAngularSpeed = 0;
+    particleSystem.maxAngularSpeed = Math.PI;
+
+    // Speed
+    particleSystem.minEmitPower = 2;
+    particleSystem.maxEmitPower = 3;
+    particleSystem.updateSpeed = 0.007;
+
+    // Start the particle system
+    particleSystem.start();
+//////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
                 camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-30), scene);
 
                 
@@ -112,7 +170,7 @@
                 ball = new SnowBall(scene,shadowGenerator);
 
                 var tg = new TreeGenerator(scene, shadowGenerator, ball);
-                
+
                 //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
                 //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
                 var assetsManager = new BABYLON.AssetsManager(scene);
@@ -198,7 +256,7 @@
                     console.log(message, exception);
                 };
                 */
-
+                var explosion=false;
                 engine.runRenderLoop(function(){
 
                     if (! ball.crash) {
@@ -209,6 +267,27 @@
                         //sphere.position.z += ball.speed;
                         //terrain.position.z += ball.speed;
         }
+                    if(ball.crash){
+                        if(!explosion){
+                            explosion=true;
+                            var particleSystem2 = new BABYLON.ParticleSystem("particles2", 2000, scene);
+
+                            //Texture of each particle
+                            particleSystem2.particleTexture = new BABYLON.Texture("/images/12-snowflake-png-image-thumb.png", scene);
+
+                            // Where the particles come from
+                            particleSystem2.emitter = new BABYLON.Vector3(ball.position.x, ball.position.y, ball.position.z); // the starting object, the emitter
+                            particleSystem2.minEmitBox = new BABYLON.Vector3(-5, -5, -5); // Starting all from
+                            particleSystem2.maxEmitBox = new BABYLON.Vector3(5, 5, 5); // To...
+                            particleSystem2.emitRate = 1000;
+                            particleSystem2.maxSize = 0.5;
+                            // Start the particle system
+                            particleSystem2.start();
+                            //particleSystem.stop();
+                            scene.removeMesh(ball);
+                        }
+                    }
+               
                 scene.render();
             });
                 assetsManager.load();
