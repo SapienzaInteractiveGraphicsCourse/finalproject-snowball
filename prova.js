@@ -273,8 +273,8 @@
                             var particleSystem2 = new BABYLON.ParticleSystem("particles2", 2000, scene);
 
                             //Texture of each particle
-                            //particleSystem2.particleTexture = new BABYLON.Texture("images/12-snowflake-png-image-thumb.png", scene);
-                                particleSystem2.particleTexture = new BABYLON.Texture("https://freepngimg.com/thumb/snowflakes/12-snowflake-png-image-thumb.png", scene);
+                            particleSystem2.particleTexture = new BABYLON.Texture("images/12-snowflake-png-image-thumb.png", scene);
+                               // particleSystem2.particleTexture = new BABYLON.Texture("https://freepngimg.com/thumb/snowflakes/12-snowflake-png-image-thumb.png", scene);
                             // Where the particles come from
                             particleSystem2.emitter = new BABYLON.Vector3(ball.position.x, ball.position.y, ball.position.z); // the starting object, the emitter
                             particleSystem2.minEmitBox = new BABYLON.Vector3(-5, -5, -5); // Starting all from
