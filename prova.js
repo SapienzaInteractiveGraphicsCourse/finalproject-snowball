@@ -279,6 +279,7 @@
 
                         camera.position.z += ball.speed;
                         ball.position.z += ball.speed;
+                        if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
                         //sphere.position.z += ball.speed;
                         //terrain.position.z += ball.speed;
         }
@@ -288,7 +289,7 @@
                             var particleSystem2 = new BABYLON.ParticleSystem("particles2", 2000, scene);
 
                             //Texture of each particle
-                            particleSystem2.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/sparkle2.png", scene);
+                            particleSystem2.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/sparkle2.jpg", scene);
                                // particleSystem2.particleTexture = new BABYLON.Texture("https://freepngimg.com/thumb/snowflakes/12-snowflake-png-image-thumb.png", scene);
                             // Where the particles come from
                             particleSystem2.emitter = new BABYLON.Vector3(ball.position.x, ball.position.y, ball.position.z); // the starting object, the emitter
