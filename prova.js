@@ -13,13 +13,28 @@
                 canvas= document.getElementById('renderCanvas');
                 engine= new BABYLON.Engine(canvas, true);
                 scene = new BABYLON.Scene(engine);
-                var skyColor = new BABYLON.Color4( .4, .6, .9, 1.0);
-                scene.clearColor = skyColor;
+
+
+
+                // Skybox
+				var skybox = BABYLON.MeshBuilder.CreateBox("skyBox",{size:1000}, scene);
+				var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
+				skybox.infiniteDistance=true;
+				skyboxMaterial.backFaceCulling = false;
+				skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("https://www.babylonjs-playground.com/textures/skybox", scene);
+				skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
+				skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
+				skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
+				skybox.material = skyboxMaterial;
 
                  scene.fogMode = BABYLON.Scene.FOGMODE_EXP2;
                  scene.fogDensity = 0.001;
                  scene.fogColor = new BABYLON.Color3(0.8,0.83,0.8);
 
+
+
+
+                 var music = new BABYLON.Sound("Music", "sounds/crystallize", scene, null, { loop: true, autoplay: true });
 
 
 
@@ -273,7 +288,7 @@
                             var particleSystem2 = new BABYLON.ParticleSystem("particles2", 2000, scene);
 
                             //Texture of each particle
-                            particleSystem2.particleTexture = new BABYLON.Texture("images/12-snowflake-png-image-thumb.png", scene);
+                            particleSystem2.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/sparkle2.png", scene);
                                // particleSystem2.particleTexture = new BABYLON.Texture("https://freepngimg.com/thumb/snowflakes/12-snowflake-png-image-thumb.png", scene);
                             // Where the particles come from
                             particleSystem2.emitter = new BABYLON.Vector3(ball.position.x, ball.position.y, ball.position.z); // the starting object, the emitter
@@ -281,6 +296,7 @@
                             particleSystem2.maxEmitBox = new BABYLON.Vector3(5, 5, 5); // To...
                             particleSystem2.emitRate = 1000;
                             particleSystem2.maxSize = 0.5;
+                            var musiccrash = new BABYLON.Sound("MusicCrash", "sounds/jab", scene, null, {autoplay: true });
                             // Start the particle system
                             particleSystem2.start();
                             //particleSystem.stop();
