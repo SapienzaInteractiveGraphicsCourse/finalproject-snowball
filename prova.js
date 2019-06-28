@@ -223,7 +223,7 @@
 
 
 
-                var snowMan= BABYLON.Mesh.MergeMeshes([ball,meshCarrotTask,meshHatTask,leftEyeTask,rightEyeTask]);
+                //var snowMan= BABYLON.Mesh.MergeMeshes([ball,meshCarrotTask,meshHatTask,leftEyeTask,rightEyeTask]);
 
 				/*
                 var rockTask = assetsManager.addMeshTask("rock bis task", "", "assets/", "rock.babylon");
