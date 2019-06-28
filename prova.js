@@ -203,7 +203,7 @@
 
                 var meshCarrotTask = assetsManager.addMeshTask("carrot task", "", "assets/", "carrot.babylon");
                 
-                meshCarrotTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,2.5,-20);};
+                meshCarrotTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,2.5,-15);};
                 meshCarrotTask.onError = function (task, message, exception) {console.log(message, exception);};
                 //meshCarrotTask.rotation.x=Math.PI;
                 meshCarrotTask.parent=ball;
@@ -245,7 +245,7 @@
                 var explosion=false;
                 engine.runRenderLoop(function(){
 
-                    /*if (! ball.crash) {
+                    if (! ball.crash) {
                         ball.move();
 
                         camera.position.z += ball.speed;
@@ -253,7 +253,7 @@
                         if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
                         //sphere.position.z += ball.speed;
                         //terrain.position.z += ball.speed;
-        }*/
+        }
                     if(ball.crash){
                         if(!explosion){
                             explosion=true;
