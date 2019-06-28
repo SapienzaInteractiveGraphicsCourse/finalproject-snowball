@@ -205,7 +205,7 @@
                 
                 meshCarrotTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,2.5,-20);};
                 meshCarrotTask.onError = function (task, message, exception) {console.log(message, exception);};
-                meshCarrotTask.rotation.x=Math.PI;
+                //meshCarrotTask.rotation.x=Math.PI;
                 meshCarrotTask.parent=ball;
 
                 var meshHatTask = assetsManager.addMeshTask("hat task", "", "assets/", "hat.babylon");
