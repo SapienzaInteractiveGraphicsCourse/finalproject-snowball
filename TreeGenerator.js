@@ -34,7 +34,7 @@ TreeGenerator.prototype.generate = function() {
     for (var i = 0; i<this.treeNumber; i++) {
         
         x = randomNumber(-50, 50);
-        z = randomNumber(-300, 3000);
+        z = randomNumber(20, 3000);
 
         var tree = new Tree(size, sizeTrunk, radius, scene, this.sd, ball);
         tree.position.x = x;
