@@ -203,24 +203,28 @@
 
                 var meshCarrotTask = assetsManager.addMeshTask("carrot task", "", "assets/", "carrot.babylon");
                 
-                meshCarrotTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,1.5,-18);};
+                meshCarrotTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,1.5,-20);};
                 meshCarrotTask.onError = function (task, message, exception) {console.log(message, exception);};
+                meshCarrotTask.rotatation.x=Math.PI;
+                meshCarrotTask.parent=ball;
 
                 var meshHatTask = assetsManager.addMeshTask("hat task", "", "assets/", "hat.babylon");
                 
                 meshHatTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,4,-20);};
                 meshHatTask.onError = function (task, message, exception) {console.log(message, exception);};
+                meshHatTask.parent=ball;
 
                 var leftEyeTask = assetsManager.addMeshTask("left eye", "", "assets/", "hordes-rock.babylon");
                 
                 leftEyeTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(-0.5,1.8,-18);};
                 leftEyeTask.onError = function (task, message, exception) {console.log(message, exception);};
+                leftEyeTask.parent=ball;
 
                 var rightEyeTask = assetsManager.addMeshTask("rock task", "", "assets/", "hordes-rock.babylon");
                 
                 rightEyeTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0.5,1.8,-18);};
                 rightEyeTask.onError = function (task, message, exception) {console.log(message, exception);};
-
+                rightEyeTask.parent=ball;
 
 
                 //var snowMan= BABYLON.Mesh.MergeMeshes([ball,meshCarrotTask,meshHatTask,leftEyeTask,rightEyeTask]);
@@ -241,12 +245,12 @@
                 var explosion=false;
                 engine.runRenderLoop(function(){
 
-                    if (! ball.crash) {
+                    /*if (! ball.crash) {
                         ball.move();
 
                         camera.position.z += ball.speed;
                         ball.position.z += ball.speed;
-                        if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
+                        if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}*/
                         //sphere.position.z += ball.speed;
                         //terrain.position.z += ball.speed;
         }
