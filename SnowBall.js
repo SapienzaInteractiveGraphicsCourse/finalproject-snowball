@@ -21,7 +21,8 @@ SnowBall = function(scene,sd) {
     this.position.y = 1;
     this.position.z = -20;
     this.crash = false;
-                this.speed = 1;
+                this.speed = 2;
+                this.diagDx=true;
                 this.moveLeft = false;
                 this.moveRight = false;
                 this._initMovement();
@@ -42,6 +43,14 @@ SnowBall.prototype._initMovement = function() {
                     } else if (evt.keyCode == 39) {
                             ball.moveRight = true;
                             ball.moveLeft = false;
+                    }
+                    else if(evt.keyCode == 32){
+                        if(ball.diagDx){
+                            ball.diagDx=false;
+                        }
+                        else{
+                            ball.diagDx=true;
+                        }
                     }
             };
 
@@ -68,5 +77,17 @@ SnowBall.prototype.move = function() {
     if (ball.moveLeft) {
         ball.position.x += -1;
         camera.position.x += -1;
+    }
+    if(ball.diagDx){
+        ball.position.x += 1;
+        camera.position.x += 1;
+        ball.position.z += 1;
+        camera.position.z += 1;
+    }
+    if(!ball.diagDx){
+        ball.position.x += -1;
+        camera.position.x += -1;
+        ball.position.z += 1;
+        camera.position.z += 1;
     }
 };

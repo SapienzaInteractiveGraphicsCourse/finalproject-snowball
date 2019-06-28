@@ -183,7 +183,13 @@
                 //var sphere = BABYLON.VertexData.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
                 //sphere.position =new BABYLON.Vector3(0,1.6,2);
                 ball = new SnowBall(scene,shadowGenerator);
-
+                // ROTATION AND SCALING
+                ball.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
+                var angle=0.065;   
+                var axis = new BABYLON.Vector3(1,0,0);
+    			scene.registerAfterRender(function() {
+     		    ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
+   				});
                 var tg = new TreeGenerator(scene, shadowGenerator, ball);
 
                 //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
@@ -199,8 +205,8 @@
                 meshBallTask.onError = function (task, message, exception) {
                     console.log(message, exception);
                 };
+				
 				*/
-
                 var meshCarrotTask = assetsManager.addMeshTask("carrot task", "", "assets/", "carrot.babylon");
                 
                 meshCarrotTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,2.5,-15);};
@@ -226,10 +232,10 @@
                 rightEyeTask.onError = function (task, message, exception) {console.log(message, exception);};
                 rightEyeTask.parent=ball;
 
-
+				/*
                 //var snowMan= BABYLON.Mesh.MergeMeshes([ball,meshCarrotTask,meshHatTask,leftEyeTask,rightEyeTask]);
 
-				/*
+				
                 var rockTask = assetsManager.addMeshTask("rock bis task", "", "assets/", "rock.babylon");
                 
                 rockTask.onSuccess = function (task) {
@@ -242,17 +248,21 @@
 
                 
                 */
+                
+
+                var axisDx= new BABYLON.Vector3(1,-1,-1);
+                var axisSx= new BABYLON.Vector3(1,1,1);
                 var explosion=false;
                 engine.runRenderLoop(function(){
 
-                    if (! ball.crash) {
+                    if (!ball.crash) {
                         ball.move();
 
                         camera.position.z += ball.speed;
                         ball.position.z += ball.speed;
                         if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
-                        //sphere.position.z += ball.speed;
-                        //terrain.position.z += ball.speed;
+                        if(ball.diagDx){ ball.rotate(axisDx, angle, BABYLON.Space.LOCAL);  }
+                        if(!ball.diagDx){ ball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  }
         }
                     if(ball.crash){
                         if(!explosion){

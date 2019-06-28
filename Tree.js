@@ -22,6 +22,7 @@ Tree = function(sizeBranch, sizeTrunk, radius, scene, sd, ball) {
     var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
     var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
     trunk.actionManager.registerAction(exec);
+    
 
 
     trunk.material = new BABYLON.StandardMaterial("trunk", scene);
