@@ -19,9 +19,7 @@
                 engine= new BABYLON.Engine(canvas, true);
                 scene = new BABYLON.Scene(engine);
 
-                
-                //musiccrash=new Audio("sounds/jab.mp3");
-                //music=new Audio("sounds/crystallize.mp3");
+                music = new BABYLON.Sound("Music", "sounds/crystallize.mp3", scene, null, {loop:true, autoplay:true});
                 
                 
 
@@ -354,7 +352,7 @@
 
    				 	$("#buttonPlay").click(function(event){
    				 		start=true;
-						music = new BABYLON.Sound("Music", "sounds/crystallize.mp3", scene, null, {loop:true, autoplay:true});
+						//music = new BABYLON.Sound("Music", "sounds/crystallize.mp3", scene, null, {loop:true, autoplay:true});
    				 		$("#play").dialog("close");
    				 	});
 
