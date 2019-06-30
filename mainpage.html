@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    
+    <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
+    <script type="text/javascript" src="prova.js"></script>
+     <script>
+        function Easy(){ sessionStorage.setItem('level','easy'); window.location.href="index.html";}
+         function Medium(){ sessionStorage.setItem('level','medium');window.location.href="index.html"; }
+          function Hard() {sessionStorage.setItem('level','hard');window.location.href="index.html"; }
+           function Extreme(){ sessionStorage.setItem('level','extreme');window.location.href="index.html"; }
+      
+    </script>
+    <div style="margin-left:500px">
+    <p><h1> TITOLO PROVVISORIO</h1> </p>
+
+    <p><h3> DESCRIZIONE GIOCO </h3></p>
+
+</div>
+   
+</head>
+<body bgcolor=" #b3ccff"> 
+<div style="margin-left:500px">
+    <img src="images/chilly.jpg" width="400" height="400">
+</div>
+<div style="margin-left:400px">
+ <div >
+    <div >
+    <button id = "ButtonEasy" style="background-color:green; color:black; width:150px" onclick="Easy()"> Easy </button>
+    <button id = "ButtonMedium" style="background-color:yellow;color:black;width:150px" onclick="Medium()" > Medium </button>
+    <button id = "ButtonHard" style="background-color:red;color:black;width:150px" onclick="Hard()" > Hard </button>
+    <button id = "ButtonExtreme" style="background-color:black;color:white;width:150px" onclick="Extreme()"> Extreme </button>
+    </div>
+
+</body>
+</html>

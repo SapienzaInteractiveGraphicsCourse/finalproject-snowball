@@ -5,17 +5,27 @@
             var ball;
             var terrain;
             var camera;
-                   
+            var InputTreesNumber;
+            var start=false; 
+            var difficulty; 
+            var audiocontext;
+            var musiccrash;
+            var music;    
 
             // createScene function that creates and return the scene
             var createScene = function(){
-                // create a basic BJS Scene object
                 canvas= document.getElementById('renderCanvas');
+                difficulty=canvas.value;
                 engine= new BABYLON.Engine(canvas, true);
                 scene = new BABYLON.Scene(engine);
 
+                
+                //musiccrash=new Audio("sounds/jab.mp3");
+                //music=new Audio("sounds/crystallize.mp3");
+                
+                
 
-
+                Start();
                 // Skybox
 				var skybox = BABYLON.MeshBuilder.CreateBox("skyBox",{size:1000}, scene);
 				var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
@@ -32,16 +42,8 @@
                  scene.fogColor = new BABYLON.Color3(0.8,0.83,0.8);
 
 
-
-
-                 var music = new BABYLON.Sound("Music", "sounds/crystallize", scene, null, { loop: true, autoplay: true });
-
-
-
-                 ///////////////////////////////////////////////////////////////////////////////
-
-    var sky = BABYLON.Mesh.CreatePlane("sky", {width:100, heigth:30000}, scene);
-    sky.position = new BABYLON.Vector3(0, 50, 0);
+    			 var sky = BABYLON.Mesh.CreatePlane("sky", {width:100, heigth:30000}, scene);
+    			 sky.position = new BABYLON.Vector3(0, 50, 0);
 
     // Create a particle system
     var particleSystem = new BABYLON.ParticleSystem("particles", 50000, scene);
@@ -183,6 +185,21 @@
                 //var sphere = BABYLON.VertexData.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
                 //sphere.position =new BABYLON.Vector3(0,1.6,2);
                 ball = new SnowBall(scene,shadowGenerator);
+
+
+                //CODICE PER FLAG
+                var flagStart = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
+                flagStart.position =new BABYLON.Vector3(13 , 1, -5);
+
+                var flagFinish1 = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
+                flagFinish1.position =new BABYLON.Vector3(40 , 1, 3010);
+
+                var flagFinish2 = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
+                flagFinish2.position =new BABYLON.Vector3(-40 , 1, 3010);
+                
+
+               
+
                 // ROTATION AND SCALING
                 ball.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
                 var angle=0.065;   
@@ -190,13 +207,41 @@
     			scene.registerAfterRender(function() {
      		    ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
    				});
-                var tg = new TreeGenerator(scene, shadowGenerator, ball);
+    			var numberOfTrees;
+   				if(difficulty=="easy") numberOfTrees=100;
+   				else if(difficulty=="medium") numberOfTrees=200;
+   				else if(difficulty=="hard") numberOfTrees=300;
+   				else if(difficulty=="extreme") numberOfTrees=400;
+                var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);
 
                 //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
                 //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
                 var assetsManager = new BABYLON.AssetsManager(scene);
 
-                /*var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
+                /*
+
+
+
+
+				var meshFlagStartTask = assetsManager.addMeshTask("hat task", "", "assets/", "flag.babylon");
+                
+                meshFlagStartTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(13,1,-5);};
+                meshFlagStartTask.onError = function (task, message, exception) {console.log(message, exception);};
+
+                var meshFlagFinish1Task = assetsManager.addMeshTask("hat task", "", "assets/", "flag.babylon");
+                
+                meshFlagFinish1Task.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(40,1,3010);};
+                meshFlagFinish1Task.onError = function (task, message, exception) {console.log(message, exception);};
+                
+
+                var meshFlagFinish2Task = assetsManager.addMeshTask("hat task", "", "assets/", "flag.babylon");
+                
+                meshFlagFinish2Task.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(-40,1,3010);};
+                meshFlagFinish2Task.onError = function (task, message, exception) {console.log(message, exception);};
+
+
+
+                var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
                 
                 meshBallTask.onSuccess = function (task) {
                     task.loadedMeshes[0].position= new BABYLON.Vector3(0,1,1);
@@ -206,8 +251,7 @@
                     console.log(message, exception);
                 };
 				
-				*/
-                var meshCarrotTask = assetsManager.addMeshTask("carrot task", "", "assets/", "carrot.babylon");
+				                var meshCarrotTask = assetsManager.addMeshTask("carrot task", "", "assets/", "carrot.babylon");
                 
                 meshCarrotTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,2.5,-15);};
                 meshCarrotTask.onError = function (task, message, exception) {console.log(message, exception);};
@@ -232,7 +276,7 @@
                 rightEyeTask.onError = function (task, message, exception) {console.log(message, exception);};
                 rightEyeTask.parent=ball;
 
-				/*
+				
                 //var snowMan= BABYLON.Mesh.MergeMeshes([ball,meshCarrotTask,meshHatTask,leftEyeTask,rightEyeTask]);
 
 				
@@ -255,7 +299,7 @@
                 var explosion=false;
                 engine.runRenderLoop(function(){
 
-                    if (!ball.crash) {
+                    if (!ball.crash && start) {
                         ball.move();
 
                         camera.position.z += ball.speed;
@@ -263,6 +307,10 @@
                         if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
                         if(ball.diagDx){ ball.rotate(axisDx, angle, BABYLON.Space.LOCAL);  }
                         if(!ball.diagDx){ ball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  }
+                        if(ball.position.z >= 3010){ 
+                         start=false;
+                         Finish();
+                     }
         }
                     if(ball.crash){
                         if(!explosion){
@@ -278,12 +326,14 @@
                             particleSystem2.maxEmitBox = new BABYLON.Vector3(5, 5, 5); // To...
                             particleSystem2.emitRate = 1000;
                             particleSystem2.maxSize = 0.5;
-                            var musiccrash = new BABYLON.Sound("MusicCrash", "sounds/jab", scene, null, {autoplay: true });
+                            musiccrash = new BABYLON.Sound("MusicCrash", "sounds/jab.mp3", scene,null,{autoplay:true});
                             // Start the particle system
                             particleSystem2.start();
                             //particleSystem.stop();
                             scene.removeMesh(ball);
                         }
+
+                        Crash();
                     }
                
                 scene.render();
@@ -295,5 +345,54 @@
                 // return the created scene
                 return scene;
             };
+
+            function Start(){
+            		$("#play").dialog({
+       				 dialogClass: "no-close",
+        			 width: 512
+   				 	});
+
+   				 	$("#buttonPlay").click(function(event){
+   				 		start=true;
+						music = new BABYLON.Sound("Music", "sounds/crystallize.mp3", scene, null, {loop:true, autoplay:true});
+   				 		$("#play").dialog("close");
+   				 	});
+
+
+            }
+
+            function Crash(){
+
+            	$("#crashing").dialog({
+       				 dialogClass: "no-close",
+        			 width: 512
+   				 	});
+
+   				 	$("#restartLevel").click(function(event){
+   				 		location.reload();
+   				 	});
+
+   				 	$("#home").click(function(event){
+   				 		window.location.href="mainpage.html";
+   				 	});
+
+            }
+
+            function Finish(){
+
+				$("#finishing").dialog({
+       				 dialogClass: "no-close",
+        			 width: 512
+   				 	});
+
+   				 	$("#restartLevel2").click(function(event){
+   				 		location.reload();
+   				 	});
+
+   				 	$("#home2").click(function(event){
+   				 		window.location.href="mainpage.html";
+   				 	});
+
+            }
 
             

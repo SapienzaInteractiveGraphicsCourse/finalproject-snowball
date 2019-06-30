@@ -1,5 +1,5 @@
-TreeGenerator = function(scene, sd, ball) {
-    this.treeNumber = 100;
+TreeGenerator = function(scene, sd, ball, number) {
+    this.treeNumber = number;
     this._trees = [];
     this.scene = scene;
     this.minSizeBranch = 15;

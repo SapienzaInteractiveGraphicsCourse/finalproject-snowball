@@ -14,9 +14,15 @@
     <script type="text/javascript" src="SnowBall.js"></script>
     <script type="text/javascript" src="TreeGenerator.js"></script>
     <script type="text/javascript" src="Tree.js"></script>
-     <script>
-        window.addEventListener('DOMContentLoaded', createScene);
-    </script>
+
+    <script src="jquery-ui-1.12.1/external/jquery/jquery.js"></script>
+    <script src="jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <link href="jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+    <link href="jquery-ui-1.12.1/jquery-ui.structure.min.css" rel="stylesheet" />
+    <link href="jquery-ui-1.12.1/jquery-ui.theme.min.css" rel="stylesheet" />
+
+   
+     
     <style>
         html, body {
             overflow: hidden;
@@ -34,6 +40,42 @@
     </style>
 </head>
 <body>
-<canvas id="renderCanvas"></canvas>
+<canvas id="renderCanvas" value=""></canvas>
+<script>
+        var level=sessionStorage.getItem('level');
+        document.getElementById("renderCanvas").value=level;
+        window.addEventListener('DOMContentLoaded', createScene);
+    </script>
+
+    <div id="play" title="Are you ready?" style="padding:100px;">
+        Use the Spacebar to change the direction of the Snowman <br /> 
+        <div style=" text-align:center">
+            <button id="buttonPlay" style="width:150px" >Play!</button>
+        </div>
+    </div>
+
+    
+
+
+    <div id="crashing" title="Oooops!" style="padding:20px;">
+        GAME OVER <br /> <br />
+        <div style=" text-align:center">
+            <button id="restartLevel" style="width:100px; margin:20px">Restart</button>
+            <br />
+            <button id="home" style="width:100px; margin:20px">Home</button>
+            <br />
+        </div>
+    </div>
+
+    <div id="finishing" title="Congratulations" style="padding:20px;">
+       You have completed the Level! <br /> <br />
+         
+        <div style=" text-align:center">
+            <button id="restartLevel2" style="width:100px; margin:20px"> Restart</button>
+            <br />
+            <button id="home2" style="width:100px; margin:20px"> Home</button>
+            <br />
+        </div>
+    </div>
 </body>
 </html>
