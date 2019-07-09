@@ -159,12 +159,39 @@
    				else if(difficulty=="medium") {numberOfTrees=200; numberOfRocks=3;}
    				else if(difficulty=="hard") {numberOfTrees=300; numberOfRocks=4;}
    				else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=5;}
-                var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);
-
-                // var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
-                
+                var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);                
                 var assetsManager = new BABYLON.AssetsManager(scene);
-                var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
+                //var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
+                var Rocks_array=[];
+                var positionZ,positionX;
+                for (var i=0; i<numberOfRocks;i++){
+                     positionZ = randomNumber(20, 3000);
+                    var randomX=Math.random();
+                    if(randomX%2==0){
+                         positionX = 50;
+                        }
+                    else if (randomX%2!=0){
+                     positionX = -50;
+                    }
+
+
+                    var rockTask = assetsManager.addMeshTask("rock task"+i+"", "", "assets/", "rock.babylon");
+                
+                    rockTask.onSuccess = function (task) {
+                    task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,1,positionZ);
+                    var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
+                    var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
+                    //rockTask.actionManager.registerAction(exec);
+                    //on collision with ball
+                };
+               
+                rockTask.onError = function (task, message, exception) {
+                    console.log(message, exception);
+                };
+
+
+                }
+
 
                 /*
 
@@ -352,5 +379,13 @@
    				 	});
 
             }
+
+    var randomNumber = function (min, max) {
+        if (min == max) {
+            return (min);
+        }
+        var random = Math.random();
+        return ((random * (max - min)) + min);
+    };
 
             
