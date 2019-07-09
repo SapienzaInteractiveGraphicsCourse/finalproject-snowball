@@ -168,17 +168,18 @@
                      positionZ = randomNumber(20, 3000);
                     var randomX=Math.random();
                     if(randomX%2==0){
-                         positionX = 50;
+                         positionX = 48;
                         }
                     else if (randomX%2!=0){
-                     positionX = -50;
+                     positionX = -48;
                     }
 
 
                     var rockTask = assetsManager.addMeshTask("rock task"+i+"", "", "assets/", "rock.babylon");
                 
                     rockTask.onSuccess = function (task) {
-                    task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,1,positionZ);
+                    Rocks_array.push(rockTask);
+                    task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,2,positionZ);
                     var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
                     var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
                     //rockTask.actionManager.registerAction(exec);
