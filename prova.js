@@ -164,7 +164,7 @@
                 // var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
                 
                 var assetsManager = new BABYLON.AssetsManager(scene);
-                var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks,assetsManager);
+                var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
 
                 /*
 

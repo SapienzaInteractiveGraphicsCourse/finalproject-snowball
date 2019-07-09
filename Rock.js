@@ -1,4 +1,4 @@
-Rock = function(scene, sd, ball, positionX, positionZ, index,assetsManager) {
+Rock = function(scene, sd, ball, positionX, positionZ, index) {
     // Call the super class BABYLON.Mesh
     //BABYLON.Mesh.call(this, "rock", scene);
     this.scene=scene;
@@ -6,8 +6,8 @@ Rock = function(scene, sd, ball, positionX, positionZ, index,assetsManager) {
     this.ball=ball;
     this.positionX=positionX;
     this.positionZ=positionZ;
-    var assetsManagerBis=new BABYLON.AssetsManager(scene);
-    var rockTask = assetsManagerBis.addMeshTask("rock task"+index+"", "", "assets/", "rock.babylon");
+    var assetsManager=new BABYLON.AssetsManager(scene);
+    var rockTask = assetsManager.addMeshTask("rock task"+index+"", "", "assets/", "rock.babylon");
                 
                 rockTask.onSuccess = function (task) {
                     task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,1,positionZ);
@@ -27,6 +27,6 @@ Rock = function(scene, sd, ball, positionX, positionZ, index,assetsManager) {
 
 
     sd.getShadowMap().renderList.push(this);
-    assetsManagerBis.load();
+    assetsManager.load();
 
 };

@@ -1,5 +1,5 @@
-RockGenerator = function(scene, sd, ball, number, assetsManager) {
-    this.assetsManager=assetsManager;
+RockGenerator = function(scene, sd, ball, number) {
+    
     this.rockNumber = number;
     this._rocks = [];
     this.scene = scene;
@@ -37,7 +37,7 @@ RockGenerator.prototype.generate = function() {
         }
         
         positionZ = z;
-        var rock=new Rock(scene, this.sd, ball, positionX, positionZ, i+1,assetsManager);
+        var rock=new Rock(scene, this.sd, ball, positionX, positionZ, i+1);
         this._rocks.push(rock);
     }
 };
