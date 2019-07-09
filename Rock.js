@@ -1,6 +1,6 @@
 Rock = function(scene, sd, ball, positionX, positionZ) {
     // Call the super class BABYLON.Mesh
-    BABYLON.Mesh.call(this, "rock", scene);
+    //BABYLON.Mesh.call(this, "rock", scene);
     this.scene=scene;
     this.ball=ball;
     this.positionX=positionX;
