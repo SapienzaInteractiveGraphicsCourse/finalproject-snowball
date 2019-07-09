@@ -6,8 +6,8 @@ Rock = function(scene, sd, ball, positionX, positionZ, index,assetsManager) {
     this.ball=ball;
     this.positionX=positionX;
     this.positionZ=positionZ;
-    this.assetsManager=assetsManager;
-    var rockTask = assetsManager.addMeshTask("rock task"+index+"", "", "assets/", "rock.babylon");
+    var assetsManagerBis=new BABYLON.AssetsManager(scene);
+    var rockTask = assetsManagerBis.addMeshTask("rock task"+index+"", "", "assets/", "rock.babylon");
                 
                 rockTask.onSuccess = function (task) {
                     task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,1,positionZ);
@@ -27,5 +27,6 @@ Rock = function(scene, sd, ball, positionX, positionZ, index,assetsManager) {
 
 
     sd.getShadowMap().renderList.push(this);
+    assetsManagerBis.load();
 
 };
