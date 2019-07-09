@@ -18,7 +18,7 @@ Tree = function(sizeBranch, sizeTrunk, radius, scene, sd, ball) {
 
     trunk.actionManager = new BABYLON.ActionManager(scene);
 
-        // on collision with ship
+        // on collision with ball
     var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
     var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
     trunk.actionManager.registerAction(exec);
@@ -40,7 +40,6 @@ Tree = function(sizeBranch, sizeTrunk, radius, scene, sd, ball) {
 
 // Our object is a BABYLON.Mesh
 Tree.prototype = Object.create(BABYLON.Mesh.prototype);
-// And its constructor is the Ship function described above.
 Tree.prototype.constructor = Tree;
 
 

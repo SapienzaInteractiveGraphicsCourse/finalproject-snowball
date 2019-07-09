@@ -3,9 +3,111 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
-    
+    <link href="style/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300" type="text/css" />
+
     <script src="https://code.jquery.com/pep/0.4.1/pep.js"></script>
     <script type="text/javascript" src="prova.js"></script>
+    <style> 
+        .btn-extreme{
+ 
+        background-color: #000;
+ 
+        color:#fff;
+ 
+        }
+        .btn-medium{
+ 
+        background-color: #ffcc00;
+ 
+        color:#fff;
+ 
+        }
+        .btn-easy{
+ 
+        background-color: #2eb82e;
+ 
+        color:#fff;
+ 
+        }
+        .btn-hard{
+ 
+        background-color: #e60000;
+ 
+        color:#fff;
+ 
+        }
+
+        h1 {font-family: "Brush Script MT", cursive;
+    font-size:100px;
+    font-style:italic;
+}
+ h2 {
+            margin-right: 100px;
+            margin-top: : 70px;
+}
+h3 {
+    
+    font-family:  "Copperplate Gothic Light",italic;
+    font-size:20px;
+    margin-top: 50px;
+
+}
+h4{
+    font-family:  "Copperplate Gothic Light",italic;
+    font-size:20px;
+}
+h5{
+    font-size:16px;
+
+}
+        body {
+        width: 100wh;
+        height: 90vh;
+        color: #fff;
+        background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+        background-size: 400% 400%;
+        -webkit-animation: Gradient 15s ease infinite;
+        -moz-animation: Gradient 15s ease infinite;
+        animation: Gradient 15s ease infinite;
+        }
+
+@-webkit-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@-moz-keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+
+@keyframes Gradient {
+    0% {
+        background-position: 0% 50%
+    }
+    50% {
+        background-position: 100% 50%
+    }
+    100% {
+        background-position: 0% 50%
+    }
+}
+    </style>
      <script>
         function Easy(){ sessionStorage.setItem('level','easy'); window.location.href="index.html";}
          function Medium(){ sessionStorage.setItem('level','medium');window.location.href="index.html"; }
@@ -13,26 +115,41 @@
            function Extreme(){ sessionStorage.setItem('level','extreme');window.location.href="index.html"; }
       
     </script>
-    <div style="margin-left:500px">
-    <p><h1> TITOLO PROVVISORIO</h1> </p>
-
-    <p><h3> DESCRIZIONE GIOCO </h3></p>
-
+    <div align="center">
+    <p><h1> Snowball</h1> </p>
 </div>
    
 </head>
-<body bgcolor=" #b3ccff"> 
-<div style="margin-left:500px">
-    <img src="images/chilly.jpg" width="400" height="400">
-</div>
-<div style="margin-left:400px">
- <div >
-    <div >
-    <button id = "ButtonEasy" style="background-color:green; color:black; width:150px" onclick="Easy()"> Easy </button>
-    <button id = "ButtonMedium" style="background-color:yellow;color:black;width:150px" onclick="Medium()" > Medium </button>
-    <button id = "ButtonHard" style="background-color:red;color:black;width:150px" onclick="Hard()" > Hard </button>
-    <button id = "ButtonExtreme" style="background-color:black;color:white;width:150px" onclick="Extreme()"> Extreme </button>
-    </div>
+<body class="bg-primary text-white">
+<div  align="center">
 
+   <h2> <img src="images/chilly.jpg" width="600" height="300" align="right" margin-right:50px></h2>
+    
+    <h3> 
+        <br />
+        <br />
+        Welcome in Snowball! <br />
+        In this game you impersonate a Snowman's head <br />
+        that has to cross all the Ski run, trying to avoid <br />
+        all the trees and rocks that will appear in the path,<br />
+        in order to reach the finishing line.<br />
+        During the run you have to pay attention also to the Ski run's limits.<br />
+        You can also try to collect coins that will improve your final score.<br />
+        Have fun! 
+    <br />
+    <br /><br /><br /><br /> </h3> 
+    
+</div>
+<div align="center">
+        <h4>Choose the level's difficulty</h4>
+    <div >
+    <button id = "ButtonEasy" type="button" class="btn btn-easy active" style="width:150px" onclick="Easy()"> Easy </button>
+    <button id = "ButtonMedium" type="button" class="btn btn-medium active" style="width:150px"  onclick="Medium()" > Medium </button>
+    <button id = "ButtonHard" type="button" class="btn btn-hard active" style="width:150px"  onclick="Hard()" > Hard </button>
+    <button id = "ButtonExtreme" type="button" class="btn btn-extreme active" style="width:150px"  onclick="Extreme()"> Extreme </button>
+    </div>
+    <h5>
+    </br>
+    Credits: Franco Pinto & Flavio Massimo Falesiedi</h5>
 </body>
 </html>

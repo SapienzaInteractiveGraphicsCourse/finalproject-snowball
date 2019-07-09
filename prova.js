@@ -19,7 +19,7 @@
                 engine= new BABYLON.Engine(canvas, true);
                 scene = new BABYLON.Scene(engine);
 
-                music = new BABYLON.Sound("Music", "sounds/crystallize.mp3", scene, null, {loop:true, autoplay:true});
+                music = new BABYLON.Sound("Music", "sounds/crystallize-trimmered.mp3", scene, null, {loop:true, autoplay:true});
                 
                 
 
@@ -123,57 +123,6 @@
 
                 ground.receiveShadows = true;
                 
-                
-
-                 //var ground = BABYLON.Mesh.CreateGroundFromHeightMap("ground", "https://www.babylonjs-playground.com/textures/worldHeightMap.jpg", 100, 100, 100, 0, 10, scene, false);
-                //var ground = BABYLON.Mesh.CreateGround("ground1", 30, 30, 2, scene);
-                //ground.material = terrainMaterial;
-                //shadowGenerator.getShadowMap().renderList.push(ball);
-                //shadowGenerator.usePoissonSampling=true;
-                //ground.receiveShadows = true;
-
-                 //TERRAIN 
-                 /*var mapSubX = 1000;             // point number on X axis
-                 var mapSubZ = 800;              // point number on Z axis
-
-
-                // Texture and material
-                var url = "https://thumbs.dreamstime.com/t/groomed-snow-ski-slope-close-up-groomed-snow-ski-resort-slope-banner-background-texture-125764946.jpg";
-                var terrainTexture = new BABYLON.Texture(url, scene);
-                var terrainMaterial = new BABYLON.StandardMaterial("tm", scene);
-                terrainMaterial.diffuseTexture = terrainTexture;
-
-
-                var terrain;
-                var terrainSub=120;
-
-                var createTerrain = function(mapData, mapSubX, mapSubZ) {
-                var params = {
-                    mapData: mapData,               // data map declaration : what data to use ?
-                    mapSubX: mapSubX,               // how are these data stored by rows and columns
-                    mapSubZ: mapSubZ,
-                    terrainSub: 120                 // how many terrain subdivisions wanted
-                    };
-
-                terrain = new BABYLON.DynamicTerrain("terrain", params, scene);
-                terrain.createUVMap();             // compute the UVs to stretch the image on the whole map
-                terrain.mesh.material = terrainMaterial;
-                terrain.update(true);
-                };
-
-                var hmURL = "https://www.babylonjs-playground.com/textures/worldHeightMap.jpg";
-                var mapWidth = 500;
-                var mapHeight = 3000;
-                var nbPoints = 500;
-                var hmOptions = {
-                     width: mapWidth, height: mapHeight,          // map size in the World 
-                     subX: nbPoints, subZ: nbPoints,              // number of points on map width and height
-                     onReady: createTerrain                       // callback function declaration
-                 };
-
-                var mapData = new Float32Array(nbPoints * nbPoints * 3); // the array that will store the generated data
-                BABYLON.DynamicTerrain.CreateMapFromHeightMapToRef(hmURL, hmOptions, mapData, scene);
-                */
 
                 window.addEventListener('resize', function(){
                 engine.resize();
@@ -205,15 +154,15 @@
     			scene.registerAfterRender(function() {
      		    ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
    				});
-    			var numberOfTrees;
-   				if(difficulty=="easy") numberOfTrees=100;
-   				else if(difficulty=="medium") numberOfTrees=200;
-   				else if(difficulty=="hard") numberOfTrees=300;
-   				else if(difficulty=="extreme") numberOfTrees=400;
+    			var numberOfTrees, numberOfRocks;
+   				if(difficulty=="easy") {numberOfTrees=100; numberOfRocks=2;}
+   				else if(difficulty=="medium") {numberOfTrees=200; numberOfRocks=3;}
+   				else if(difficulty=="hard") {numberOfTrees=300; numberOfRocks=4;}
+   				else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=5;}
                 var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);
 
-                //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-                //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
+                 var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
+                
                 var assetsManager = new BABYLON.AssetsManager(scene);
 
                 /*
@@ -268,7 +217,7 @@
                 leftEyeTask.onError = function (task, message, exception) {console.log(message, exception);};
                 leftEyeTask.parent=ball;
 
-                var rightEyeTask = assetsManager.addMeshTask("rock task", "", "assets/", "hordes-rock.babylon");
+                var rightEyeTask = assetsManager.addMeshTask("right eye", "", "assets/", "hordes-rock.babylon");
                 
                 rightEyeTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0.5,1.8,-18);};
                 rightEyeTask.onError = function (task, message, exception) {console.log(message, exception);};
@@ -278,7 +227,7 @@
                 //var snowMan= BABYLON.Mesh.MergeMeshes([ball,meshCarrotTask,meshHatTask,leftEyeTask,rightEyeTask]);
 
 				
-                var rockTask = assetsManager.addMeshTask("rock bis task", "", "assets/", "rock.babylon");
+                var rockTask = assetsManager.addMeshTask("rock task", "", "assets/", "rock.babylon");
                 
                 rockTask.onSuccess = function (task) {
                     task.loadedMeshes[0].position= new BABYLON.Vector3(-3,0,-1);
@@ -290,7 +239,13 @@
 
                 
                 */
-                
+               
+
+               
+
+
+
+
 
                 var axisDx= new BABYLON.Vector3(1,-1,-1);
                 var axisSx= new BABYLON.Vector3(1,1,1);

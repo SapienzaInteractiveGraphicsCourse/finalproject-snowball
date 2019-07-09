@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="utf-8"/>
+    <link href="style/bootstrap-4.3.1-dist/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://preview.babylonjs.com/babylon.js"></script>
     <!-- Link to the last version of BabylonJS loaders to enable loading filetypes such as .gltf -->
     <script src="https://preview.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
@@ -24,6 +25,44 @@
    
      
     <style>
+        <style> 
+        .btn-play{
+ 
+        background-color: #00bfff;
+ 
+        color:#fff;
+ 
+        }
+        div{
+            font-family: "Brush Script MT", cursive;
+            font-size:30px;
+            text-align:center;
+
+            }
+
+        h1 {font-family: "Brush Script MT", cursive;
+            font-size:30px;
+            font-style:italic;
+        }
+
+        h2 {
+            margin-right: 100px;
+            margin-top: : 70px;
+        }
+        h3 {  
+            text-align:center;  
+            font-family:  "Copperplate Gothic Light",italic;
+            font-size:20px;
+            margin-top: 50px;
+
+        }
+        h4{
+            font-family:  "Copperplate Gothic Light",italic;
+            font-size:20px;
+        }
+        h5{
+          font-size:16px;
+        }
         html, body {
             overflow: hidden;
             width   : 100%;
@@ -47,33 +86,33 @@
         window.addEventListener('DOMContentLoaded', createScene);
     </script>
 
-    <div id="play" title="Are you ready?" style="padding:100px;">
-        Use the Spacebar to change the direction of the Snowman <br /> 
+    <div id="play" title="Are you ready?" >
+        <h3>Use the Spacebar to change the direction of the Snowman <br /><br /> </h3>
         <div style=" text-align:center">
-            <button id="buttonPlay" style="width:150px" >Play!</button>
+            <button id="buttonPlay" type="button" class="btn btn-play active" ><h1>Play!</h1></button>
         </div>
     </div>
 
     
 
 
-    <div id="crashing" title="Oooops!" style="padding:20px;">
-        GAME OVER <br /> <br />
+    <div id="crashing" title="Oooops!" >
+       <h3> GAME OVER <br /> <br /></h3>
         <div style=" text-align:center">
-            <button id="restartLevel" style="width:100px; margin:20px">Restart</button>
+            <button id="restartLevel" type="button" class="btn btn-play active" ><h1>Restart</h1></button>
             <br />
-            <button id="home" style="width:100px; margin:20px">Home</button>
+            <button id="home" type="button" class="btn btn-play active"><h1>Home</h1></button>
             <br />
         </div>
     </div>
 
-    <div id="finishing" title="Congratulations" style="padding:20px;">
-       You have completed the Level! <br /> <br />
+    <div id="finishing" title="Congratulations" >
+       <h3>You have completed the Level! <br /> <br /></h3>
          
         <div style=" text-align:center">
-            <button id="restartLevel2" style="width:100px; margin:20px"> Restart</button>
+            <button id="restartLevel2" type="button" class="btn btn-play active"><h1> Restart</h1></button>
             <br />
-            <button id="home2" style="width:100px; margin:20px"> Home</button>
+            <button id="home2" type="button" class="btn btn-play active"><h1> Home</h1></button>
             <br />
         </div>
     </div>
