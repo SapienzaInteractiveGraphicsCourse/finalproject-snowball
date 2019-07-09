@@ -161,9 +161,10 @@
    				else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=5;}
                 var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);
 
-                 var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
+                // var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
                 
                 var assetsManager = new BABYLON.AssetsManager(scene);
+                var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks,assetsManager);
 
                 /*
 
@@ -302,6 +303,10 @@
             function Start(){
             		$("#play").dialog({
        				 dialogClass: "no-close",
+                     closeOnEscape: false,
+                     open: function(event, ui) {
+                         $(".ui-dialog-titlebar-close", ui.dialog | ui).hide();
+                         },
         			 width: 512
    				 	});
 

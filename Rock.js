@@ -1,13 +1,13 @@
-Rock = function(scene, sd, ball, positionX, positionZ) {
+Rock = function(scene, sd, ball, positionX, positionZ, index,assetsManager) {
     // Call the super class BABYLON.Mesh
     //BABYLON.Mesh.call(this, "rock", scene);
     this.scene=scene;
+    this.index=index;
     this.ball=ball;
     this.positionX=positionX;
     this.positionZ=positionZ;
-
-    var assetsManager = new BABYLON.AssetsManager(scene);
-    var rockTask = assetsManager.addMeshTask("rock task", "", "assets/", "rock.babylon");
+    this.assetsManager=assetsManager;
+    var rockTask = assetsManager.addMeshTask("rock task"+index+"", "", "assets/", "rock.babylon");
                 
                 rockTask.onSuccess = function (task) {
                     task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,1,positionZ);
