@@ -13,7 +13,7 @@ Rock = function(scene, sd, ball, positionX, positionZ, index) {
                     task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,1,positionZ);
                     var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
                     var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
-                    rockTask.actionManager.registerAction(exec);
+                    //rockTask.actionManager.registerAction(exec);
                     //on collision with ball
                 };
                
