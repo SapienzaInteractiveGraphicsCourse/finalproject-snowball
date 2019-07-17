@@ -11,7 +11,8 @@
     var audiocontext;
     var musiccrash;
     var music;
-    var points;    
+    var points; 
+    var crashingCoinId;   
 
                 // createScene function that creates and return the scene
                 var createScene = function(){
@@ -136,6 +137,7 @@
 
 
                     //CODICE PER FLAG
+                    /*
                     var flagStart = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
                     flagStart.position =new BABYLON.Vector3(13 , 1, -5);
 
@@ -144,9 +146,9 @@
 
                     var flagFinish2 = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
                     flagFinish2.position =new BABYLON.Vector3(-40 , 1, 3010);
-                    
+                    */
 
-                    
+
 
                     // ROTATION AND SCALING
                     ball.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
@@ -176,13 +178,19 @@
 
                         }
                         if(positionable){
-                           var coinTask = assetsManager.addMeshTask("coin task"+i+"", "", "assets/", "coin.babylon");
+                           var coinTask = assetsManager.addMeshTask("coin task"+j+"", "", "assets/", "coin.babylon");
                            coinTask.onSuccess = function (task) {
                             Coins_array.push(coinTask);
+                            console.log("Created");
                             task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,3,positionZ);
+                            coinTask.actionManager=new BABYLON.ActionManager(scene);
+                            coinTask.actionManager.registerAction(new BABYLON.SetValueAction({trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball}, crashingCoinId,j));
                             var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
                             var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
-                        }
+                             };
+                        coinTask.onError = function (task, message, exception) {
+                        console.log(message, exception);
+                    };
                     }
                     else{j--;}
 
@@ -201,7 +209,7 @@
 
 
                        var rockTask = assetsManager.addMeshTask("rock task"+i+"", "", "assets/", "rock.babylon");
-                       
+
                        rockTask.onSuccess = function (task) {
                         Rocks_array.push(rockTask);
                         task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,2,positionZ);
@@ -210,7 +218,7 @@
                         //rockTask.actionManager.registerAction(exec);
                         //on collision with ball
                     };
-                    
+
                     rockTask.onError = function (task, message, exception) {
                         console.log(message, exception);
                     };
@@ -219,7 +227,7 @@
                 }
 
 
-                    /*
+                    
 
 
 
@@ -241,7 +249,7 @@
                     meshFlagFinish2Task.onError = function (task, message, exception) {console.log(message, exception);};
 
 
-
+/*
                     var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
                     
                     meshBallTask.onSuccess = function (task) {
@@ -293,9 +301,9 @@
 
                     
                     */
-                    
 
-                    
+
+
 
 
 
@@ -357,9 +365,11 @@
                             points+=100;
                             crashCoin=false;
                             console.log("points: "+points);
+                            scene.removeMesh(Coins_array[crashingCoinId]);
+                           // Coins_array[crashingCoinId].dispose();
 
                         }
-                        
+
                         scene.render();
                     });
                     assetsManager.load();
@@ -431,4 +441,3 @@
             return ((random * (max - min)) + min);
         };
 
-        
