@@ -168,6 +168,26 @@
                     var Rocks_array=[];
                     var Coins_array=[];
                     var positionZ,positionX;
+
+
+
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "coin.babylon", scene, function (newMeshes) {
+
+        var mesh = newMeshes[0];
+        positionZ = randomNumber(20, 3000);
+        positionX=randomNumber(-48, 48);
+        mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
+        
+        for (var j = 0; j < numberOfCoins; j++) {         
+            newMeshes.forEach(function (m) {
+                var clone = m.clone("newname");
+                positionZ = randomNumber(20, 3000);
+        positionX=randomNumber(-48, 48);
+        clone.position= new BABYLON.Vector3(positionX,2,positionZ);
+            });
+        }
+    });
+/*
                     for(var j=0;j<numberOfCoins;j++){
                         positionZ = randomNumber(20, 3000);
                         positionX=randomNumber(-48, 48);
@@ -189,7 +209,7 @@
                         console.log(message, exception);
                     };
 
-                        /*
+                        
 
                         var positionable=true;
                         for (var i=0; i<tg._trees.length;i++){
@@ -212,9 +232,9 @@
                         console.log(message, exception);
                     };
                     }
-                    else{j--;}*/
+                    else{j--;}
 
-                }
+                }*/
                     //var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
                     
                     for (var i=0; i<numberOfRocks;i++){
