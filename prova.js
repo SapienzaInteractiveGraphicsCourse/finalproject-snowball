@@ -192,7 +192,7 @@
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
             
         }
-        else{j--;}
+        else{j--; console.log("collision found, recalculating position");}
 
     }
     });
@@ -231,17 +231,17 @@
         BABYLON.SceneLoader.ImportMesh("", "assets/", "flag.babylon", scene, function (newMeshes) {
 
         var mesh = newMeshes[0];
-        mesh.position= new BABYLON.Vector3(13,2,-5);
-        mesh.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
+        mesh.position= new BABYLON.Vector3(13,2,-7);
+        mesh.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
         for (var j = 0; j < 2; j++) {         
             
                 var clone = mesh.clone("newname");
            if(j==0){     
         clone.position= new BABYLON.Vector3(40,2,3010);
-        clone.scaling = new BABYLON.Vector3(1.0, 1.0, 1.0);
+        clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
     } else{
         clone.position= new BABYLON.Vector3(-40,2,3010);
-        clone.scaling = new BABYLON.Vector3(0.7, 0.7, 0.7);
+        clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
     }
             
         }
