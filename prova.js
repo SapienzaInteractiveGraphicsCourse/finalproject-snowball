@@ -178,7 +178,8 @@
                            coinTask.onSuccess = function (task) {
                             Coins_array.push(coinTask);
                             console.log("Created");
-                            task.loadedMeshes[j].position= new BABYLON.Vector3(positionX,2,positionZ);
+                            var mesh=task.loadedMeshes[j];
+                            mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
                             //coinTask.actionManager=new BABYLON.ActionManager(scene);
                             //coinTask.actionManager.registerAction(new BABYLON.SetValueAction({trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball}, crashingCoinId,j));
                             //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
