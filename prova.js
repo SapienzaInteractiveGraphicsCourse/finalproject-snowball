@@ -223,16 +223,16 @@
 
         var mesh = newMeshes[0];
         mesh.position= new BABYLON.Vector3(13,2,-5);
-        mesh.scaling = new BABYLON.Vector3(2.0, 2.0, 2.0);
+        mesh.scaling = new BABYLON.Vector3(1.1, 1.1, 1.1);
         for (var j = 0; j < 2; j++) {         
             
                 var clone = mesh.clone("newname");
            if(j==0){     
         clone.position= new BABYLON.Vector3(40,2,3010);
-        clone.scaling = new BABYLON.Vector3(2.0, 2.0, 2.0);
+        clone.scaling = new BABYLON.Vector3(1.3, 1.3, 1.3);
     } else{
         clone.position= new BABYLON.Vector3(-40,2,3010);
-        clone.scaling = new BABYLON.Vector3(2.0, 2.0, 2.0);
+        clone.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
     }
             
         }
