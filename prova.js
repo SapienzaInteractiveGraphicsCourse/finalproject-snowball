@@ -178,14 +178,23 @@
         positionX=randomNumber(-48, 48);
         mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         
-        for (var j = 0; j < numberOfCoins; j++) {         
-            
+        for (var j = 0; j < numberOfCoins-1; j++) {         
+            var positionable=true;
+                        for (var i=0; i<tg._trees.length;i++){
+                            if(tg._trees[i].position.z==positionZ && tg._trees[i].position.x==positionX)
+                                { positionable=false;}
+
+                        }
+            if(positionable){
                 var clone = mesh.clone("newname");
                 positionZ = randomNumber(20, 3000);
         positionX=randomNumber(-48, 48);
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
             
         }
+        else{j--;}
+
+    }
     });
 
 
@@ -203,7 +212,7 @@
                        }
         mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         
-        for (var i = 0; i < numberOfRocks; i++) {         
+        for (var i = 0; i < numberOfRocks-1; i++) {         
             
                 var clone = mesh.clone("newname");
                 positionZ = randomNumber(20, 3000);
@@ -223,16 +232,16 @@
 
         var mesh = newMeshes[0];
         mesh.position= new BABYLON.Vector3(13,2,-5);
-        mesh.scaling = new BABYLON.Vector3(1.1, 1.1, 1.1);
+        mesh.scaling = new BABYLON.Vector3(0.5, 0.5, 0.5);
         for (var j = 0; j < 2; j++) {         
             
                 var clone = mesh.clone("newname");
            if(j==0){     
         clone.position= new BABYLON.Vector3(40,2,3010);
-        clone.scaling = new BABYLON.Vector3(1.3, 1.3, 1.3);
+        clone.scaling = new BABYLON.Vector3(1.0, 1.0, 1.0);
     } else{
         clone.position= new BABYLON.Vector3(-40,2,3010);
-        clone.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+        clone.scaling = new BABYLON.Vector3(0.7, 0.7, 0.7);
     }
             
         }
