@@ -163,7 +163,7 @@
                     else if(difficulty=="hard") {numberOfTrees=300; numberOfRocks=4;}
                     else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=5;}
                     var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);   
-                    var numberOfCoins=20;             
+                    var numberOfCoins=10;             
                     var assetsManager = new BABYLON.AssetsManager(scene);
                     var Rocks_array=[];
                     var Coins_array=[];
@@ -234,7 +234,7 @@
                     }
                     else{j--;}
 
-                }*/
+                }
                     //var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
                     
                     for (var i=0; i<numberOfRocks;i++){
@@ -295,7 +295,7 @@
                     task.loadedMeshes[27].scaling = new BABYLON.Vector3(1.3, 1.3, 1.3);
                 };
                     meshFlagFinish2Task.onError = function (task, message, exception) {console.log(message, exception);};
-
+*/
 
 /*
                     var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
