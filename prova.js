@@ -174,9 +174,9 @@
         BABYLON.SceneLoader.ImportMesh("", "assets/", "coin.babylon", scene, function (newMeshes) {
 
         var mesh = newMeshes[0];
-        positionZ = randomNumber(20, 3000);
-        positionX=randomNumber(-48, 48);
-        mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
+        //positionZ = randomNumber(20, 3000);
+        //positionX=randomNumber(-48, 48);
+        //mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         
         for (var j = 0; j < numberOfCoins; j++) {         
             newMeshes.forEach(function (m) {
