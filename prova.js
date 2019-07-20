@@ -158,7 +158,7 @@
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
                     var numberOfTrees, numberOfRocks;
-                    if(difficulty=="easy") {numberOfTrees=100; numberOfRocks=20;}
+                    if(difficulty=="easy") {numberOfTrees=100; numberOfRocks=2;}
                     else if(difficulty=="medium") {numberOfTrees=200; numberOfRocks=3;}
                     else if(difficulty=="hard") {numberOfTrees=300; numberOfRocks=4;}
                     else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=5;}
@@ -168,10 +168,28 @@
                     var Rocks_array=[];
                     var Coins_array=[];
                     var positionZ,positionX;
-                    /*
                     for(var j=0;j<numberOfCoins;j++){
                         positionZ = randomNumber(20, 3000);
                         positionX=randomNumber(-48, 48);
+
+
+
+                        var coinTask = assetsManager.addMeshTask("coin task"+j+"", "", "assets/", "coin.babylon");
+                           coinTask.onSuccess = function (task) {
+                            Coins_array.push(coinTask);
+                            console.log("Created");
+                            task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,2,positionZ);
+                            //coinTask.actionManager=new BABYLON.ActionManager(scene);
+                            //coinTask.actionManager.registerAction(new BABYLON.SetValueAction({trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball}, crashingCoinId,j));
+                            //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
+                            //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
+                             };
+                        coinTask.onError = function (task, message, exception) {
+                        console.log(message, exception);
+                    };
+
+                        /*
+
                         var positionable=true;
                         for (var i=0; i<tg._trees.length;i++){
                             if(tg._trees[i].position.z==positionZ && tg._trees[i].position.x==positionX)
@@ -183,7 +201,7 @@
                            coinTask.onSuccess = function (task) {
                             Coins_array.push(coinTask);
                             console.log("Created");
-                            task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,3,positionZ);
+                            task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,2,positionZ);
                             //coinTask.actionManager=new BABYLON.ActionManager(scene);
                             //coinTask.actionManager.registerAction(new BABYLON.SetValueAction({trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball}, crashingCoinId,j));
                             //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
@@ -193,9 +211,9 @@
                         console.log(message, exception);
                     };
                     }
-                    else{j--;}
+                    else{j--;}*/
 
-                }*/
+                }
                     //var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
                     
                     for (var i=0; i<numberOfRocks;i++){
@@ -209,7 +227,7 @@
                        }
 
 
-                       var rockTask = assetsManager.addMeshTask("rock task"+i+"", "", "assets/", "coin.babylon");
+                       var rockTask = assetsManager.addMeshTask("rock task"+i+"", "", "assets/", "rock.babylon");
 
                        rockTask.onSuccess = function (task) {
                         Rocks_array.push(rockTask);
