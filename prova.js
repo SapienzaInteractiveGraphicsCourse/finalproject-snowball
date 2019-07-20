@@ -174,9 +174,9 @@
         BABYLON.SceneLoader.ImportMesh("", "assets/", "coin.babylon", scene, function (newMeshes) {
 
         var mesh = newMeshes[0];
-        //positionZ = randomNumber(20, 3000);
-        //positionX=randomNumber(-48, 48);
-        //mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
+        positionZ = randomNumber(20, 3000);
+        positionX=randomNumber(-48, 48);
+        mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         
         for (var j = 0; j < numberOfCoins; j++) {         
             
@@ -187,6 +187,58 @@
             
         }
     });
+
+
+
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "rock.babylon", scene, function (newMeshes) {
+
+        var mesh = newMeshes[0];
+        positionZ = randomNumber(20, 3000);
+        var randomX=Math.random();
+                       if(randomX%2==0){
+                           positionX = 48;
+                       }
+                       else if (randomX%2!=0){
+                           positionX = -48;
+                       }
+        mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
+        
+        for (var i = 0; i < numberOfRocks; i++) {         
+            
+                var clone = mesh.clone("newname");
+                positionZ = randomNumber(20, 3000);
+                       var randomX=Math.random();
+                       if(randomX%2==0){
+                           positionX = 48;
+                       }
+                       else if (randomX%2!=0){
+                           positionX = -48;
+                       }
+        clone.position= new BABYLON.Vector3(positionX,2,positionZ);
+            
+        }
+    });
+
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "flag.babylon", scene, function (newMeshes) {
+
+        var mesh = newMeshes[0];
+        mesh.position= new BABYLON.Vector3(13,2,-5);
+        mesh.scaling = new BABYLON.Vector3(2.0, 2.0, 2.0);
+        for (var j = 0; j < 2; j++) {         
+            
+                var clone = mesh.clone("newname");
+           if(j==0){     
+        clone.position= new BABYLON.Vector3(40,2,3010);
+        clone.scaling = new BABYLON.Vector3(2.0, 2.0, 2.0);
+    } else{
+        clone.position= new BABYLON.Vector3(-40,2,3010);
+        clone.scaling = new BABYLON.Vector3(2.0, 2.0, 2.0);
+    }
+            
+        }
+    });
+
+
 /*
                     for(var j=0;j<numberOfCoins;j++){
                         positionZ = randomNumber(20, 3000);
