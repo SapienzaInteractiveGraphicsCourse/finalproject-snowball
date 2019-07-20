@@ -178,7 +178,7 @@
                            coinTask.onSuccess = function (task) {
                             Coins_array.push(coinTask);
                             console.log("Created");
-                            task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,2,positionZ);
+                            task.loadedMeshes[j].position= new BABYLON.Vector3(positionX,2,positionZ);
                             //coinTask.actionManager=new BABYLON.ActionManager(scene);
                             //coinTask.actionManager.registerAction(new BABYLON.SetValueAction({trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball}, crashingCoinId,j));
                             //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
@@ -231,7 +231,7 @@
 
                        rockTask.onSuccess = function (task) {
                         Rocks_array.push(rockTask);
-                        task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,2,positionZ);
+                        task.loadedMeshes[i+20].position= new BABYLON.Vector3(positionX,2,positionZ);
                         var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
                         var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
                         //rockTask.actionManager.registerAction(exec);
@@ -251,20 +251,28 @@
 
 
 
-    				var meshFlagStartTask = assetsManager.addMeshTask("hat task", "", "assets/", "flag.babylon");
+    				var meshFlagStartTask = assetsManager.addMeshTask("flagstart task", "", "assets/", "flag.babylon");
                     
-                    meshFlagStartTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(13,3,-5);};
+                    meshFlagStartTask.onSuccess = function (task) {
+                            task.loadedMeshes[25].position= new BABYLON.Vector3(13,2,-5);
+                            task.loadedMeshes[25].scaling = new BABYLON.Vector3(2.0, 2.0, 2.0);};
                     meshFlagStartTask.onError = function (task, message, exception) {console.log(message, exception);};
 
-                    var meshFlagFinish1Task = assetsManager.addMeshTask("hat task", "", "assets/", "flag.babylon");
+                    var meshFlagFinish1Task = assetsManager.addMeshTask("flagfinish1 task", "", "assets/", "flag.babylon");
                     
-                    meshFlagFinish1Task.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(40,3,3010);};
+                    meshFlagFinish1Task.onSuccess = function (task) {
+                                task.loadedMeshes[26].position= new BABYLON.Vector3(40,2,3010);
+                                task.loadedMeshes[26].scaling = new BABYLON.Vector3(1.6, 1.6, 1.6);
+                            };
                     meshFlagFinish1Task.onError = function (task, message, exception) {console.log(message, exception);};
                     
 
-                    var meshFlagFinish2Task = assetsManager.addMeshTask("hat task", "", "assets/", "flag.babylon");
+                    var meshFlagFinish2Task = assetsManager.addMeshTask("flagfinish2 task", "", "assets/", "flag.babylon");
                     
-                    meshFlagFinish2Task.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(-40,3,3010);};
+                    meshFlagFinish2Task.onSuccess = function (task) {
+                        task.loadedMeshes[27].position= new BABYLON.Vector3(-40,2,3010);
+                    task.loadedMeshes[27].scaling = new BABYLON.Vector3(1.3, 1.3, 1.3);
+                };
                     meshFlagFinish2Task.onError = function (task, message, exception) {console.log(message, exception);};
 
 
