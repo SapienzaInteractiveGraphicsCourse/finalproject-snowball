@@ -158,7 +158,7 @@
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
                     var numberOfTrees, numberOfRocks;
-                    if(difficulty=="easy") {numberOfTrees=100; numberOfRocks=2;}
+                    if(difficulty=="easy") {numberOfTrees=100; numberOfRocks=20;}
                     else if(difficulty=="medium") {numberOfTrees=200; numberOfRocks=3;}
                     else if(difficulty=="hard") {numberOfTrees=300; numberOfRocks=4;}
                     else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=5;}
@@ -168,6 +168,7 @@
                     var Rocks_array=[];
                     var Coins_array=[];
                     var positionZ,positionX;
+                    /*
                     for(var j=0;j<numberOfCoins;j++){
                         positionZ = randomNumber(20, 3000);
                         positionX=randomNumber(-48, 48);
@@ -192,7 +193,7 @@
                         console.log(message, exception);
                     };
                     }
-                    else{j--;}
+                    else{j--;}*/
 
                 }
                     //var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
@@ -208,7 +209,7 @@
                        }
 
 
-                       var rockTask = assetsManager.addMeshTask("rock task"+i+"", "", "assets/", "rock.babylon");
+                       var rockTask = assetsManager.addMeshTask("rock task"+i+"", "", "assets/", "coin.babylon");
 
                        rockTask.onSuccess = function (task) {
                         Rocks_array.push(rockTask);
