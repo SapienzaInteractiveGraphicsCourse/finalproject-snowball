@@ -179,12 +179,12 @@
         //mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         
         for (var j = 0; j < numberOfCoins; j++) {         
-            newMeshes.forEach(function (m) {
-                var clone = m.clone("newname");
+            
+                var clone = mesh.clone("newname");
                 positionZ = randomNumber(20, 3000);
         positionX=randomNumber(-48, 48);
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
-            });
+            
         }
     });
 /*
