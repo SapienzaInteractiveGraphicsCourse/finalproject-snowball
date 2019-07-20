@@ -193,9 +193,9 @@
                         console.log(message, exception);
                     };
                     }
-                    else{j--;}*/
+                    else{j--;}
 
-                }
+                }*/
                     //var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
                     
                     for (var i=0; i<numberOfRocks;i++){
