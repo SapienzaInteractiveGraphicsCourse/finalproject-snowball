@@ -135,6 +135,21 @@
                     //sphere.position =new BABYLON.Vector3(0,1.6,2);
                     ball = new SnowBall(scene,shadowGenerator);
 
+
+                    //CODICE PER FLAG
+                    /*
+                    var flagStart = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
+                    flagStart.position =new BABYLON.Vector3(13 , 1, -5);
+
+                    var flagFinish1 = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
+                    flagFinish1.position =new BABYLON.Vector3(40 , 1, 3010);
+
+                    var flagFinish2 = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
+                    flagFinish2.position =new BABYLON.Vector3(-40 , 1, 3010);
+                    */
+
+
+
                     // ROTATION AND SCALING
                     ball.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
                     var angle=0.065;   
@@ -148,115 +163,14 @@
                     else if(difficulty=="hard") {numberOfTrees=300; numberOfRocks=4;}
                     else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=5;}
                     var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);   
-                    var numberOfCoins=10;             
+                    var numberOfCoins=20;             
                     var assetsManager = new BABYLON.AssetsManager(scene);
                     var Rocks_array=[];
                     var Coins_array=[];
                     var positionZ,positionX;
-
-
-
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "coin.babylon", scene, function (newMeshes) {
-
-        var mesh = newMeshes[0];
-        positionZ = randomNumber(20, 3000);
-        positionX=randomNumber(-48, 48);
-        mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
-        
-        /*for (var j = 0; j < numberOfCoins-1; j++) {         
-            var positionable=true;
-                        for (var i=0; i<tg._trees.length;i++){
-                            if(tg._trees[i].position.z==positionZ && tg._trees[i].position.x==positionX)
-                                { positionable=false;}
-
-                        }
-            if(positionable){
-                var clone = mesh.clone("newname");
-                positionZ = randomNumber(20, 3000);
-        positionX=randomNumber(-48, 48);
-        clone.position= new BABYLON.Vector3(positionX,2,positionZ);
-            
-        }
-        else{j--; console.log("collision found, recalculating position");}
-
-    }*/
-    });
-
-
-
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "rock.babylon", scene, function (newMeshes) {
-
-        var mesh = newMeshes[0];
-        positionZ = randomNumber(20, 3000);
-        var randomX=Math.random();
-                       if(randomX%2==0){
-                           positionX = 48;
-                       }
-                       else if (randomX%2!=0){
-                           positionX = -48;
-                       }
-        mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
-        
-        for (var i = 0; i < numberOfRocks-1; i++) {         
-            
-                var clone = mesh.clone("newname");
-                positionZ = randomNumber(20, 3000);
-                       var randomX=Math.random();
-                       if(randomX%2==0){
-                           positionX = 48;
-                       }
-                       else if (randomX%2!=0){
-                           positionX = -48;
-                       }
-        clone.position= new BABYLON.Vector3(positionX,2,positionZ);
-            
-        }
-    });
-
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "flag.babylon", scene, function (newMeshes) {
-
-        var mesh = newMeshes[0];
-        mesh.position= new BABYLON.Vector3(13,2,-7);
-        mesh.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
-        for (var j = 0; j < 2; j++) {         
-            
-                var clone = mesh.clone("newname");
-           if(j==0){     
-        clone.position= new BABYLON.Vector3(40,2,3010);
-        clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
-    } else{
-        clone.position= new BABYLON.Vector3(-40,2,3010);
-        clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
-    }
-            
-        }
-    });
-
-
-/*
                     for(var j=0;j<numberOfCoins;j++){
                         positionZ = randomNumber(20, 3000);
                         positionX=randomNumber(-48, 48);
-
-
-
-                        var coinTask = assetsManager.addMeshTask("coin task"+j+"", "", "assets/", "coin.babylon");
-                           coinTask.onSuccess = function (task) {
-                            Coins_array.push(coinTask);
-                            console.log("Created");
-                            var mesh=task.loadedMeshes[j];
-                            mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
-                            //coinTask.actionManager=new BABYLON.ActionManager(scene);
-                            //coinTask.actionManager.registerAction(new BABYLON.SetValueAction({trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball}, crashingCoinId,j));
-                            //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-                            //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
-                             };
-                        coinTask.onError = function (task, message, exception) {
-                        console.log(message, exception);
-                    };
-
-                        
-
                         var positionable=true;
                         for (var i=0; i<tg._trees.length;i++){
                             if(tg._trees[i].position.z==positionZ && tg._trees[i].position.x==positionX)
@@ -268,7 +182,7 @@
                            coinTask.onSuccess = function (task) {
                             Coins_array.push(coinTask);
                             console.log("Created");
-                            task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,2,positionZ);
+                            task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,3,positionZ);
                             //coinTask.actionManager=new BABYLON.ActionManager(scene);
                             //coinTask.actionManager.registerAction(new BABYLON.SetValueAction({trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball}, crashingCoinId,j));
                             //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
@@ -298,7 +212,7 @@
 
                        rockTask.onSuccess = function (task) {
                         Rocks_array.push(rockTask);
-                        task.loadedMeshes[i+20].position= new BABYLON.Vector3(positionX,2,positionZ);
+                        task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,2,positionZ);
                         var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
                         var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
                         //rockTask.actionManager.registerAction(exec);
@@ -318,30 +232,22 @@
 
 
 
-    				var meshFlagStartTask = assetsManager.addMeshTask("flagstart task", "", "assets/", "flag.babylon");
+    				var meshFlagStartTask = assetsManager.addMeshTask("hat task", "", "assets/", "flag.babylon");
                     
-                    meshFlagStartTask.onSuccess = function (task) {
-                            task.loadedMeshes[25].position= new BABYLON.Vector3(13,2,-5);
-                            task.loadedMeshes[25].scaling = new BABYLON.Vector3(2.0, 2.0, 2.0);};
+                    meshFlagStartTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(13,3,-5);};
                     meshFlagStartTask.onError = function (task, message, exception) {console.log(message, exception);};
 
-                    var meshFlagFinish1Task = assetsManager.addMeshTask("flagfinish1 task", "", "assets/", "flag.babylon");
+                    var meshFlagFinish1Task = assetsManager.addMeshTask("hat task", "", "assets/", "flag.babylon");
                     
-                    meshFlagFinish1Task.onSuccess = function (task) {
-                                task.loadedMeshes[26].position= new BABYLON.Vector3(40,2,3010);
-                                task.loadedMeshes[26].scaling = new BABYLON.Vector3(1.6, 1.6, 1.6);
-                            };
+                    meshFlagFinish1Task.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(40,3,3010);};
                     meshFlagFinish1Task.onError = function (task, message, exception) {console.log(message, exception);};
                     
 
-                    var meshFlagFinish2Task = assetsManager.addMeshTask("flagfinish2 task", "", "assets/", "flag.babylon");
+                    var meshFlagFinish2Task = assetsManager.addMeshTask("hat task", "", "assets/", "flag.babylon");
                     
-                    meshFlagFinish2Task.onSuccess = function (task) {
-                        task.loadedMeshes[27].position= new BABYLON.Vector3(-40,2,3010);
-                    task.loadedMeshes[27].scaling = new BABYLON.Vector3(1.3, 1.3, 1.3);
-                };
+                    meshFlagFinish2Task.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(-40,3,3010);};
                     meshFlagFinish2Task.onError = function (task, message, exception) {console.log(message, exception);};
-*/
+
 
 /*
                     var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
