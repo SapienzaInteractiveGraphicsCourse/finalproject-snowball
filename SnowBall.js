@@ -6,11 +6,11 @@
  * @constructor
  */
 
-
+var evt;
 SnowBall = function(scene,sd) {
     BABYLON.Mesh.call(this, "ball", scene);
     var sphere = BABYLON.VertexData.CreateSphere({diameter:3}, scene);
-    var evt;
+    
     // Move the sphere upward 1/2 its height
     //sphere.position =new BABYLON.Vector3(0,1.6,2);
     //sphere.convertToFlatShadedMesh();
@@ -46,20 +46,9 @@ scene.onKeyboardObservable.add(
     function keyboardEventHandler(evtData){
         evt = evtData.event;
         if(evt.repeat) return; // Ignore repeats from holding a key down.
-
-        switch(evtData.type){
-            case BABYLON.KeyboardEventTypes.KEYDOWN:
-                keyboardProcessKeyDown(evt.key, evt.keyCode);
-            break;
-            case BABYLON.KeyboardEventTypes.KEYUP:
-                keyboardProcessKeyUp(evt.key, evt.keyCode);
-            break;
-
-        }
-    }
-
-    function keyboardProcessKeyDown(key, code){
-        if(code == 32){
+        console.log(evt.type);
+        if(evt.type==BABYLON.keyboardProcessKeyDown){
+            if(code == 32){
                         if(ball.diagDx){
                             ball.diagDx=false;
                         }
@@ -67,11 +56,11 @@ scene.onKeyboardObservable.add(
                             ball.diagDx=true;
                         }
                     }
+        }
+        
     }
 
-    function keyboardProcessKeyUp(key, code){
-        console.log("KEYUP REGISTERED FOR KEY; ", key, " WITH KEYCODE; ", code);
-    }
+   
             /*var onKeyDown = function(evt) {
                     console.log(evt.keyCode);
                     if (evt.keyCode == 37) {
