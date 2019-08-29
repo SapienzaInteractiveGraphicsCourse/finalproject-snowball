@@ -163,7 +163,7 @@
         positionX=randomNumber(-48, 48);
         mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         
-        for (var j = 0; j < numberOfCoins-1; j++) {         
+        /*for (var j = 0; j < numberOfCoins-1; j++) {         
             var positionable=true;
                         for (var i=0; i<tg._trees.length;i++){
                             if(tg._trees[i].position.z==positionZ && tg._trees[i].position.x==positionX)
@@ -179,7 +179,7 @@
         }
         else{j--; console.log("collision found, recalculating position");}
 
-    }
+    }*/
     });
 
 
