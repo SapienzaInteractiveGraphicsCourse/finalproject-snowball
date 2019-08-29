@@ -143,25 +143,11 @@
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
 
-
-                   var map = {}; //object for multiple key presses
-    scene.actionManager = new BABYLON.ActionManager(scene);
-
-    scene.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnKeyDownTrigger, function (evt) {
-        map[evt.sourceEvent.key] = evt.sourceEvent.type == "keydown";
-
-    }));
-
-    scene.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnKeyUpTrigger, function (evt) {
-        map[evt.sourceEvent.key] = evt.sourceEvent.type == "keydown";
-    }));
-
-
-    /****************************Move Sphere******************************************************/
-
-    scene.registerAfterRender(function () {
-
-        if ((map[" "])) {
+scene.onKeyboardObservable.add((kbInfo) => {
+    console.log(kbInfo.type);
+    console.log(kbInfo.event.key);
+    if(kbInfo.type== BABYLON.KeyboardEventTypes.KEYDOWN){
+        if(kbInfo.event.key==" "){
             if(ball.diagDx){
                             ball.diagDx=false;
                         }
@@ -169,9 +155,11 @@
                             ball.diagDx=true;
                         }
                     
-        };
+        }
 
-
+    }
+        
+         
     });
 
 
