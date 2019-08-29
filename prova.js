@@ -142,7 +142,7 @@
                     scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
-
+/*
 scene.onKeyboardObservable.add((kbInfo) => {
     console.log(kbInfo.type);
     console.log(kbInfo.event.key);
@@ -160,7 +160,7 @@ scene.onKeyboardObservable.add((kbInfo) => {
     }
         
          
-    });
+    });*/
 
 
                     var numberOfTrees, numberOfRocks;

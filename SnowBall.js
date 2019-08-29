@@ -37,6 +37,26 @@ SnowBall.prototype = Object.create(BABYLON.Mesh.prototype);
 SnowBall.prototype.constructor = SnowBall;
 
 SnowBall.prototype._initMovement = function() {
+
+
+    scene.onKeyboardObservable.add((kbInfo) => {
+    console.log(kbInfo.type);
+    console.log(kbInfo.event.key);
+    if(kbInfo.type== BABYLON.KeyboardEventTypes.KEYDOWN){
+        if(kbInfo.event.key==" "){
+            if(ball.diagDx){
+                            ball.diagDx=false;
+                        }
+                        else{
+                            ball.diagDx=true;
+                        }
+                    
+        }
+
+    }
+        
+         
+    });
 /*
 scene.onKeyboardObservable.add(
         keyboardEventHandler, 
