@@ -10,11 +10,13 @@
 SnowBall = function(scene,sd) {
     BABYLON.Mesh.call(this, "ball", scene);
     var sphere = BABYLON.VertexData.CreateSphere({diameter:3}, scene);
+    var evt;
     // Move the sphere upward 1/2 its height
     //sphere.position =new BABYLON.Vector3(0,1.6,2);
     //sphere.convertToFlatShadedMesh();
 
     sphere.applyToMesh(this, false);
+    this.scene=scene;
     this.sd=sd;
     sd.getShadowMap().renderList.push(this);
     this.position.x = 0;
@@ -36,7 +38,41 @@ SnowBall.prototype.constructor = SnowBall;
 
 SnowBall.prototype._initMovement = function() {
 
-            var onKeyDown = function(evt) {
+scene.onKeyboardObservable.add(
+        keyboardEventHandler, 
+        BABYLON.KeyboardEventTypes.KEYDOWN + BABYLON.KeyboardEventTypes.KEYUP
+    );
+
+    function keyboardEventHandler(evtData){
+        evt = evtData.event;
+        if(evt.repeat) return; // Ignore repeats from holding a key down.
+
+        switch(evtData.type){
+            case BABYLON.KeyboardEventTypes.KEYDOWN:
+                keyboardProcessKeyDown(evt.key, evt.keyCode);
+            break;
+            case BABYLON.KeyboardEventTypes.KEYUP:
+                keyboardProcessKeyUp(evt.key, evt.keyCode);
+            break;
+
+        }
+    }
+
+    function keyboardProcessKeyDown(key, code){
+        if(code == 32){
+                        if(ball.diagDx){
+                            ball.diagDx=false;
+                        }
+                        else{
+                            ball.diagDx=true;
+                        }
+                    }
+    }
+
+    function keyboardProcessKeyUp(key, code){
+        console.log("KEYUP REGISTERED FOR KEY; ", key, " WITH KEYCODE; ", code);
+    }
+            /*var onKeyDown = function(evt) {
                     console.log(evt.keyCode);
                     if (evt.keyCode == 37) {
                             ball.moveLeft = true;
@@ -67,7 +103,7 @@ SnowBall.prototype._initMovement = function() {
                      }, {
                      name: "keyup",
                      handler: onKeyUp
-                     }]);
+                     }]);*/
             };
 
 SnowBall.prototype.move = function() {
