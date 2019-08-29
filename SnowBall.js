@@ -37,7 +37,7 @@ SnowBall.prototype = Object.create(BABYLON.Mesh.prototype);
 SnowBall.prototype.constructor = SnowBall;
 
 SnowBall.prototype._initMovement = function() {
-
+/*
 scene.onKeyboardObservable.add(
         keyboardEventHandler, 
         BABYLON.KeyboardEventTypes.KEYDOWN
@@ -61,7 +61,7 @@ scene.onKeyboardObservable.add(
     }
 
    
-            /*var onKeyDown = function(evt) {
+            var onKeyDown = function(evt) {
                     console.log(evt.keyCode);
                     if (evt.keyCode == 37) {
                             ball.moveLeft = true;

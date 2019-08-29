@@ -142,6 +142,11 @@
                     scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
+
+
+                    scene.onKeyboardObservable.add(keyboardEventHandler, BABYLON.KeyboardEventTypes.KEYDOWN);
+
+
                     var numberOfTrees, numberOfRocks;
                     if(difficulty=="easy") {numberOfTrees=100; numberOfRocks=2;}
                     else if(difficulty=="medium") {numberOfTrees=200; numberOfRocks=3;}
@@ -534,4 +539,21 @@
             var random = Math.random();
             return ((random * (max - min)) + min);
         };
+        
+        function keyboardEventHandler(evtData){
+        console.log("Entrato keyboard");
+        var evt = evtData.event;
+        if(evt.repeat) return; // Ignore repeats from holding a key down.
+        console.log(evt.type);
+        if(evtData.type==BABYLON.KeyboardEventTypes.KEYDOWN){
+            if(evt.keyCode == 32){
+                        if(ball.diagDx){
+                            ball.diagDx=false;
+                        }
+                        else{
+                            ball.diagDx=true;
+                        }
+                    }
+        }
+    }
 
