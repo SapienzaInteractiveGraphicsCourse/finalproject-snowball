@@ -135,21 +135,6 @@
                     //sphere.position =new BABYLON.Vector3(0,1.6,2);
                     ball = new SnowBall(scene,shadowGenerator);
 
-
-                    //CODICE PER FLAG
-                    /*
-                    var flagStart = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
-                    flagStart.position =new BABYLON.Vector3(13 , 1, -5);
-
-                    var flagFinish1 = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
-                    flagFinish1.position =new BABYLON.Vector3(40 , 1, 3010);
-
-                    var flagFinish2 = BABYLON.MeshBuilder.CreateBox("myBox", {height: 5, width: 2, depth: 0.5}, scene);
-                    flagFinish2.position =new BABYLON.Vector3(-40 , 1, 3010);
-                    */
-
-
-
                     // ROTATION AND SCALING
                     ball.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
                     var angle=0.065;   

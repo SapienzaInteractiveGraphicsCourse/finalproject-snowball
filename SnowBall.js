@@ -22,11 +22,11 @@ SnowBall = function(scene,sd) {
     this.position.z = -20;
     this.crash = false;
     this.crashCoin=false;
-                this.speed = 1;
-                this.diagDx=true;
-                this.moveLeft = false;
-                this.moveRight = false;
-                this._initMovement();
+    this.speed = 1;
+    this.diagDx=true;
+    this.moveLeft = false;
+    this.moveRight = false;
+    this._initMovement();
 
 
 };
