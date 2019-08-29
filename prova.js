@@ -144,7 +144,35 @@
                  });
 
 
-                    scene.onKeyboardObservable.add(keyboardEventHandler, BABYLON.KeyboardEventTypes.KEYDOWN);
+                   var map = {}; //object for multiple key presses
+    scene.actionManager = new BABYLON.ActionManager(scene);
+
+    scene.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnKeyDownTrigger, function (evt) {
+        map[evt.sourceEvent.key] = evt.sourceEvent.type == "keydown";
+
+    }));
+
+    scene.actionManager.registerAction(new BABYLON.ExecuteCodeAction(BABYLON.ActionManager.OnKeyUpTrigger, function (evt) {
+        map[evt.sourceEvent.key] = evt.sourceEvent.type == "keydown";
+    }));
+
+
+    /****************************Move Sphere******************************************************/
+
+    scene.registerAfterRender(function () {
+
+        if ((map[" "])) {
+            if(ball.diagDx){
+                            ball.diagDx=false;
+                        }
+                        else{
+                            ball.diagDx=true;
+                        }
+                    
+        };
+
+
+    });
 
 
                     var numberOfTrees, numberOfRocks;
@@ -539,21 +567,5 @@
             var random = Math.random();
             return ((random * (max - min)) + min);
         };
-        
-        function keyboardEventHandler(evtData){
-        console.log("Entrato keyboard");
-        var evt = evtData.event;
-        if(evt.repeat) return; // Ignore repeats from holding a key down.
-        console.log(evt.type);
-        if(evtData.type==BABYLON.KeyboardEventTypes.KEYDOWN){
-            if(evt.keyCode == 32){
-                        if(ball.diagDx){
-                            ball.diagDx=false;
-                        }
-                        else{
-                            ball.diagDx=true;
-                        }
-                    }
-        }
-    }
 
+        
