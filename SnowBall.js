@@ -40,15 +40,15 @@ SnowBall.prototype._initMovement = function() {
 
 scene.onKeyboardObservable.add(
         keyboardEventHandler, 
-        BABYLON.KeyboardEventTypes.KEYDOWN + BABYLON.KeyboardEventTypes.KEYUP
+        BABYLON.KeyboardEventTypes.KEYDOWN
     );
 
     function keyboardEventHandler(evtData){
         evt = evtData.event;
         if(evt.repeat) return; // Ignore repeats from holding a key down.
         console.log(evt.type);
-        if(evt.type==BABYLON.keyboardProcessKeyDown){
-            if(code == 32){
+        if(evtData.type==BABYLON.KeyboardEventTypes.KEYDOWN){
+            if(evt.keyCode == 32){
                         if(ball.diagDx){
                             ball.diagDx=false;
                         }
