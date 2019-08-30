@@ -6,7 +6,6 @@
     var terrain;
     var camera;
     var InputTreesNumber;
-    var startball=false; 
     var difficulty; 
     var audiocontext;
     var musiccrash;
@@ -143,8 +142,9 @@
 
                     ball.actionManager = new BABYLON.ActionManager(scene);
                     var clickTrigger = {trigger:BABYLON.ActionManager.OnPickTrigger, parameter: ball};
-                    var execution = new BABYLON.SwitchBooleanAction(clickTrigger, startball);
+                    var execution = new BABYLON.SwitchBooleanAction(clickTrigger, ball, "startball");
                     ball.actionManager.registerAction(execution);
+                    
                     scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
@@ -187,6 +187,8 @@
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
         var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
+        var execbis=new BABYLON.SetValueAction(trigger, ball,"index",j);
+        clone.actionManager.registerAction(execbis);
         //PROVARE A SETTARE VARIABILE EXEC2 CON INDICE MONETA
         clone.actionManager.registerAction(exec);
 
@@ -314,7 +316,7 @@
                     var explosion=false;
                     engine.runRenderLoop(function(){
 
-                        if (!ball.crash && startball) {
+                        if (!ball.crash && ball.startball) {
                             ball.move();
                                 /*for(var l=0;l<Rock_Array.size();l++){
         
@@ -334,7 +336,7 @@
                                 if(ball.diagDx){ ball.rotate(axisDx, angle, BABYLON.Space.LOCAL);  }
                                 if(!ball.diagDx){ ball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  }
                                 if(ball.position.z >= 3010){ 
-                                   startball=false;
+                                   ball.startball=false;
                                    Finish();
                                }
                            }
