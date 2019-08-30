@@ -186,6 +186,9 @@
         positionX=randomNumber(-48, 48);
         mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         mesh.scaling = new BABYLON.Vector3(1.6, 1.6, 1.6);
+        var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
+        var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
+        mesh.actionManager.registerAction(exec);
         
         for (var j = 0; j < numberOfCoins-1; j++) {         
             var positionable=true;
@@ -200,14 +203,13 @@
         positionX=randomNumber(-48, 48);
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
         clone.scaling = new BABYLON.Vector3(1.6, 1.6, 1.6);
-        var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-        var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
-        console.log(exec);
-        console.log(ball.crashCoin);
+        var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
+        var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
+        console.log(execClone);
         //var execbis=new BABYLON.IncrementValueAction(trigger, ball,"index",j+1);
         //clone.actionManager.registerAction(execbis);
         //PROVARE A SETTARE VARIABILE EXEC2 CON INDICE MONETA
-        clone.actionManager.registerAction(exec);
+        clone.actionManager.registerAction(execClone);
 
         }
         else{j--; console.log("collision found, recalculating position");}
@@ -422,7 +424,6 @@
               }
 
               function Crash(){
-                console.log(points);
                $("#crashing").dialog({
                 dialogClass: "no-close",
                 width: 512
