@@ -12,7 +12,7 @@
     var music;
     var points; 
     var crashingCoinId;   
-
+    var textPoint;
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -20,12 +20,23 @@
                     engine= new BABYLON.Engine(canvas, true);
                     scene = new BABYLON.Scene(engine);
                     points=0;
-                    updateScoreLabel(points);
                     music = new BABYLON.Sound("Music", "sounds/crystallize-trimmered.mp3", scene, null, {loop:true, autoplay:true});
                     
                     
 
                     Start();
+
+
+                     textPoint = new BABYLON.GUI.TextBlock();
+                     textPoint.text="Points: "+points;
+                     textPoint.color = "black";
+                     textPoint.fontSize = 20;
+                     textPoint.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                     textPoint.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                     textPoint.top = "28px";
+                     textPoint.left = "75px";
+
+
                     // Skybox
                     var skybox = BABYLON.MeshBuilder.CreateBox("skyBox",{size:1000}, scene);
                     var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
@@ -189,7 +200,9 @@
         clone.scaling = new BABYLON.Vector3(1.6, 1.6, 1.6);
         var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
-        var execbis=new BABYLON.IncrementValueAction(trigger, ball,"index",j+1);
+        console.log(exec);
+        console.log(ball.crashCoin);
+        //var execbis=new BABYLON.IncrementValueAction(trigger, ball,"index",j+1);
         //clone.actionManager.registerAction(execbis);
         //PROVARE A SETTARE VARIABILE EXEC2 CON INDICE MONETA
         clone.actionManager.registerAction(exec);
@@ -367,7 +380,7 @@
                         }
                         if(ball.crashCoin){
                             points+=100;
-                            updateScoreLabel(points);
+                            textPoint.text="Points: "+points;
                             crashCoin=false;
                             console.log("points: "+points);
                             //scene.removeMesh(Coins_array[ball.index]);
@@ -386,9 +399,6 @@
                     return scene;
                 };
 
-                function  updateScoreLabel (pointValue) {
-                        document.getElementById("scoreLabel").innerHTML = "Score : "+pointValue;
-                    };
 
                 function Start(){
                   $("#play").dialog({
@@ -428,7 +438,7 @@
 
            function Finish(){
             points+=3000;
-            updateScoreLabel(points);
+            textPoint.text="Points: "+points;
             console.log(points);
 
             $("#finishing").dialog({
