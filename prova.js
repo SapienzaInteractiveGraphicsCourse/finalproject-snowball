@@ -185,7 +185,7 @@
                 positionZ = randomNumber(20, 3000);
         positionX=randomNumber(-48, 48);
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
-        clone.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
+        clone.scaling = new BABYLON.Vector3(1.2, 1.2, 1.2);
         var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
         var execbis=new BABYLON.SetValueAction(trigger, ball,"index",j);
