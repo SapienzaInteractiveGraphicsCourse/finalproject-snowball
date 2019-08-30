@@ -189,9 +189,9 @@
         var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
         var execbis=new BABYLON.SetValueAction(trigger, ball,"index",j);
-        clone.actionManager.registerAction(execbis);
+        //clone.actionManager.registerAction(execbis);
         //PROVARE A SETTARE VARIABILE EXEC2 CON INDICE MONETA
-        clone.actionManager.registerAction(exec);
+        //clone.actionManager.registerAction(exec);
 
         }
         else{j--; console.log("collision found, recalculating position");}
