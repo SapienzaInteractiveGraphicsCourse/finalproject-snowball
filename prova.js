@@ -6,7 +6,7 @@
     var terrain;
     var camera;
     var InputTreesNumber;
-    var start=false; 
+    var start="false"; 
     var difficulty; 
     var audiocontext;
     var musiccrash;
@@ -139,9 +139,16 @@
                     ball.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
                     var angle=0.065;   
                     var axis = new BABYLON.Vector3(1,0,0);
+
+                    ball.actionManager = new BABYLON.ActionManager(scene);
+                     ball.actionManager.registerAction(new BABYLON.SetStateAction(BABYLON.ActionManager.OnPickTrigger, start, "false"))
+            .then(new BABYLON.SetStateAction(BABYLON.ActionManager.OnPickTrigger, start, "true"));
+                    
                     scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
+
+
 /*
 scene.onKeyboardObservable.add((kbInfo) => {
     console.log(kbInfo.type);
@@ -429,7 +436,7 @@ scene.onKeyboardObservable.add((kbInfo) => {
                     var explosion=false;
                     engine.runRenderLoop(function(){
 
-                        if (!ball.crash && start) {
+                        if (!ball.crash && start.equals("true")) {
                             ball.move();
                                 /*for(var l=0;l<Rock_Array.size();l++){
         
@@ -449,7 +456,7 @@ scene.onKeyboardObservable.add((kbInfo) => {
                                 if(ball.diagDx){ ball.rotate(axisDx, angle, BABYLON.Space.LOCAL);  }
                                 if(!ball.diagDx){ ball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  }
                                 if(ball.position.z >= 3010){ 
-                                   start=false;
+                                   start="false";
                                    Finish();
                                }
                            }
@@ -506,7 +513,7 @@ scene.onKeyboardObservable.add((kbInfo) => {
                });
 
                   $("#buttonPlay").click(function(event){
-                      start=true;
+                      //start=true;
     						//music = new BABYLON.Sound("Music", "sounds/crystallize.mp3", scene, null, {loop:true, autoplay:true});
                           $("#play").dialog("close");
                       });
