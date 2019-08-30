@@ -6,7 +6,7 @@
     var terrain;
     var camera;
     var InputTreesNumber;
-    var start="false"; 
+    var startball="false"; 
     var difficulty; 
     var audiocontext;
     var musiccrash;
@@ -141,33 +141,14 @@
                     var axis = new BABYLON.Vector3(1,0,0);
 
                     ball.actionManager = new BABYLON.ActionManager(scene);
-                     ball.actionManager.registerAction(new BABYLON.SetStateAction(BABYLON.ActionManager.OnPickTrigger, start, "false"))
-            .then(new BABYLON.SetStateAction(BABYLON.ActionManager.OnPickTrigger, start, "true"));
+                     ball.actionManager.registerAction(new BABYLON.SetStateAction(BABYLON.ActionManager.OnPickTrigger, startball, "false"))
+            .then(new BABYLON.SetStateAction(BABYLON.ActionManager.OnPickTrigger, startball, "true"));
                     
                     scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
 
 
-/*
-scene.onKeyboardObservable.add((kbInfo) => {
-    console.log(kbInfo.type);
-    console.log(kbInfo.event.key);
-    if(kbInfo.type== BABYLON.KeyboardEventTypes.KEYDOWN){
-        if(kbInfo.event.key==" "){
-            if(ball.diagDx){
-                            ball.diagDx=false;
-                        }
-                        else{
-                            ball.diagDx=true;
-                        }
-                    
-        }
-
-    }
-        
-         
-    });*/
 
 
                     var numberOfTrees, numberOfRocks;
@@ -261,115 +242,7 @@ scene.onKeyboardObservable.add((kbInfo) => {
     });
 
 
-/*
-                    for(var j=0;j<numberOfCoins;j++){
-                        positionZ = randomNumber(20, 3000);
-                        positionX=randomNumber(-48, 48);
 
-
-
-                        var coinTask = assetsManager.addMeshTask("coin task"+j+"", "", "assets/", "coin.babylon");
-                           coinTask.onSuccess = function (task) {
-                            Coins_array.push(coinTask);
-                            console.log("Created");
-                            var mesh=task.loadedMeshes[j];
-                            mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
-                            //coinTask.actionManager=new BABYLON.ActionManager(scene);
-                            //coinTask.actionManager.registerAction(new BABYLON.SetValueAction({trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball}, crashingCoinId,j));
-                            //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-                            //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
-                             };
-                        coinTask.onError = function (task, message, exception) {
-                        console.log(message, exception);
-                    };
-
-                        
-
-                        var positionable=true;
-                        for (var i=0; i<tg._trees.length;i++){
-                            if(tg._trees[i].position.z==positionZ && tg._trees[i].position.x==positionX)
-                                { positionable=false;}
-
-                        }
-                        if(positionable){
-                           var coinTask = assetsManager.addMeshTask("coin task"+j+"", "", "assets/", "coin.babylon");
-                           coinTask.onSuccess = function (task) {
-                            Coins_array.push(coinTask);
-                            console.log("Created");
-                            task.loadedMeshes[0].position= new BABYLON.Vector3(positionX,2,positionZ);
-                            //coinTask.actionManager=new BABYLON.ActionManager(scene);
-                            //coinTask.actionManager.registerAction(new BABYLON.SetValueAction({trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball}, crashingCoinId,j));
-                            //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-                            //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
-                             };
-                        coinTask.onError = function (task, message, exception) {
-                        console.log(message, exception);
-                    };
-                    }
-                    else{j--;}
-
-                }
-                    //var rg = new RockGenerator(scene, shadowGenerator, ball ,numberOfRocks);
-                    
-                    for (var i=0; i<numberOfRocks;i++){
-                       positionZ = randomNumber(20, 3000);
-                       var randomX=Math.random();
-                       if(randomX%2==0){
-                           positionX = 48;
-                       }
-                       else if (randomX%2!=0){
-                           positionX = -48;
-                       }
-
-
-                       var rockTask = assetsManager.addMeshTask("rock task"+i+"", "", "assets/", "rock.babylon");
-
-                       rockTask.onSuccess = function (task) {
-                        Rocks_array.push(rockTask);
-                        task.loadedMeshes[i+20].position= new BABYLON.Vector3(positionX,2,positionZ);
-                        var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-                        var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crash");
-                        //rockTask.actionManager.registerAction(exec);
-                        //on collision with ball
-                    };
-
-                    rockTask.onError = function (task, message, exception) {
-                        console.log(message, exception);
-                    };
-
-
-                }
-
-
-                    
-
-
-
-
-    				var meshFlagStartTask = assetsManager.addMeshTask("flagstart task", "", "assets/", "flag.babylon");
-                    
-                    meshFlagStartTask.onSuccess = function (task) {
-                            task.loadedMeshes[25].position= new BABYLON.Vector3(13,2,-5);
-                            task.loadedMeshes[25].scaling = new BABYLON.Vector3(2.0, 2.0, 2.0);};
-                    meshFlagStartTask.onError = function (task, message, exception) {console.log(message, exception);};
-
-                    var meshFlagFinish1Task = assetsManager.addMeshTask("flagfinish1 task", "", "assets/", "flag.babylon");
-                    
-                    meshFlagFinish1Task.onSuccess = function (task) {
-                                task.loadedMeshes[26].position= new BABYLON.Vector3(40,2,3010);
-                                task.loadedMeshes[26].scaling = new BABYLON.Vector3(1.6, 1.6, 1.6);
-                            };
-                    meshFlagFinish1Task.onError = function (task, message, exception) {console.log(message, exception);};
-                    
-
-                    var meshFlagFinish2Task = assetsManager.addMeshTask("flagfinish2 task", "", "assets/", "flag.babylon");
-                    
-                    meshFlagFinish2Task.onSuccess = function (task) {
-                        task.loadedMeshes[27].position= new BABYLON.Vector3(-40,2,3010);
-                    task.loadedMeshes[27].scaling = new BABYLON.Vector3(1.3, 1.3, 1.3);
-                };
-                    meshFlagFinish2Task.onError = function (task, message, exception) {console.log(message, exception);};
-*/
 
 /*
                     var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
@@ -436,7 +309,7 @@ scene.onKeyboardObservable.add((kbInfo) => {
                     var explosion=false;
                     engine.runRenderLoop(function(){
 
-                        if (!ball.crash && start.equals("true")) {
+                        if (!ball.crash && startball=="true") {
                             ball.move();
                                 /*for(var l=0;l<Rock_Array.size();l++){
         
@@ -456,7 +329,7 @@ scene.onKeyboardObservable.add((kbInfo) => {
                                 if(ball.diagDx){ ball.rotate(axisDx, angle, BABYLON.Space.LOCAL);  }
                                 if(!ball.diagDx){ ball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  }
                                 if(ball.position.z >= 3010){ 
-                                   start="false";
+                                   startball="false";
                                    Finish();
                                }
                            }
