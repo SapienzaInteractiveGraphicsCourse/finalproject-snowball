@@ -142,8 +142,7 @@
                     var axis = new BABYLON.Vector3(1,0,0);
 
                     ball.actionManager = new BABYLON.ActionManager(scene);
-                     ball.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPickTrigger, startball, "false"))
-            .then(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPickTrigger, startball, "true"));
+                     ball.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPickTrigger, startball, "true"));
                     
                     scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
@@ -418,6 +417,8 @@
            }
 
            function Finish(){
+            points+=3000;
+            updateScoreLabel(points);
 
             $("#finishing").dialog({
                 dialogClass: "no-close",
