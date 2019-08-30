@@ -6,7 +6,7 @@
     var terrain;
     var camera;
     var InputTreesNumber;
-    var startball="false"; 
+    var startball=false; 
     var difficulty; 
     var audiocontext;
     var musiccrash;
@@ -142,8 +142,9 @@
                     var axis = new BABYLON.Vector3(1,0,0);
 
                     ball.actionManager = new BABYLON.ActionManager(scene);
-                     ball.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPickTrigger, startball, "true"));
-                    
+                    var clickTrigger = {trigger:BABYLON.ActionManager.OnPickTrigger, parameter: ball};
+                    var execution = new BABYLON.SwitchBooleanAction(clickTrigger, startball);
+                    ball.actionManager.registerAction(execution);
                     scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
@@ -184,7 +185,11 @@
                 positionZ = randomNumber(20, 3000);
         positionX=randomNumber(-48, 48);
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
-            
+        var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
+        var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
+        //PROVARE A SETTARE VARIABILE EXEC2 CON INDICE MONETA
+        clone.actionManager.registerAction(exec);
+
         }
         else{j--; console.log("collision found, recalculating position");}
 
@@ -309,7 +314,7 @@
                     var explosion=false;
                     engine.runRenderLoop(function(){
 
-                        if (!ball.crash && startball=="true") {
+                        if (!ball.crash && startball) {
                             ball.move();
                                 /*for(var l=0;l<Rock_Array.size();l++){
         
@@ -329,7 +334,7 @@
                                 if(ball.diagDx){ ball.rotate(axisDx, angle, BABYLON.Space.LOCAL);  }
                                 if(!ball.diagDx){ ball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  }
                                 if(ball.position.z >= 3010){ 
-                                   startball="false";
+                                   startball=false;
                                    Finish();
                                }
                            }
