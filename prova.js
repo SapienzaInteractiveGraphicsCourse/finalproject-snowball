@@ -26,15 +26,17 @@
 
                     Start();
 
-
+                     var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                      textPoint = new BABYLON.GUI.TextBlock();
                      textPoint.text="Points: "+points;
                      textPoint.color = "black";
                      textPoint.fontSize = 20;
+                     textPoint.background="white";
                      textPoint.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
                      textPoint.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
                      textPoint.top = "28px";
                      textPoint.left = "75px";
+                     advancedTexture.addControl(textPoint);
 
 
                     // Skybox
