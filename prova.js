@@ -13,6 +13,7 @@
     var points; 
     var crashingCoinId;   
     var textPoint;
+    var coinsArray=[];
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -205,15 +206,11 @@
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
         clone.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
         clone.actionManager=new BABYLON.ActionManager(scene);
+        coinsArray.push(clone);
         //var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         //var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
         //console.log(execClone);
-        if(clone.intersectsMesh(ball, false)){
-            points+=100;
-            textPoint.text="Points: "+points;
-            console.log("collision");
-            console.log(points);
-        }
+        
         var execClonebis=new BABYLON.IncrementValueAction(trigger, ball,"index",j+1);
 
         clone.actionManager.registerAction(execClonebis);
@@ -358,6 +355,17 @@
 
 
                                 */
+                                //NUOVO PEZZO CODICE
+                                for (var k=0; k<coinsArray.length; k++){
+                                    if(coinsArray[k].intersectsMesh(ball, false)){
+                                            points+=100;
+                                            textPoint.text="Points: "+points;
+                                            console.log("collision");
+                                            console.log(points);
+                                            scene.removeMesh(coinsArray[k]);
+                                            var deleted=coinsArray.splice(k,1);
+                                    }
+                                }
                                 camera.position.z += ball.speed;
                                 ball.position.z += ball.speed;
                                 if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
@@ -391,7 +399,8 @@
 
                             Crash();
                         }
-                        if(ball.crashCoin){
+                        //VECCHIO PEZZO CODICE
+                        /*if(ball.crashCoin){
                             points+=100;
                             textPoint.text="Points: "+points;
                             crashCoin=false;
@@ -400,7 +409,7 @@
                             ball.index=-1;
                            // Coins_array[crashingCoinId].dispose();
 
-                        }
+                        }*/
 
                         scene.render();
                     });
