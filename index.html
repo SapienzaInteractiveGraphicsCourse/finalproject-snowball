@@ -80,6 +80,7 @@
 </head>
 <body>
 <canvas id="renderCanvas" value=""></canvas>
+<div id="scoreLabel">Score : 0</div>
 <script>
         var level=sessionStorage.getItem('level');
         document.getElementById("renderCanvas").value=level;
@@ -87,9 +88,9 @@
     </script>
 
     <div id="play" title="Are you ready?" >
-        <h3>Use the Spacebar to change the direction of the Snowman <br /><br /> </h3>
+        <h3>Click on the Snowman to start the game, then use the Spacebar to change its direction  <br /><br /> </h3>
         <div style=" text-align:center">
-            <button id="buttonPlay" type="button" class="btn btn-play active" ><h1>Play!</h1></button>
+            <button id="buttonPlay" type="button" class="btn btn-play active" ><h1>Got It!</h1></button>
         </div>
     </div>
 

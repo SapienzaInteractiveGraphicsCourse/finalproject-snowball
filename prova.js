@@ -21,6 +21,7 @@
                     engine= new BABYLON.Engine(canvas, true);
                     scene = new BABYLON.Scene(engine);
                     points=0;
+                    updateScoreLabel(points);
                     music = new BABYLON.Sound("Music", "sounds/crystallize-trimmered.mp3", scene, null, {loop:true, autoplay:true});
                     
                     
@@ -141,8 +142,8 @@
                     var axis = new BABYLON.Vector3(1,0,0);
 
                     ball.actionManager = new BABYLON.ActionManager(scene);
-                     ball.actionManager.registerAction(new BABYLON.SetStateAction(BABYLON.ActionManager.OnPickTrigger, startball, "false"))
-            .then(new BABYLON.SetStateAction(BABYLON.ActionManager.OnPickTrigger, startball, "true"));
+                     ball.actionManager.registerAction(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPickTrigger, startball, "false"))
+            .then(new BABYLON.SetValueAction(BABYLON.ActionManager.OnPickTrigger, startball, "true"));
                     
                     scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
@@ -163,7 +164,7 @@
                     var Coins_array=[];
                     var positionZ,positionX;
 
-
+                    
 
         BABYLON.SceneLoader.ImportMesh("", "assets/", "coin.babylon", scene, function (newMeshes) {
 
@@ -358,6 +359,7 @@
                         }
                         if(ball.crashCoin){
                             points+=100;
+                            updateScoreLabel(points);
                             crashCoin=false;
                             console.log("points: "+points);
                             scene.removeMesh(Coins_array[crashingCoinId]);
@@ -374,6 +376,10 @@
                     // return the created scene
                     return scene;
                 };
+
+                function  updateScoreLabel (pointValue) {
+                        document.getElementById("scoreLabel").innerHTML = "Score : "+pointValue;
+                    };
 
                 function Start(){
                   $("#play").dialog({
