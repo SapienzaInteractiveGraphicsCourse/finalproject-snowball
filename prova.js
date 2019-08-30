@@ -205,13 +205,20 @@
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
         clone.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
         clone.actionManager=new BABYLON.ActionManager(scene);
-        var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-        var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
-        console.log(execClone);
-        //var execbis=new BABYLON.IncrementValueAction(trigger, ball,"index",j+1);
-        //clone.actionManager.registerAction(execbis);
+        //var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
+        //var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
+        //console.log(execClone);
+        if(clone.intersectMeshes(ball,false)){
+            points+=100;
+            textPoint.text="Points: "+points;
+            console.log("collision");
+            console.log(points);
+        }
+        var execClonebis=new BABYLON.IncrementValueAction(trigger, ball,"index",j+1);
+
+        clone.actionManager.registerAction(execClonebis);
         //PROVARE A SETTARE VARIABILE EXEC2 CON INDICE MONETA
-        clone.actionManager.registerAction(execClone);
+        //clone.actionManager.registerAction(execClone);
 
         }
         else{j--; console.log("collision found, recalculating position");}
