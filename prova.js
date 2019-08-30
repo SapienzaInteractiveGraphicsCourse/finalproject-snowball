@@ -208,7 +208,7 @@
         //var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         //var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
         //console.log(execClone);
-        if(clone.intersectMeshes(ball,false)){
+        if(clone.intersectsMeshes(ball,false)){
             points+=100;
             textPoint.text="Points: "+points;
             console.log("collision");
