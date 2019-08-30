@@ -99,23 +99,23 @@ SnowBall.prototype._initMovement = function() {
 
 SnowBall.prototype.move = function() {
     if (ball.moveRight) {
-        ball.position.x += 1;
-        camera.position.x += 1;
+        ball.position.x += 0.2;
+        camera.position.x += 0.2;
     }
     if (ball.moveLeft) {
-        ball.position.x += -1;
-        camera.position.x += -1;
+        ball.position.x += -0.2;
+        camera.position.x += -0.2;
     }
     if(ball.diagDx){
-        ball.position.x += 1;
-        camera.position.x += 1;
-        ball.position.z += 1;
-        camera.position.z += 1;
+        ball.position.x += 0.2;
+        camera.position.x += 0.2;
+        ball.position.z += 0.2;
+        camera.position.z += 0.2;
     }
     if(!ball.diagDx){
-        ball.position.x += -1;
-        camera.position.x += -1;
-        ball.position.z += 1;
-        camera.position.z += 1;
+        ball.position.x += -0.2;
+        camera.position.x += -0.2;
+        ball.position.z += 0.2;
+        camera.position.z += 0.2;
     }
 };

@@ -172,6 +172,7 @@
         positionZ = randomNumber(20, 3000);
         positionX=randomNumber(-48, 48);
         mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
+        mesh.scaling = new BABYLON.Vector3(1.2, 1.2, 1.2);
         
         for (var j = 0; j < numberOfCoins-1; j++) {         
             var positionable=true;
