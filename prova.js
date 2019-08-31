@@ -27,6 +27,19 @@
 
                     Start();
 
+                     var rect1 = new BABYLON.GUI.Rectangle();
+                     rect1.width = "150px";
+                     rect1.height = "40px";
+                     rect1.cornerRadius = 20;
+                     rect1.color = "GoldenRod";
+                     rect1.thickness = 4;
+                     rect1.background = "White";
+                     rect1.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                     rect1.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                     rect1.top = "25px";
+                     rect1.left = "50px";
+                     advancedTexture.addControl(rect1);
+
                      var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                      textPoint = new BABYLON.GUI.TextBlock();
                      textPoint.text="Points: "+points;
@@ -36,21 +49,7 @@
                      textPoint.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
                      textPoint.top = "28px";
                      textPoint.left = "75px";
-                     advancedTexture.addControl(textPoint);
-
-                     var rect1 = new BABYLON.GUI.Rectangle();
-                     rect1.width = "150px";
-                     rect1.height = "40px";
-                    rect1.cornerRadius = 20;
-                    rect1.color = "GoldenRod";
-                    rect1.thickness = 4;
-                    rect1.background = "White";
-                    rect1.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
-                     rect1.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-                     rect1.top = "25px";
-                    rect1.left = "50px";
-                    advancedTexture.addControl(rect1);
-
+                     advancedTexture.addControl(textPoint);              
 
                     // Skybox
                     var skybox = BABYLON.MeshBuilder.CreateBox("skyBox",{size:1000}, scene);
@@ -161,7 +160,7 @@
                     //sphere.position =new BABYLON.Vector3(0,1.6,2);
                     ball = new SnowBall(scene,shadowGenerator);
                     // ROTATION AND SCALING
-                    ball.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
+                    ball.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
                     var angle=0.065;   
                     var axis = new BABYLON.Vector3(1,0,0);
 
@@ -402,6 +401,9 @@
                                 */
                                 //NUOVO PEZZO CODICE
                                 for (var k=0; k<coinsArray.length; k++){
+                                    scene.registerAfterRender(function() {
+                                        coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL);  
+                                    });
                                     if(coinsArray[k].intersectsMesh(ball, false)){
                                             points+=100;
                                             textPoint.text="Points: "+points;
