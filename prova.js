@@ -215,12 +215,16 @@
 
                         }
             if(positionable){
-                var clone = mesh.clone("newname");
+                var disc = BABYLON.MeshBuilder.CreateDisc("disc", {radius: 1, arc: 1, tessellation: 64, sideOrientation: BABYLON.Mesh.DOUBLESIDE}, scene);
+                disc.showBoundingBox=true;
+                disc.material=new BABYLON.StandardMaterial("trunk", scene);
+                disc.material.diffuseColor = BABYLON.Color3.Yellow();
+                //var clone = mesh.clone("newname");
                 positionZ = randomNumber(20, 3000);
         positionX=randomNumber(-48, 48);
-        clone.position= new BABYLON.Vector3(positionX,2,positionZ);
-        clone.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
-        clone.actionManager=new BABYLON.ActionManager(scene);
+        disc.position= new BABYLON.Vector3(positionX,2,positionZ);
+        disc.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
+        disc.actionManager=new BABYLON.ActionManager(scene);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -236,7 +240,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
 
         //clone.showBoundingBox = true;
-        coinsArray.push(clone);
+        coinsArray.push(disc);
         console.log(coinsArray);
         //var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         //var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
