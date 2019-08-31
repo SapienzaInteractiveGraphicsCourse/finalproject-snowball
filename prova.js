@@ -241,7 +241,7 @@
             var angleY = Math.PI/4;
 
             scene.registerBeforeRender(function() {
-                pilot.rotate(BABYLON.Axis.Y, angleY/150, BABYLON.Space.WORLD);
+                coin.rotate(BABYLON.Axis.Y, angleY/150, BABYLON.Space.WORLD);
             });
 
 
