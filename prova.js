@@ -188,6 +188,19 @@
         mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         mesh.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
         mesh.actionManager=new BABYLON.ActionManager(scene);
+        
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        var collider = BABYLON.Mesh.CreateBox("collider_box", 0, scene, false);     
+        var modele = mesh.getBoundingInfo();
+        console.log(modele);
+        collider.scaling = new BABYLON.Vector3(modele.boundingBox.maximum.x*2, modele.boundingBox.maximum.y*2, modele.boundingBox.maximum.z*2);
+        collider.parent = mesh;
+        collider.material = new BABYLON.StandardMaterial("collidermat", scene);
+        collider.material.alpha = 0.3;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
         mesh.showBoundingBox = true;
         coinsArray.push(mesh);
         //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
@@ -208,6 +221,20 @@
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
         clone.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
         clone.actionManager=new BABYLON.ActionManager(scene);
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        var colliderB = BABYLON.Mesh.CreateBox("collider_boxB", 0, scene, false);     
+        var modeleB = clone.getBoundingInfo();
+        console.log(modeleB);
+        colliderB.scaling = new BABYLON.Vector3(modeleB.boundingBox.maximum.x*2, modeleB.boundingBox.maximum.y*2, modeleB.boundingBox.maximum.z*2);
+        colliderB.parent = mesh;
+        colliderB.material = new BABYLON.StandardMaterial("collidermat", scene);
+        colliderB.material.alpha = 0.3;
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
+
         clone.showBoundingBox = true;
         coinsArray.push(clone);
         console.log(coinsArray);
