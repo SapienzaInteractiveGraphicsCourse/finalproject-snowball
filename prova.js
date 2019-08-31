@@ -240,7 +240,7 @@
             var tick = 0;
             var angleY = Math.PI/4;
 
-            scene.registerBeforeRender(function() {
+            scene.registerAfterRender(function() {
                 coin.rotate(BABYLON.Axis.Y, angleY/150, BABYLON.Space.WORLD);
             });
 
