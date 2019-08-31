@@ -47,8 +47,8 @@
                      textPoint.fontSize = 20;
                      textPoint.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
                      textPoint.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-                     textPoint.top = "28px";
-                     textPoint.left = "75px";
+                     textPoint.top = "29px";
+                     textPoint.left = "72px";
                      advancedTexture.addControl(textPoint);              
 
                     // Skybox
@@ -235,6 +235,9 @@
             coin.position= new BABYLON.Vector3(positionX,2,positionZ);
             coin.scaling = new BABYLON.Vector3(2.5, 2.5, 2.5);
             coin.actionManager=new BABYLON.ActionManager(scene);
+            scene.registerAfterRender(function() {
+                coin.rotate(axisY, angle, BABYLON.Space.LOCAL);  
+            });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -401,9 +404,7 @@
                                 */
                                 //NUOVO PEZZO CODICE
                                 for (var k=0; k<coinsArray.length; k++){
-                                    scene.registerAfterRender(function() {
-                                        coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL);  
-                                    });
+                                    
                                     if(coinsArray[k].intersectsMesh(ball, false)){
                                             points+=100;
                                             textPoint.text="Points: "+points;
@@ -412,7 +413,7 @@
                                             scene.removeMesh(coinsArray[k]);
                                             var deleted=coinsArray.splice(k,1);
                                     }
-                                    coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
+                                    //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
                                 camera.position.z += ball.speed;
                                 ball.position.z += ball.speed;
