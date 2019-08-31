@@ -188,6 +188,7 @@
         mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         mesh.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
         mesh.actionManager=new BABYLON.ActionManager(scene);
+        coinsArray.push(mesh);
         var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
         mesh.actionManager.registerAction(exec);
@@ -207,6 +208,7 @@
         clone.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
         clone.actionManager=new BABYLON.ActionManager(scene);
         coinsArray.push(clone);
+        console.log(coinsArray);
         //var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         //var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
         //console.log(execClone);
