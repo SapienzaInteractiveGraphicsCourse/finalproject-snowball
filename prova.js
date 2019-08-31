@@ -47,7 +47,7 @@
                      textPoint.fontSize = 20;
                      textPoint.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
                      textPoint.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
-                     textPoint.top = "29px";
+                     textPoint.top = "33px";
                      textPoint.left = "72px";
                      advancedTexture.addControl(textPoint);              
 
@@ -235,9 +235,19 @@
             coin.position= new BABYLON.Vector3(positionX,2,positionZ);
             coin.scaling = new BABYLON.Vector3(2.5, 2.5, 2.5);
             coin.actionManager=new BABYLON.ActionManager(scene);
-            scene.registerAfterRender(function() {
-                coin.rotate(axisY, angle, BABYLON.Space.LOCAL);  
+
+
+            var tick = 0;
+            var angleY = Math.PI/4;
+
+            scene.registerBeforeRender(function() {
+                pilot.rotate(BABYLON.Axis.Y, angleY/150, BABYLON.Space.WORLD);
             });
+
+
+            /*scene.registerAfterRender(function() {
+                coin.rotate(axisY, angle, BABYLON.Space.LOCAL);  
+            });*/
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
