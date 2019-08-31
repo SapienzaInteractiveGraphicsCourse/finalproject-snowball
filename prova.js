@@ -26,7 +26,7 @@
                     
 
                     Start();
-
+                     var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
                      var rect1 = new BABYLON.GUI.Rectangle();
                      rect1.width = "150px";
                      rect1.height = "40px";
@@ -40,7 +40,7 @@
                      rect1.left = "50px";
                      advancedTexture.addControl(rect1);
 
-                     var advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("UI");
+                     
                      textPoint = new BABYLON.GUI.TextBlock();
                      textPoint.text="Points: "+points;
                      textPoint.color = "black";
@@ -233,7 +233,7 @@
             positionZ = randomNumber(20, 3000);
             positionX=randomNumber(-48, 48);
             coin.position= new BABYLON.Vector3(positionX,2,positionZ);
-            coin.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
+            coin.scaling = new BABYLON.Vector3(2.5, 2.5, 2.5);
             coin.actionManager=new BABYLON.ActionManager(scene);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
