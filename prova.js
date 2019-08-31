@@ -273,7 +273,7 @@
     }
     //});
         var angleY = Math.PI/4;
-        for(var l=0; l<coinsArray;l++){
+        for(var l=0; l<coinsArray.length;l++){
             scene.registerAfterRender(function() {
                 coinsArray[l].rotate(BABYLON.Axis.Y, angleY/150, BABYLON.Space.WORLD);
             });
