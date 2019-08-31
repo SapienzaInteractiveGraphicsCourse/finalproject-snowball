@@ -32,12 +32,24 @@
                      textPoint.text="Points: "+points;
                      textPoint.color = "black";
                      textPoint.fontSize = 20;
-                     textPoint.background="white";
                      textPoint.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
                      textPoint.textVerticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
                      textPoint.top = "28px";
                      textPoint.left = "75px";
                      advancedTexture.addControl(textPoint);
+
+                     var rect1 = new BABYLON.GUI.Rectangle();
+                     rect1.width = "150px";
+                     rect1.height = "40px";
+                    rect1.cornerRadius = 20;
+                    rect1.color = "GoldenRod";
+                    rect1.thickness = 4;
+                    rect1.background = "White";
+                    rect1.horizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+                     rect1.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;
+                     rect1.top = "25px";
+                    rect1.left = "50px";
+                    advancedTexture.addControl(rect1);
 
 
                     // Skybox
@@ -148,7 +160,6 @@
                     //var sphere = BABYLON.VertexData.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
                     //sphere.position =new BABYLON.Vector3(0,1.6,2);
                     ball = new SnowBall(scene,shadowGenerator);
-                    ball.showBoundingBox = true;
                     // ROTATION AND SCALING
                     ball.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
                     var angle=0.065;   
@@ -180,7 +191,7 @@
 
                     
 
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "coin.babylon", scene, function (newMeshes) {
+       /* BABYLON.SceneLoader.ImportMesh("", "assets/", "coin.babylon", scene, function (newMeshes) {
 
         var mesh = newMeshes[0];
         positionZ = randomNumber(20, 3000);
@@ -206,8 +217,8 @@
         //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
         //mesh.actionManager.registerAction(exec);
-        
-        for (var j = 0; j < numberOfCoins-1; j++) {         
+        */
+        for (var j = 0; j < numberOfCoins; j++) {         
             var positionable=true;
                         for (var i=0; i<tg._trees.length;i++){
                             if(tg._trees[i].position.z==positionZ && tg._trees[i].position.x==positionX)
@@ -215,16 +226,16 @@
 
                         }
             if(positionable){
-                var disc = BABYLON.MeshBuilder.CreateDisc("disc", {radius: 1, arc: 1, tessellation: 64, sideOrientation: BABYLON.Mesh.DOUBLESIDE}, scene);
-                disc.showBoundingBox=true;
-                disc.material=new BABYLON.StandardMaterial("trunk", scene);
-                disc.material.diffuseColor = BABYLON.Color3.Yellow();
-                //var clone = mesh.clone("newname");
-                positionZ = randomNumber(20, 3000);
-        positionX=randomNumber(-48, 48);
-        disc.position= new BABYLON.Vector3(positionX,2,positionZ);
-        disc.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
-        disc.actionManager=new BABYLON.ActionManager(scene);
+            var coin = BABYLON.MeshBuilder.CreateCylinder("cone", {diameterTop:1, height: 0.1, tessellation: 24,sideOrientation: BABYLON.Mesh.DOUBLESIDE}, scene);
+            coin.rotation.z=Math.PI*1.5;
+            coin.rotation.y=Math.PI/2.8;
+            coin.material=new BABYLON.StandardMaterial("coin", scene);
+            coin.material.diffuseColor = BABYLON.Color3.FromInts(230, 184, 0);
+            positionZ = randomNumber(20, 3000);
+            positionX=randomNumber(-48, 48);
+            coin.position= new BABYLON.Vector3(positionX,2,positionZ);
+            coin.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
+            coin.actionManager=new BABYLON.ActionManager(scene);
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -240,8 +251,7 @@
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
 
         //clone.showBoundingBox = true;
-        coinsArray.push(disc);
-        console.log(coinsArray);
+        coinsArray.push(coin);
         //var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         //var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
         //console.log(execClone);
@@ -256,7 +266,7 @@
         else{j--; console.log("collision found, recalculating position");}
 
     }
-    });
+    //});
 
 
 
@@ -370,7 +380,7 @@
 
 
 
-
+                    var axisY= new BABYLON.Vector3(0,1,0);
                     var axisDx= new BABYLON.Vector3(1,-1,-1);
                     var axisSx= new BABYLON.Vector3(1,1,1);
                     var explosion=false;
@@ -400,6 +410,7 @@
                                             scene.removeMesh(coinsArray[k]);
                                             var deleted=coinsArray.splice(k,1);
                                     }
+                                    coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
                                 camera.position.z += ball.speed;
                                 ball.position.z += ball.speed;
