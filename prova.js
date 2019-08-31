@@ -229,13 +229,13 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        var colliderB = BABYLON.Mesh.CreateBox("collider_boxB", 0, scene, false);     
+        /*var colliderB = BABYLON.Mesh.CreateBox("collider_boxB", 0, scene, false);     
         var modeleB = clone.getBoundingInfo();
         console.log(modeleB.boundingBox);
         colliderB.scaling = new BABYLON.Vector3(modeleB.boundingBox.maximum.x*2, modeleB.boundingBox.maximum.y*2, modeleB.boundingBox.maximum.z*2);
         colliderB.parent = clone;
         colliderB.material = new BABYLON.StandardMaterial("collidermat", scene);
-        colliderB.material.alpha = 0.3;
+        colliderB.material.alpha = 0.3;*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
 
