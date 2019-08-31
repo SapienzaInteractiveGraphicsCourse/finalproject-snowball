@@ -148,7 +148,7 @@
                     //var sphere = BABYLON.VertexData.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
                     //sphere.position =new BABYLON.Vector3(0,1.6,2);
                     ball = new SnowBall(scene,shadowGenerator);
-
+                    ball.showBoundingBox = true;
                     // ROTATION AND SCALING
                     ball.scaling = new BABYLON.Vector3(0.2, 0.2, 0.2);
                     var angle=0.065;   
@@ -188,10 +188,11 @@
         mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
         mesh.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
         mesh.actionManager=new BABYLON.ActionManager(scene);
+        mesh.showBoundingBox = true;
         coinsArray.push(mesh);
-        var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-        var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
-        mesh.actionManager.registerAction(exec);
+        //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
+        //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
+        //mesh.actionManager.registerAction(exec);
         
         for (var j = 0; j < numberOfCoins-1; j++) {         
             var positionable=true;
@@ -207,15 +208,16 @@
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
         clone.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
         clone.actionManager=new BABYLON.ActionManager(scene);
+        clone.showBoundingBox = true;
         coinsArray.push(clone);
         console.log(coinsArray);
         //var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
         //var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
         //console.log(execClone);
         
-        var execClonebis=new BABYLON.IncrementValueAction(trigger, ball,"index",j+1);
+        //var execClonebis=new BABYLON.IncrementValueAction(trigger, ball,"index",j+1);
 
-        clone.actionManager.registerAction(execClonebis);
+        //clone.actionManager.registerAction(execClonebis);
         //PROVARE A SETTARE VARIABILE EXEC2 CON INDICE MONETA
         //clone.actionManager.registerAction(execClone);
 
