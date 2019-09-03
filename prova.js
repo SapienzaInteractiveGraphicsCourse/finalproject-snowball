@@ -272,13 +272,15 @@
 
     }
     //});
+        /*
         var angleY = Math.PI/4;
         for(var l=0; l<coinsArray.length;l++){
             scene.registerAfterRender(function() {
                 coinsArray[l].rotate(BABYLON.Axis.Y, angleY/150, BABYLON.Space.WORLD);
             });
             
-        }
+        } 
+        */
 
         BABYLON.SceneLoader.ImportMesh("", "assets/", "rock.babylon", scene, function (newMeshes) {
 
@@ -331,8 +333,8 @@
 
 
 
-/*
-                    var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
+
+                    /*var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
                     
                     meshBallTask.onSuccess = function (task) {
                         task.loadedMeshes[0].position= new BABYLON.Vector3(0,1,1);
@@ -341,8 +343,8 @@
                     meshBallTask.onError = function (task, message, exception) {
                         console.log(message, exception);
                     };
-    				
-    				                var meshCarrotTask = assetsManager.addMeshTask("carrot task", "", "assets/", "carrot.babylon");
+
+                    var meshCarrotTask = assetsManager.addMeshTask("carrot task", "", "assets/", "carrot.babylon");
                     
                     meshCarrotTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,2.5,-15);};
                     meshCarrotTask.onError = function (task, message, exception) {console.log(message, exception);};
@@ -355,6 +357,30 @@
                     meshHatTask.onError = function (task, message, exception) {console.log(message, exception);};
                     meshHatTask.parent=ball;
 
+                    */
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "carrot.babylon", scene, function (newMeshes) {
+    				var carrot = newMeshes[0];
+                    carrot.parent=ball;
+                    carrot.position= new BABYLON.Vector3(0,2.5,-15);
+                    });
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "hat.babylon", scene, function (newMeshes) {
+                    var hat = newMeshes[0];
+                    hat.parent=ball;
+                    hat.position= new BABYLON.Vector3(0,4,-20);
+                    });
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "hordes-rock.babylon", scene, function (newMeshes) {
+                    var leftEye = newMeshes[0];
+                    leftEye.parent=ball;
+                    leftEye.position= new BABYLON.Vector3(-0.5,1.8,-18);
+                    var rightEye = newMeshes[1];
+                    rightEye.parent=ball;
+                    rightEye.position= new BABYLON.Vector3(0.5,1.8,-18);
+                    });
+        
+
+    			
+                    /*
+                    
                     var leftEyeTask = assetsManager.addMeshTask("left eye", "", "assets/", "hordes-rock.babylon");
                     
                     leftEyeTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(-0.5,1.8,-18);};
