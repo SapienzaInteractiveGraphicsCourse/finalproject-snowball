@@ -297,7 +297,7 @@
         fenceleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
         fenceleft.position= new BABYLON.Vector3(0,2,-15);
         //fenceleft.rotation.x=Math.PI;
-        fenceleft.rotation.y=Math.PI;
+        fenceleft.rotation.y=Math.PI*0.5;
         console.log("Created Fence");
         //fenceright = newMeshes[1];
         //fenceright.position= new BABYLON.Vector3(-50,2,0);
@@ -427,10 +427,10 @@
         BABYLON.SceneLoader.ImportMesh("", "assets/", "tongue.babylon", scene, function (newMeshes) {
                     tongue = newMeshes[0];
                     tongue.parent=ball;
-                    tongue.position= new BABYLON.Vector3(0,-0.1,1.7);
+                    tongue.position= new BABYLON.Vector3(0,-0.3,1.7);
                     tongue.material=new BABYLON.StandardMaterial("coin", scene);
                     tongue.material.diffuseColor = BABYLON.Color3.FromInts(255,153,153);
-                    tongue.scaling=new BABYLON.Vector3(0.5, 0.5, 0.5);
+                    tongue.scaling=new BABYLON.Vector3(0.1, 0.1, 0.1);
                     tongue.rotation.x=Math.PI*1.5;
         });
 
