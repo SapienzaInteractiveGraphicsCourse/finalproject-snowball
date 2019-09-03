@@ -290,13 +290,13 @@
         }
     });
         
-        var boxleft = BABYLON.MeshBuilder.CreateBox("", {height: 1.5, width: 0.5, depth: 100, updatable: true});
+        var boxleft = BABYLON.MeshBuilder.CreateBox("", {height: 3, width: 0.5, depth: 100, updatable: true});
         boxleft.material=new BABYLON.StandardMaterial("coin", scene);
         boxleft.position=new BABYLON.Vector3(-50,0,-20);
         //boxleft.rotation.z=Math.PI*0.5;
         boxleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
 
-        var boxright = BABYLON.MeshBuilder.CreateBox("", {height: 1.5, width: 0.5, depth: 100, updatable: true});
+        var boxright = BABYLON.MeshBuilder.CreateBox("", {height: 3, width: 0.5, depth: 100, updatable: true});
         boxright.material=new BABYLON.StandardMaterial("coin", scene);
         boxright.position=new BABYLON.Vector3(50,0,-20);
         //boxright.rotation.z=Math.PI*0.5;
@@ -305,7 +305,7 @@
         var counterposition=-20;
         for (var i = 0; i < 30; i++) {         
                 counterposition+=100;
-                var box = BABYLON.MeshBuilder.CreateBox("", {height: 1.5, width: 0.5, depth: 100, updatable: true});
+                var box = BABYLON.MeshBuilder.CreateBox("", {height: 3, width: 0.5, depth: 100, updatable: true});
                 box.material=new BABYLON.StandardMaterial("coin", scene);
                 //box.rotation.z=Math.PI*0.5;
                 box.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
@@ -315,7 +315,7 @@
         counterposition=-20;
         for (var i = 0; i < 30; i++) {         
                 counterposition+=100;
-                var box = BABYLON.MeshBuilder.CreateBox("", {height: 1.5, width: 0.5, depth: 100, updatable: true});
+                var box = BABYLON.MeshBuilder.CreateBox("", {height: 3, width: 0.5, depth: 100, updatable: true});
                 box.material=new BABYLON.StandardMaterial("coin", scene);
                 //box.rotation.z=Math.PI*0.5;
                 box.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
