@@ -295,19 +295,25 @@
         fenceleft = newMeshes[0]; 
         fenceleft.material=new BABYLON.StandardMaterial("coin", scene);
         fenceleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
-        fenceleft.position= new BABYLON.Vector3(0,2,-15);
-        //fenceleft.rotation.x=Math.PI;
+        fenceleft.position= new BABYLON.Vector3(-50,3,-20);
+        fenceleft.rotation.x=Math.PI;
         fenceleft.rotation.y=Math.PI*0.5;
         console.log("Created Fence");
         //fenceright = newMeshes[1];
         //fenceright.position= new BABYLON.Vector3(-50,2,0);
         /*
-        for (var i = 0; i < 100; i++) {         
-            
+        var counterposition=-15;
+        for (var i = 0; i < 200; i++) {         
+                counterposition+=5;
                 var clone = mesh.clone("newname");
-                positionZ = randomNumber(20, 3000);
-                   
-        clone.position= new BABYLON.Vector3(positionX,2,positionZ);
+                if(i%2==0){
+                    clone.position=new BaBYLON.Vector3(-50,3,counterposition);
+                }
+                else{
+                    clone.position=new BaBYLON.Vector3(50,3,counterposition);
+
+                }
+                
             
         }*/
     });
@@ -427,9 +433,9 @@
         BABYLON.SceneLoader.ImportMesh("", "assets/", "tongue.babylon", scene, function (newMeshes) {
                     tongue = newMeshes[0];
                     tongue.parent=ball;
-                    tongue.position= new BABYLON.Vector3(0,-0.3,1.7);
+                    tongue.position= new BABYLON.Vector3(0,-0.5,1.5);
                     tongue.material=new BABYLON.StandardMaterial("coin", scene);
-                    tongue.material.diffuseColor = BABYLON.Color3.FromInts(255,153,153);
+                    tongue.material.diffuseColor = BABYLON.Color3.Red();
                     tongue.scaling=new BABYLON.Vector3(0.1, 0.1, 0.1);
                     tongue.rotation.x=Math.PI*1.5;
         });
@@ -608,6 +614,7 @@
                                 scene.removeMesh(righteye);
                                 scene.removeMesh(rightdisc);
                                 scene.removeMesh(carrot);
+                                scene.removeMesh(tongue);
                             }
 
                             Crash();
