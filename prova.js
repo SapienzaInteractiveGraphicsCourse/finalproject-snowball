@@ -274,15 +274,14 @@
 
     }
     //});
-        /*
         var angleY = Math.PI/4;
+    scene.registerAfterRender(function() {
         for(var l=0; l<coinsArray.length;l++){
-            scene.registerAfterRender(function() {
-                coinsArray[l].rotate(BABYLON.Axis.Y, angleY/150, BABYLON.Space.WORLD);
-            });
-            
-        } 
-        */
+            coinsArray[l].rotate(BABYLON.Axis.Y, angleY/20, BABYLON.Space.WORLD);
+        }
+    });
+        
+        
 
         BABYLON.SceneLoader.ImportMesh("", "assets/", "rock.babylon", scene, function (newMeshes) {
 
@@ -364,13 +363,12 @@
     				var carrot = newMeshes[0];
                     carrot.parent=ball;
                     //carrot.position= new BABYLON.Vector3(0,2.5,-5);
-                    carrot.position= new BABYLON.Vector3(0,1.3,1);
+                    carrot.position= new BABYLON.Vector3(0,0.5,1.2);
                     carrot.rotation.z=Math.PI*1.5;
                     });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "hat.babylon", scene, function (newMeshes) {
                     var hat = newMeshes[0];
                     hat.parent=ball;
-                    //hat.position= new BABYLON.Vector3(0,4,0);
                     hat.position= new BABYLON.Vector3(0,1.5,0);
                     hat.scaling = new BABYLON.Vector3(1.7, 1.7, 1.7);
                     });
@@ -378,7 +376,7 @@
                     var eyes = newMeshes[0];
                     eyes.parent=ball;
                     //eyes.position= new BABYLON.Vector3(-0.5,1.8,-8);
-                    eyes.position= new BABYLON.Vector3(0,1.4,0);
+                    eyes.position= new BABYLON.Vector3(0,0.3,1);
                     
                     });
         
