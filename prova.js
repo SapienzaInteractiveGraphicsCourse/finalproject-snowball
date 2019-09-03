@@ -295,9 +295,9 @@
         fenceleft = newMeshes[0]; 
         fenceleft.material=new BABYLON.StandardMaterial("coin", scene);
         fenceleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
-        fenceleft.position= new BABYLON.Vector3(-50,3,-20);
+        fenceleft.position= new BABYLON.Vector3(-70,3,-20);
         fenceleft.rotation.x=Math.PI;
-        fenceleft.rotation.y=Math.PI*0.5;
+        //fenceleft.rotation.y=Math.PI*0.5;
         console.log("Created Fence");
         //fenceright = newMeshes[1];
         //fenceright.position= new BABYLON.Vector3(-50,2,0);
