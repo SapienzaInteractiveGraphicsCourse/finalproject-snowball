@@ -290,33 +290,41 @@
         }
     });
         
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "fence.babylon", scene, function (newMeshes) {
+        var boxleft = BABYLON.MeshBuilder.CreateBox("", {height: 0.5, width: 0.5, depth: 100, updatable: true});
+        boxleft.material=new BABYLON.StandardMaterial("coin", scene);
+        boxleft.position=new BABYLON.Vector3(-50,-20,0);
+        //boxleft.rotation.z=Math.PI*0.5;
+        boxleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
 
-        fenceleft = newMeshes[0]; 
-        fenceleft.material=new BABYLON.StandardMaterial("coin", scene);
-        fenceleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
-        fenceleft.position= new BABYLON.Vector3(-10,5,0);
-        //fenceleft.rotation.x=Math.PI;
-        fenceleft.rotation.y=Math.PI*0.5;
-        console.log("Created Fence");
-        //fenceright = newMeshes[1];
-        //fenceright.position= new BABYLON.Vector3(-50,2,0);
+        var boxright = BABYLON.MeshBuilder.CreateBox("", {height: 0.5, width: 0.5, depth: 100, updatable: true});
+        boxright.material=new BABYLON.StandardMaterial("coin", scene);
+        boxright.position=new BABYLON.Vector3(50,-20,0);
+        //boxright.rotation.z=Math.PI*0.5;
+        boxright.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
         /*
-        var counterposition=-15;
-        for (var i = 0; i < 200; i++) {         
-                counterposition+=5;
-                var clone = mesh.clone("newname");
-                if(i%2==0){
-                    clone.position=new BaBYLON.Vector3(-50,3,counterposition);
-                }
-                else{
-                    clone.position=new BaBYLON.Vector3(50,3,counterposition);
+        var counterposition=-20;
+        for (var i = 0; i < 30; i++) {         
+                counterposition+=100;
+                var box = BABYLON.MeshBuilder.CreateBox("", {height: 0.5, width: 0.5, depth: 100, updatable: true});
+                box.material=new BABYLON.StandardMaterial("coin", scene);
+                //box.rotation.z=Math.PI*0.5;
+                box.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
+                box.position=new BaBYLON.Vector3(-50,counterposition,0);
 
                 }
+        counterposition=-20;
+        for (var i = 0; i < 30; i++) {         
+                counterposition+=100;
+                var box = BABYLON.MeshBuilder.CreateBox("", {height: 0.5, width: 0.5, depth: 100, updatable: true});
+                box.material=new BABYLON.StandardMaterial("coin", scene);
+                //box.rotation.z=Math.PI*0.5;
+                box.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
+                box.position=new BaBYLON.Vector3(50,counterposition,0);
+                    
+                
                 
             
         }*/
-    });
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
