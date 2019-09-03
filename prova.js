@@ -311,7 +311,7 @@
         for (var i = 0; i < numberOfRocks; i++) { 
             positionZ = randomNumber(20, 3000); 
             var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:7}, scene);
-            rock.scaling = new BABYLON.Vector3(1.4, 1.4, 1.4);
+            rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
             rock.material=new BABYLON.StandardMaterial("coin", scene);
             rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
             var randomX=Math.random();
@@ -518,7 +518,7 @@
                         if (!ball.crash && ball.startball) {
                             ball.move();
                             for (var x=0; x<rocksArray.length; x++){
-                                rockMove(x);
+                                rockMove(rocksArray[x]);
                             }
                                 /*for(var l=0;l<Rock_Array.size();l++){
         
