@@ -430,8 +430,8 @@
                     tongue.position= new BABYLON.Vector3(0,-0.1,1.7);
                     tongue.material=new BABYLON.StandardMaterial("coin", scene);
                     tongue.material.diffuseColor = BABYLON.Color3.FromInts(255,153,153);
-                    tongue.scaling=new BABYLON.Vector3(1.5, 1.5, 1.5);
-                    tongue.rotation.x=Math.PI*0.5;
+                    tongue.scaling=new BABYLON.Vector3(0.5, 0.5, 0.5);
+                    tongue.rotation.x=Math.PI*1.5;
         });
 
     carrot = BABYLON.MeshBuilder.CreateCylinder("cone", {diameterBottom:0.014,diameterTop:0.6, height: 1.7, tessellation: 96}, scene);
