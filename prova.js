@@ -379,18 +379,50 @@
                     meshHatTask.parent=ball;
 
                     */
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "carrotbis.babylon", scene, function (newMeshes) {
-    				carrot = newMeshes[0];
-                    carrot.parent=ball;
-                    //carrot.position= new BABYLON.Vector3(0,2.5,-5);
-                    carrot.position= new BABYLON.Vector3(1,0.5,0.8);
-                    carrot.rotation.x=Math.PI*1.5;
-                    });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "hat.babylon", scene, function (newMeshes) {
                     hat = newMeshes[0];
                     hat.parent=ball;
                     hat.position= new BABYLON.Vector3(0,1.5,0);
                     hat.scaling = new BABYLON.Vector3(1.7, 1.7, 1.7);
+                    });
+
+    carrot = BABYLON.MeshBuilder.CreateCylinder("cone", {diameterBottom:0.014,diameterTop:0.6, height: 1.7, tessellation: 96}, scene);
+    carrot.material=new BABYLON.StandardMaterial("coin", scene);
+    carrot.parent=ball;
+    carrot.material.diffuseColor = BABYLON.Color3.FromInts(235, 150, 37);
+    carrot.position= new BABYLON.Vector3(0,0.1,1);
+    carrot.rotation.x=Math.PI*1.5;
+
+
+    lefteye = BABYLON.MeshBuilder.CreateSphere({diameter:3}, scene);
+    lefteye.position= new BABYLON.Vector3(-0.5,0.3,1);
+    lefteye.rotation.x=Math.PI*0.5;
+    lefteye.parent=ball;
+    //eye.position.y = -0.5;
+    var leftdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
+    leftdisc.material=new BABYLON.StandardMaterial("coin", scene);
+    leftdisc.material.diffuseColor = BABYLON.Color3.FromInts(0,0,0);
+    leftdisc.parent=lefteye;
+    leftdisc.position.y=0.5;
+
+    righteye = BABYLON.MeshBuilder.CreateSphere({diameter:3}, scene);
+    lefteye.position= new BABYLON.Vector3(0.5,0.3,1);
+    rigtheye.rotation.x=Math.PI*0.5;
+    rigtheye.parent=ball;
+    //eye.position.y = -0.5;
+    var rigthdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
+    rightdisc.material=new BABYLON.StandardMaterial("coin", scene);
+    rightdisc.material.diffuseColor = BABYLON.Color3.FromInts(0,0,0);
+    rightdisc.parent=righteye;
+    rightdisc.position.y=0.5;
+
+        /*
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "carrotbis.babylon", scene, function (newMeshes) {
+                    carrot = newMeshes[0];
+                    carrot.parent=ball;
+                    //carrot.position= new BABYLON.Vector3(0,2.5,-5);
+                    carrot.position= new BABYLON.Vector3(0,0.1,0.8);
+                    carrot.rotation.x=Math.PI*1.5;
                     });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "eye.babylon", scene, function (newMeshes) {
                     lefteye = newMeshes[0];
@@ -408,7 +440,7 @@
                     
                     });
         
-
+*/
     			
                     /*
                     
