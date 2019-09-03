@@ -340,9 +340,17 @@
             rocksArray.push(rock);
             console.log(rocksArray.length);
         }
-        var axisRock= new BABYLON.Vector3(1, 1,-1);
+        var axisRockSx= new BABYLON.Vector3(1, -1,-1);
+        var axisRockDx= new BABYLON.Vector3(1,1,1);
         scene.registerAfterRender(function() {
-                     rock.rotate(axisRock, angle, BABYLON.Space.LOCAL);  
+            for(var l=0; l<coinsArray.length;l++){
+                if(rocksArray[l].position.x=-48){
+                    rocksArray[l].rotate(axisRockSx, angle, BABYLON.Space.LOCAL); 
+                } 
+                else{
+                    rocksArray[l].rotate(axisRockDx, angle, BABYLON.Space.LOCAL); 
+                }
+            }
         });
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -713,16 +721,16 @@
         if(r.position.x==-48){
             r.position.x += 0.6;
             r.position.z -= 0.6;
-            if(r.position.x>=50){
+            /*if(r.position.x>=50){
                 scene.removeMesh(r);
-            }
+            }*/
         }
         else{
             r.position.x -= 0.6;
             r.position.z -= 0.6;
-            if(r.position.x<=50){
+            /*if(r.position.x<=50){
                 scene.removeMesh(r);
-            }
+            }*/
 
         }
     };
