@@ -14,6 +14,7 @@
     var crashingCoinId;   
     var textPoint;
     var coinsArray=[];
+    var rocksArray=[];
     var carrot;
     var hat;
     var lefteye;
@@ -191,8 +192,8 @@
                     var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);   
                     var numberOfCoins=10;             
                     var assetsManager = new BABYLON.AssetsManager(scene);
-                    var Rocks_array=[];
-                    var Coins_array=[];
+                    
+                    //var Coins_array=[];
                     var positionZ,positionX;
 
                     
@@ -303,7 +304,35 @@
         }*/
     });
 
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "rock.babylon", scene, function (newMeshes) {
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
+        //ROCK CODE
+        
+        for (var i = 0; i < numberOfRocks; i++) { 
+            positionZ = randomNumber(20, 3000); 
+            var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:13}, scene);
+            rock.scaling = new BABYLON.Vector3(1.4, 1.4, 1.4);
+            rock.material=new BABYLON.StandardMaterial("coin", scene);
+            rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
+            var randomX=Math.random();
+            if(randomX%2==0){
+                positionX = 48;
+            }
+            else if (randomX%2!=0){
+                positionX = -48;
+            }
+            rock.position= new BABYLON.Vector3(positionX,2,positionZ); 
+            rock.actionManager=new BABYLON.ActionManager(scene);      
+            rocksArray.push(rock);
+        }
+        var axisRock= new BABYLON.Vector3(1, 1,-1);
+        scene.registerAfterRender(function() {
+                     rock.rotate(axisRock, angle, BABYLON.Space.LOCAL);  
+        });
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        /*BABYLON.SceneLoader.ImportMesh("", "assets/", "rock.babylon", scene, function (newMeshes) {
 
         var mesh = newMeshes[0];
         positionZ = randomNumber(20, 3000);
@@ -330,7 +359,7 @@
         clone.position= new BABYLON.Vector3(positionX,2,positionZ);
             
         }
-    });
+    });*/
 
         BABYLON.SceneLoader.ImportMesh("", "assets/", "flag.babylon", scene, function (newMeshes) {
 
@@ -384,13 +413,13 @@
                     hat.parent=ball;
                     hat.position= new BABYLON.Vector3(0,1.5,0);
                     hat.scaling = new BABYLON.Vector3(1.7, 1.7, 1.7);
-                    });
+        });
 
     carrot = BABYLON.MeshBuilder.CreateCylinder("cone", {diameterBottom:0.014,diameterTop:0.6, height: 1.7, tessellation: 96}, scene);
     carrot.material=new BABYLON.StandardMaterial("coin", scene);
     carrot.parent=ball;
     carrot.material.diffuseColor = BABYLON.Color3.FromInts(235, 150, 37);
-    carrot.position= new BABYLON.Vector3(0,0.1,1);
+    carrot.position= new BABYLON.Vector3(0,0.1,1.5);
     carrot.rotation.x=Math.PI*1.5;
 
 
@@ -505,13 +534,24 @@
                                     if(coinsArray[k].intersectsMesh(ball, false)){
                                             points+=100;
                                             textPoint.text="Points: "+points;
-                                            console.log("collision");
-                                            console.log(points);
+                                            //console.log("collision");
+                                            //console.log(points);
                                             scene.removeMesh(coinsArray[k]);
                                             var deleted=coinsArray.splice(k,1);
                                     }
                                     //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
+
+                                for (var g=0; g<rocksArray.length; g++){
+                                    
+                                    if(rocksArray[g].intersectsMesh(ball, false)){
+                                            console.log("collision");
+                                            ball.crash=true;
+                                            var deleted=rocksArray.splice(k,1);
+                                    }
+                                    //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
+                                }
+
                                 camera.position.z += ball.speed;
                                 ball.position.z += ball.speed;
                                 if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
