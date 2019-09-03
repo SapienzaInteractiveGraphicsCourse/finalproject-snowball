@@ -585,7 +585,7 @@
                                         if(rocksArray[g].position.z-ball.position.z<500){
                                             rockMove(rocksArray[g]);
                                         }
-                                    }//coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
+                                    //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
 
                                 camera.position.z += ball.speed;
