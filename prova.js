@@ -22,6 +22,7 @@
     var righteye;
     var rightdisc;
     var fence;
+    var tongue
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -419,6 +420,14 @@
                     hat.parent=ball;
                     hat.position= new BABYLON.Vector3(0,1.5,0);
                     hat.scaling = new BABYLON.Vector3(1.7, 1.7, 1.7);
+        });
+
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "tongue.babylon", scene, function (newMeshes) {
+                    tongue = newMeshes[0];
+                    tongue.parent=ball;
+                    tongue.position= new BABYLON.Vector3(0,-0.1,1.7);
+                    tongue.material=new BABYLON.StandardMaterial("coin", scene);
+                    tongue.material.diffuseColor = BABYLON.Color3.FromInts(255,128,128);
         });
 
     carrot = BABYLON.MeshBuilder.CreateCylinder("cone", {diameterBottom:0.014,diameterTop:0.6, height: 1.7, tessellation: 96}, scene);
