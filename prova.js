@@ -335,16 +335,16 @@
         BABYLON.SceneLoader.ImportMesh("", "assets/", "flag.babylon", scene, function (newMeshes) {
 
         var mesh = newMeshes[0];
-        mesh.position= new BABYLON.Vector3(13,2,-7);
+        mesh.position= new BABYLON.Vector3(13,1,-7);
         mesh.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
         for (var j = 0; j < 2; j++) {         
             
                 var clone = mesh.clone("newname");
            if(j==0){     
-        clone.position= new BABYLON.Vector3(40,2,3010);
+        clone.position= new BABYLON.Vector3(40,1,3010);
         clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
     } else{
-        clone.position= new BABYLON.Vector3(-40,2,3010);
+        clone.position= new BABYLON.Vector3(-40,1,3010);
         clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
     }
             
