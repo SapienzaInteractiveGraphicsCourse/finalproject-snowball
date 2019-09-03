@@ -296,6 +296,8 @@
         fenceleft.material=new BABYLON.StandardMaterial("coin", scene);
         fenceleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
         fenceleft.position= new BABYLON.Vector3(0,2,-15);
+        fenceleft.rotation.x=Math.PI;
+        fenceleft.rotation.y=Math.PI;
         console.log("Created Fence");
         //fenceright = newMeshes[1];
         //fenceright.position= new BABYLON.Vector3(-50,2,0);
@@ -428,6 +430,7 @@
                     tongue.position= new BABYLON.Vector3(0,-0.1,1.7);
                     tongue.material=new BABYLON.StandardMaterial("coin", scene);
                     tongue.material.diffuseColor = BABYLON.Color3.FromInts(255,128,128);
+                    tongue.scaling=new BABYLON.Vector3(3, 3, 3);
         });
 
     carrot = BABYLON.MeshBuilder.CreateCylinder("cone", {diameterBottom:0.014,diameterTop:0.6, height: 1.7, tessellation: 96}, scene);
