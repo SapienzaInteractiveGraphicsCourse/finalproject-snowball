@@ -343,7 +343,7 @@
         var axisRockSx= new BABYLON.Vector3(1, -1,-1);
         var axisRockDx= new BABYLON.Vector3(1,1,1);
         scene.registerAfterRender(function() {
-            for(var l=0; l<coinsArray.length;l++){
+            for(var l=0; l<rocksArray.length;l++){
                 if(rocksArray[l].position.x=-48){
                     rocksArray[l].rotate(axisRockSx, angle, BABYLON.Space.LOCAL); 
                 } 
@@ -577,13 +577,14 @@
                                 }
 
                                 for (var g=0; g<rocksArray.length; g++){
-                                    rockMove(rocksArray[g]);
-                                    if(rocksArray[g].intersectsMesh(ball, false)){
-                                            console.log("collision");
-                                            ball.crash=true;
-                                            var deleted=rocksArray.splice(k,1);
-                                    }
-                                    //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
+                                    if(rocksArray[g].position.z-ball.position.z<150){
+                                        rockMove(rocksArray[g]);
+                                        if(rocksArray[g].intersectsMesh(ball, false)){
+                                                console.log("collision");
+                                                ball.crash=true;
+                                                var deleted=rocksArray.splice(k,1);
+                                        }
+                                    }//coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
 
                                 camera.position.z += ball.speed;
