@@ -335,16 +335,16 @@
         BABYLON.SceneLoader.ImportMesh("", "assets/", "flag.babylon", scene, function (newMeshes) {
 
         var mesh = newMeshes[0];
-        mesh.position= new BABYLON.Vector3(13,1,-7);
+        mesh.position= new BABYLON.Vector3(13,0,-7);
         mesh.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
         for (var j = 0; j < 2; j++) {         
             
                 var clone = mesh.clone("newname");
            if(j==0){     
-        clone.position= new BABYLON.Vector3(40,1,3010);
+        clone.position= new BABYLON.Vector3(40,0,3010);
         clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
     } else{
-        clone.position= new BABYLON.Vector3(-40,1,3010);
+        clone.position= new BABYLON.Vector3(-40,0,3010);
         clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
     }
             
@@ -406,9 +406,9 @@
     leftdisc.position.y=0.5;
 
     righteye = BABYLON.MeshBuilder.CreateSphere({diameter:3}, scene);
-    lefteye.position= new BABYLON.Vector3(0.5,0.3,1);
-    rigtheye.rotation.x=Math.PI*0.5;
-    rigtheye.parent=ball;
+    righteye.position= new BABYLON.Vector3(0.5,0.3,1);
+    righteye.rotation.x=Math.PI*0.5;
+    righteye.parent=ball;
     //eye.position.y = -0.5;
     var rigthdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
     rightdisc.material=new BABYLON.StandardMaterial("coin", scene);
