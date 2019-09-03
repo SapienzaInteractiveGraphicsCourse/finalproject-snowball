@@ -360,23 +360,22 @@
                     meshHatTask.parent=ball;
 
                     */
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "carrot.babylon", scene, function (newMeshes) {
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "carrotbis.babylon", scene, function (newMeshes) {
     				var carrot = newMeshes[0];
                     carrot.parent=ball;
-                    carrot.position= new BABYLON.Vector3(0,2.5,-15);
+                    carrot.position= new BABYLON.Vector3(0,2.5,-5);
                     });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "hat.babylon", scene, function (newMeshes) {
                     var hat = newMeshes[0];
                     hat.parent=ball;
-                    hat.position= new BABYLON.Vector3(0,4,-20);
+                    hat.position= new BABYLON.Vector3(0,4,0);
+                    hat.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
                     });
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "hordes-rock.babylon", scene, function (newMeshes) {
-                    var leftEye = newMeshes[0];
-                    leftEye.parent=ball;
-                    leftEye.position= new BABYLON.Vector3(-0.5,1.8,-18);
-                    var rightEye = newMeshes[1];
-                    rightEye.parent=ball;
-                    rightEye.position= new BABYLON.Vector3(0.5,1.8,-18);
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "eyes.babylon", scene, function (newMeshes) {
+                    var eyes = newMeshes[0];
+                    eyes.parent=ball;
+                    eyes.position= new BABYLON.Vector3(-0.5,1.8,-8);
+                    
                     });
         
 
