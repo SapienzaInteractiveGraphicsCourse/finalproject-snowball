@@ -14,6 +14,11 @@
     var crashingCoinId;   
     var textPoint;
     var coinsArray=[];
+    var carrot;
+    var hat;
+    var lefteye;
+    var righteye;
+    var fence;
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -281,7 +286,22 @@
         }
     });
         
-        
+        BABYLON.SceneLoader.ImportMesh("", "assets/", "fence.babylon", scene, function (newMeshes) {
+
+        fenceleft = newMeshes[0];
+        fenceleft.position= new BABYLON.Vector3(50,2,0);
+        fenceright = newMeshes[1];
+        fenceright.position= new BABYLON.Vector3(-50,2,0);
+        /*
+        for (var i = 0; i < 100; i++) {         
+            
+                var clone = mesh.clone("newname");
+                positionZ = randomNumber(20, 3000);
+                   
+        clone.position= new BABYLON.Vector3(positionX,2,positionZ);
+            
+        }*/
+    });
 
         BABYLON.SceneLoader.ImportMesh("", "assets/", "rock.babylon", scene, function (newMeshes) {
 
@@ -360,7 +380,7 @@
 
                     */
         BABYLON.SceneLoader.ImportMesh("", "assets/", "carrotbis.babylon", scene, function (newMeshes) {
-    				var carrot = newMeshes[0];
+    				carrot = newMeshes[0];
                     carrot.parent=ball;
                     //carrot.position= new BABYLON.Vector3(0,2.5,-5);
                     carrot.position= new BABYLON.Vector3(1,0.5,0.8);
@@ -368,23 +388,24 @@
                     carrot.rotation.z= Math.PI/5
                     });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "hat.babylon", scene, function (newMeshes) {
-                    var hat = newMeshes[0];
+                    hat = newMeshes[0];
                     hat.parent=ball;
                     hat.position= new BABYLON.Vector3(0,1.5,0);
                     hat.scaling = new BABYLON.Vector3(1.7, 1.7, 1.7);
                     });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "eye.babylon", scene, function (newMeshes) {
-                    var lefteye = newMeshes[0];
+                    lefteye = newMeshes[0];
                     lefteye.parent=ball;
                     //eyes.position= new BABYLON.Vector3(-0.5,1.8,-8);
                     lefteye.position= new BABYLON.Vector3(-0.5,0.3,1);
-                    
+                    lefteye.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
                     
                     });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "eye.babylon", scene, function (newMeshes) {
-                    var righteye = newMeshes[0];
+                    righteye = newMeshes[0];
                     righteye.parent=ball;
                     righteye.position= new BABYLON.Vector3(0.5,0.3,1);
+                    righteye.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
                     
                     });
         
