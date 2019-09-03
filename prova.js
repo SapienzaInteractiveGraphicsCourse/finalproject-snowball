@@ -310,7 +310,7 @@
         
         for (var i = 0; i < numberOfRocks; i++) { 
             positionZ = randomNumber(20, 3000); 
-            var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:9}, scene);
+            var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:7}, scene);
             rock.scaling = new BABYLON.Vector3(1.4, 1.4, 1.4);
             rock.material=new BABYLON.StandardMaterial("coin", scene);
             rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
@@ -321,7 +321,7 @@
             else if (randomX%2!=0){
                 positionX = -48;
             }
-            rock.position= new BABYLON.Vector3(positionX,0,positionZ); 
+            rock.position= new BABYLON.Vector3(positionX,1,positionZ); 
             rock.actionManager=new BABYLON.ActionManager(scene);      
             rocksArray.push(rock);
             console.log(rocksArray.length);
@@ -517,6 +517,9 @@
 
                         if (!ball.crash && ball.startball) {
                             ball.move();
+                            for (var x=0; x<rocksArray.length; x++){
+                                rockMove(x);
+                            }
                                 /*for(var l=0;l<Rock_Array.size();l++){
         
                                     if(Rock_Array[l].loadedMeshes[0].position.z==ball.position.z-10){
@@ -673,5 +676,23 @@
             var random = Math.random();
             return ((random * (max - min)) + min);
         };
+    
+    var rockMove = function(r) {
+        if(r.position.x==-48){
+            r.position.x += 0.6;
+            r.position.z -= 0.6;
+            if(r.position.x>=50){
+                scene.removeMesh(r);
+            }
+        }
+        else{
+            r.position.x -= 0.6;
+            r.position.z -= 0.6;
+            if(r.position.x<=50){
+                scene.removeMesh(r);
+            }
+
+        }
+    };
 
         
