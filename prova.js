@@ -309,7 +309,7 @@
                 box.material=new BABYLON.StandardMaterial("coin", scene);
                 //box.rotation.z=Math.PI*0.5;
                 box.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
-                box.position=new BaBYLON.Vector3(-50,0,counterposition);
+                box.position=new BABYLON.Vector3(-50,0,counterposition);
 
                 }
         counterposition=-20;
@@ -319,7 +319,7 @@
                 box.material=new BABYLON.StandardMaterial("coin", scene);
                 //box.rotation.z=Math.PI*0.5;
                 box.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
-                box.position=new BaBYLON.Vector3(50,0,counterposition);
+                box.position=new BABYLON.Vector3(50,0,counterposition);
                     
                 
                 
