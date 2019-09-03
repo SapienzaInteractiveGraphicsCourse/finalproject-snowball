@@ -577,12 +577,13 @@
                                 }
 
                                 for (var g=0; g<rocksArray.length; g++){
-                                    if(rocksArray[g].position.z-ball.position.z<150){
-                                        rockMove(rocksArray[g]);
                                         if(rocksArray[g].intersectsMesh(ball, false)){
                                                 console.log("collision");
                                                 ball.crash=true;
                                                 var deleted=rocksArray.splice(k,1);
+                                        }
+                                        if(rocksArray[g].position.z-ball.position.z<500){
+                                            rockMove(rocksArray[g]);
                                         }
                                     }//coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
@@ -720,15 +721,15 @@
    
     var rockMove = function(r) {
         if(r.position.x==-48){
-            r.position.x += 0.6;
-            r.position.z -= 0.6;
+            r.position.x += 2;
+            r.position.z -= 2;
             /*if(r.position.x>=50){
                 scene.removeMesh(r);
             }*/
         }
         else{
-            r.position.x -= 0.6;
-            r.position.z -= 0.6;
+            r.position.x -= 2;
+            r.position.z -= 2;
             /*if(r.position.x<=50){
                 scene.removeMesh(r);
             }*/
