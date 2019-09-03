@@ -363,18 +363,22 @@
         BABYLON.SceneLoader.ImportMesh("", "assets/", "carrotbis.babylon", scene, function (newMeshes) {
     				var carrot = newMeshes[0];
                     carrot.parent=ball;
-                    carrot.position= new BABYLON.Vector3(0,2.5,-5);
+                    //carrot.position= new BABYLON.Vector3(0,2.5,-5);
+                    carrot.position= new BABYLON.Vector3(0,2,-3);
+                    carrot.rotation.z=Math.PI*1.5;
                     });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "hat.babylon", scene, function (newMeshes) {
                     var hat = newMeshes[0];
                     hat.parent=ball;
-                    hat.position= new BABYLON.Vector3(0,4,0);
-                    hat.scaling = new BABYLON.Vector3(1.5, 1.5, 1.5);
+                    //hat.position= new BABYLON.Vector3(0,4,0);
+                    hat.position= new BABYLON.Vector3(0,3.7,0);
+                    hat.scaling = new BABYLON.Vector3(1.7, 1.7, 1.7);
                     });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "eyes.babylon", scene, function (newMeshes) {
                     var eyes = newMeshes[0];
                     eyes.parent=ball;
-                    eyes.position= new BABYLON.Vector3(-0.5,1.8,-8);
+                    //eyes.position= new BABYLON.Vector3(-0.5,1.8,-8);
+                    eyes.position= new BABYLON.Vector3(-0.5,1.5,-5);
                     
                     });
         
