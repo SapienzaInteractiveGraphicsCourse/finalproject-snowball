@@ -18,7 +18,9 @@
     var carrot;
     var hat;
     var lefteye;
+    var leftdisc;
     var righteye;
+    var rightdisc;
     var fence;
                 // createScene function that creates and return the scene
                 var createScene = function(){
@@ -310,7 +312,7 @@
         
         for (var i = 0; i < numberOfRocks; i++) { 
             positionZ = randomNumber(20, 3000); 
-            var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:7}, scene);
+            var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:2}, scene);
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
             rock.material=new BABYLON.StandardMaterial("coin", scene);
             rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
@@ -420,7 +422,7 @@
     carrot.material=new BABYLON.StandardMaterial("coin", scene);
     carrot.parent=ball;
     carrot.material.diffuseColor = BABYLON.Color3.FromInts(235, 150, 37);
-    carrot.position= new BABYLON.Vector3(0,0.1,1.5);
+    carrot.position= new BABYLON.Vector3(0,0.1,1.7);
     carrot.rotation.x=Math.PI*1.5;
 
 
@@ -429,7 +431,7 @@
     lefteye.rotation.x=Math.PI*0.5;
     lefteye.parent=ball;
     //eye.position.y = -0.5;
-    var leftdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
+    leftdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
     leftdisc.material=new BABYLON.StandardMaterial("coin", scene);
     leftdisc.material.diffuseColor = BABYLON.Color3.FromInts(0,0,0);
     leftdisc.parent=lefteye;
@@ -440,7 +442,7 @@
     righteye.rotation.x=Math.PI*0.5;
     righteye.parent=ball;
     //eye.position.y = -0.5;
-    var rightdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
+    rightdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
     rightdisc.material=new BABYLON.StandardMaterial("coin", scene);
     rightdisc.material.diffuseColor = BABYLON.Color3.FromInts(0,0,0);
     rightdisc.parent=righteye;
@@ -584,6 +586,12 @@
                                 //particleSystem.stop();
 
                                 scene.removeMesh(ball);
+                                scene.removeMesh(hat);
+                                scene.removeMesh(lefteye);
+                                scene.removeMesh(leftdisc);
+                                scene.removeMesh(righteye);
+                                scene.removeMesh(rightdisc);
+                                scene.removeMesh(carrot);
                             }
 
                             Crash();
