@@ -321,7 +321,7 @@
             else if (randomX%2!=0){
                 positionX = -48;
             }
-            rock.position= new BABYLON.Vector3(positionX,1,positionZ); 
+            rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
             rock.actionManager=new BABYLON.ActionManager(scene);      
             rocksArray.push(rock);
             console.log(rocksArray.length);
@@ -517,10 +517,7 @@
 
                         if (!ball.crash && ball.startball) {
                             ball.move();
-                            for (var x=0; x<rocksArray.length; x++){
-                                rockMove(rocksArray[x]);
-                            }
-                                /*for(var l=0;l<Rock_Array.size();l++){
+                            /*for(var l=0;l<Rock_Array.size();l++){
         
                                     if(Rock_Array[l].loadedMeshes[0].position.z==ball.position.z-10){
                                         var objRock=Rock_Array[l].loadedMeshes[0];
@@ -547,7 +544,7 @@
                                 }
 
                                 for (var g=0; g<rocksArray.length; g++){
-                                    
+                                    rockMove(rocksArray[g]);
                                     if(rocksArray[g].intersectsMesh(ball, false)){
                                             console.log("collision");
                                             ball.crash=true;
@@ -676,7 +673,10 @@
             var random = Math.random();
             return ((random * (max - min)) + min);
         };
+   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     
+   //CODICE ROCCE
+   
     var rockMove = function(r) {
         if(r.position.x==-48){
             r.position.x += 0.6;
@@ -694,5 +694,7 @@
 
         }
     };
+
+   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         
