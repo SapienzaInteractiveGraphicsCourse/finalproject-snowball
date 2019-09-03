@@ -384,8 +384,7 @@
                     carrot.parent=ball;
                     //carrot.position= new BABYLON.Vector3(0,2.5,-5);
                     carrot.position= new BABYLON.Vector3(1,0.5,0.8);
-                    carrot.rotation.y=Math.PI*1.5;
-                    carrot.rotation.z= Math.PI/5
+                    carrot.rotation.x=Math.PI*1.5;
                     });
         BABYLON.SceneLoader.ImportMesh("", "assets/", "hat.babylon", scene, function (newMeshes) {
                     hat = newMeshes[0];
