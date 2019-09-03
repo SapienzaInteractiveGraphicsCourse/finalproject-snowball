@@ -435,8 +435,8 @@
                     tongue.parent=ball;
                     tongue.position= new BABYLON.Vector3(0,-0.5,1.5);
                     tongue.material=new BABYLON.StandardMaterial("coin", scene);
-                    //tongue.material.diffuseColor = BABYLON.Color3.Red();
-                    tongue.getScene().getMaterialByID("coin").diffuseColor=new BABYLON.Color3.Red();
+                    tongue.material.diffuseColor = BABYLON.Color3.Red();
+                    //tongue.getScene().getMaterialByID("coin").diffuseColor=new BABYLON.Color3.Red();
                     tongue.scaling=new BABYLON.Vector3(0.1, 0.1, 0.1);
                     tongue.rotation.x=Math.PI*1.5;
         });
