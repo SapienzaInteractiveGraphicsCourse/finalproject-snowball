@@ -292,13 +292,13 @@
         
         var boxleft = BABYLON.MeshBuilder.CreateBox("", {height: 0.5, width: 0.5, depth: 100, updatable: true});
         boxleft.material=new BABYLON.StandardMaterial("coin", scene);
-        boxleft.position=new BABYLON.Vector3(-50,-20,0);
+        boxleft.position=new BABYLON.Vector3(-50,-20,3);
         //boxleft.rotation.z=Math.PI*0.5;
         boxleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
 
         var boxright = BABYLON.MeshBuilder.CreateBox("", {height: 0.5, width: 0.5, depth: 100, updatable: true});
         boxright.material=new BABYLON.StandardMaterial("coin", scene);
-        boxright.position=new BABYLON.Vector3(50,-20,0);
+        boxright.position=new BABYLON.Vector3(50,-20,5);
         //boxright.rotation.z=Math.PI*0.5;
         boxright.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
         /*
