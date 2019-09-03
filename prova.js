@@ -410,7 +410,7 @@
     righteye.rotation.x=Math.PI*0.5;
     righteye.parent=ball;
     //eye.position.y = -0.5;
-    var rigthdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
+    var rightdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
     rightdisc.material=new BABYLON.StandardMaterial("coin", scene);
     rightdisc.material.diffuseColor = BABYLON.Color3.FromInts(0,0,0);
     rightdisc.parent=righteye;
