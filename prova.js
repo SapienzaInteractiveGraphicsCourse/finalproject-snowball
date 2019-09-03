@@ -169,9 +169,11 @@
                     var execution = new BABYLON.SwitchBooleanAction(clickTrigger, ball, "startball");
                     ball.actionManager.registerAction(execution);
                     
-                    scene.registerAfterRender(function() {
+                   /* scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
+                        DISATTIVATO PER POSIZIONAMENTO MODELLO GERARCHICO
+                 */
 
 
 
@@ -460,6 +462,7 @@
                                }
                            }
                            if(ball.crash){
+                            //ball.rotate(axis, 0, BABYLON.Space.LOCAL);
                             if(!explosion){
                                 explosion=true;
                                 var particleSystem2 = new BABYLON.ParticleSystem("particles2", 2000, scene);
@@ -477,6 +480,7 @@
                                 // Start the particle system
                                 particleSystem2.start();
                                 //particleSystem.stop();
+
                                 scene.removeMesh(ball);
                             }
 
