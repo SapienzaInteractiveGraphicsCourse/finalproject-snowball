@@ -291,10 +291,13 @@
         
         BABYLON.SceneLoader.ImportMesh("", "assets/", "fence.babylon", scene, function (newMeshes) {
 
-        fenceleft = newMeshes[0];
-        fenceleft.position= new BABYLON.Vector3(50,2,0);
-        fenceright = newMeshes[1];
-        fenceright.position= new BABYLON.Vector3(-50,2,0);
+        fenceleft = newMeshes[0]; 
+        fenceleft.material=new BABYLON.StandardMaterial("coin", scene);
+        fenceleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
+        fenceleft.position= new BABYLON.Vector3(0,2,-15);
+        console.log("Created Fence");
+        //fenceright = newMeshes[1];
+        //fenceright.position= new BABYLON.Vector3(-50,2,0);
         /*
         for (var i = 0; i < 100; i++) {         
             
