@@ -310,7 +310,7 @@
         
         for (var i = 0; i < numberOfRocks; i++) { 
             positionZ = randomNumber(20, 3000); 
-            var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:13}, scene);
+            var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:9}, scene);
             rock.scaling = new BABYLON.Vector3(1.4, 1.4, 1.4);
             rock.material=new BABYLON.StandardMaterial("coin", scene);
             rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
@@ -321,9 +321,10 @@
             else if (randomX%2!=0){
                 positionX = -48;
             }
-            rock.position= new BABYLON.Vector3(positionX,2,positionZ); 
+            rock.position= new BABYLON.Vector3(positionX,0,positionZ); 
             rock.actionManager=new BABYLON.ActionManager(scene);      
             rocksArray.push(rock);
+            console.log(rocksArray.length);
         }
         var axisRock= new BABYLON.Vector3(1, 1,-1);
         scene.registerAfterRender(function() {
