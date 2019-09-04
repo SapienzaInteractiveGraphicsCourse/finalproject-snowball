@@ -146,7 +146,7 @@
 
                     var d1 = new BABYLON.DirectionalLight("dir", new BABYLON.Vector3(1, -1, 4), scene);
                     d1.position = new BABYLON.Vector3(-300,300,600);
-                    shadowGenerator = new BABYLON.ShadowGenerator(16382, d1);
+                    shadowGenerator = new BABYLON.ShadowGenerator(2048, d1);
                     shadowGenerator.transparencyShadow = true;
                     
 
@@ -402,11 +402,11 @@
         var mesh = newMeshes[0];
         mesh.position= new BABYLON.Vector3(13,0,-7);
         mesh.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
-        //shadowGenerator.getShadowMap().renderList.push(mesh);
+        shadowGenerator.getShadowMap().renderList.push(mesh);
         for (var j = 0; j < 2; j++) {         
             
                 var clone = mesh.clone("newname");
-                shadowGeneratorgetShadowMap().renderList.push(clone);
+                shadowGenerator.getShadowMap().renderList.push(clone);
            if(j==0){     
         clone.position= new BABYLON.Vector3(40,0,3010);
         clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
@@ -586,6 +586,7 @@
                                             textPoint.text="Points: "+points;
                                             //console.log("collision");
                                             //console.log(points);
+                                            shadowGenerator.getShadowMap().renderList.splice(k,1);
                                             scene.removeMesh(coinsArray[k]);
                                             var deleted=coinsArray.splice(k,1);
                                     }
@@ -743,7 +744,7 @@
    
     var rockMoveSx = function(r) {
         r.position.x -= 1.2;
-        console.log("ENTRATO IN ROCKMOVESX");
+        //console.log("ENTRATO IN ROCKMOVESX");
         r.position.z -= 1.2;
             /*if(r.position.x<=50){
                 scene.removeMesh(r);
@@ -752,7 +753,7 @@
 
     var rockMoveDx = function(r) {
         r.position.x += 1.2;
-        console.log("ENTRATO IN ROCKMOVEDX");
+        //console.log("ENTRATO IN ROCKMOVEDX");
         r.position.z -= 1.2;
             /*if(r.position.x>=50){
                 scene.removeMesh(r);
