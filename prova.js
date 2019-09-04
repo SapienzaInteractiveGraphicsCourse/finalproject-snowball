@@ -339,11 +339,11 @@
             var randomX=Math.random();
             randomX=randomX*1000;
             console.log("randomX: ", randomX);
-            if(randomX%2==0){
+            if(randomX>=500){
                 positionX = 48;
                 console.log("Roccia a destra");
             }
-            else if (randomX%2!=0){
+            else if (randomX<500){
                 positionX = -48;
                 console.log("Roccia a sinistra");
             }
