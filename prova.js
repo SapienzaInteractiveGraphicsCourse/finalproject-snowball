@@ -351,7 +351,8 @@
                 console.log("Roccia a sinistra");
             }*/
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
-            console.log("posX: ",rock.position.x);
+            console.log("posX: ",positionX);
+            console.log("rock posX: ",rock.position.x);
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
             rock.actionManager=new BABYLON.ActionManager(scene);
             shadowGenerator.getShadowMap().renderList.push(rock);      
