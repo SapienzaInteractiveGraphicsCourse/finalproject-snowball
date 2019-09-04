@@ -337,6 +337,7 @@
             positionZ = randomNumber(20, 3000); 
             var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:2}, scene);
             var randomX=Math.random();
+            randomX=randomX*1000;
             console.log("randomX: ", randomX);
             if(randomX%2==0){
                 positionX = 48;
@@ -585,13 +586,9 @@
                                     if(coinsArray[k].intersectsMesh(ball, false)){
                                             points+=100;
                                             textPoint.text="Points: "+points;
-                                            //console.log("collision");
-                                            //console.log(points);
                                             coinsArray[k].dispose();
-                                            //scene.removeMesh(coinsArray[k]);
                                             var deleted=coinsArray.splice(k,1);
                                     }
-                                    //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
 
                                 for (var g=0; g<rocksArray.length; g++){
