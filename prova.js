@@ -146,7 +146,8 @@
 
                     var d1 = new BABYLON.DirectionalLight("dir", new BABYLON.Vector3(1, -1, 4), scene);
                     d1.position = new BABYLON.Vector3(-300,300,600);
-                    shadowGenerator = new BABYLON.ShadowGenerator(2048, d1);
+                    shadowGenerator = new BABYLON.ShadowGenerator(4096, d1);
+                    shadowGenerator.transparencyShadow = true;
                     
 
                     var image = new BABYLON.StandardMaterial('groundimage', scene);
