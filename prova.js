@@ -337,8 +337,9 @@
             var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:2}, scene);
             rock.material=new BABYLON.StandardMaterial("coin", scene);
             rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
+            positionX= randomNumber(-48, 48);
             positionZ = randomNumber(20, 3000); 
-            var randomX=Math.random();
+            /*var randomX=Math.random();
             randomX=randomX*1000;
             console.log("randomX: ", randomX);
             if(randomX>=500){
@@ -348,7 +349,7 @@
             else if (randomX<500){
                 positionX = -48;
                 console.log("Roccia a sinistra");
-            }
+            }*/
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
             console.log("posX: ",rock.position.x);
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
@@ -599,12 +600,13 @@
                                                 var deleted=rocksArray.splice(k,1);
                                         }
                                         if(rocksArray[g].position.z-ball.position.z<500){
-                                            if(rocksArray[g].position.x==-48){
+                                            /*if(rocksArray[g].position.x==-48){
                                                 rockMoveDx(rocksArray[g]);
                                             }
                                             else if(rocksArray[g].position.x==48){
                                                 rockMoveSx(rocksArray[g]);   
-                                            }
+                                            }*/
+                                            rockMove(rocksArray[g]);
                                         }
                                     //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
@@ -741,14 +743,14 @@
     
    //CODICE ROCCE
    
-    var rockMoveSx = function(r) {
+   /* var rockMoveSx = function(r) {
         r.position.x -= 1.2;
         //console.log("ENTRATO IN ROCKMOVESX");
         r.position.z -= 1.2;
             /*if(r.position.x<=50){
                 scene.removeMesh(r);
             }*/
-    };
+/*    };
 
     var rockMoveDx = function(r) {
         r.position.x += 1.2;
@@ -757,6 +759,14 @@
             /*if(r.position.x>=50){
                 scene.removeMesh(r);
             }*/
+        
+ //   };
+
+    var rockMove = function(r) {
+        r.position.z -= 1.2;
+        if(r.position.z<=20){
+            scene.removeMesh(r);
+        }
         
     };
 
