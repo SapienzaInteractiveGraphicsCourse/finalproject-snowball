@@ -348,7 +348,7 @@
             rocksArray.push(rock);
             console.log(rocksArray.length);
         }
-        var axisRockSx= new BABYLON.Vector3(1, -1,-1);
+        var axisRockSx= new BABYLON.Vector3(1, -1, -1);
         var axisRockDx= new BABYLON.Vector3(1, 1, 1);
         scene.registerAfterRender(function() {
             for(var l=0; l<rocksArray.length;l++){
@@ -729,15 +729,15 @@
    
     var rockMove = function(r) {
         if(r.position.x==-48){
-            r.position.x += 2;
-            r.position.z -= 2;
+            r.position.x += 1.2;
+            //r.position.z -= 1.2;
             /*if(r.position.x>=50){
                 scene.removeMesh(r);
             }*/
         }
         else{
-            r.position.x -= 2;
-            r.position.z -= 2;
+            r.position.x -= 1.2;
+            //r.position.z -= 1.2;
             /*if(r.position.x<=50){
                 scene.removeMesh(r);
             }*/
