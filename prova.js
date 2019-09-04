@@ -148,6 +148,7 @@
                     d1.position = new BABYLON.Vector3(-300,300,600);
                     shadowGenerator = new BABYLON.ShadowGenerator(2048, d1);
                     shadowGenerator.transparencyShadow = true;
+                    shadowGenerator.getShadowMap().refreshRate = 1;
                     
 
                     var image = new BABYLON.StandardMaterial('groundimage', scene);
@@ -586,8 +587,8 @@
                                             textPoint.text="Points: "+points;
                                             //console.log("collision");
                                             //console.log(points);
-                                            shadowGenerator.getShadowMap().renderList.splice(k,1);
-                                            scene.removeMesh(coinsArray[k]);
+                                            coinsArray[k].dispose();
+                                            //scene.removeMesh(coinsArray[k]);
                                             var deleted=coinsArray.splice(k,1);
                                     }
                                     //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
