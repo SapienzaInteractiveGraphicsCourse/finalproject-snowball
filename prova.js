@@ -23,8 +23,6 @@
     var rightdisc;
     var fence;
     var tongue;
-    var rockSx;
-    var rockDx;
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -341,14 +339,9 @@
             var randomX=Math.random();
             if(randomX%2==0){
                 positionX = 48;
-                rockDx=true;
-                rockSx=false;
             }
             else if (randomX%2!=0){
                 positionX = -48;
-                rockDx=false;
-                rockSx=true;
-
             }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
             rock.actionManager=new BABYLON.ActionManager(scene);      
@@ -459,6 +452,7 @@
                     tongue.material=new BABYLON.StandardMaterial("coin", scene);
                     tongue.material.diffuseColor = BABYLON.Color3.Red();
                     tongue.getScene().getMaterialByID("pony_tongue.Texture_0").diffuseColor=new BABYLON.Color3.Red();
+                    //tongue.getScene().getMaterialByID("coin").diffuseColor=new BABYLON.Color3.Red();
                     tongue.scaling=new BABYLON.Vector3(0.1, 0.1, 0.1);
                     tongue.rotation.x=Math.PI*1.5;
         });
@@ -597,7 +591,12 @@
                                                 var deleted=rocksArray.splice(k,1);
                                         }
                                         if(rocksArray[g].position.z-ball.position.z<500){
-                                            rockMove(rocksArray[g]);
+                                            if(rocksArray[g].position.x==-48){
+                                                rockMoveDx(rocksArray[g]);
+                                            }
+                                            else if(rocksArray[g].position.x==48){
+                                                rockMoveSx(rocksArray[g]);   
+                                            }
                                         }
                                     //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
@@ -632,16 +631,15 @@
                                 particleSystem2.start();
                                 //particleSystem.stop();
 
-                                scene.removeMesh(ball);
+                                /*scene.removeMesh(ball);
                                 scene.removeMesh(hat);
                                 scene.removeMesh(lefteye);
                                 scene.removeMesh(leftdisc);
                                 scene.removeMesh(righteye);
                                 scene.removeMesh(rightdisc);
-                                scene.removeMesh(carrot);
-                                //scene.removeMesh(tongue);
+                                scene.removeMesh(carrot);*/
                                 tongue.dispose();
-                                //ball.dispose();
+                                ball.dispose();
                             }
 
                             Crash();
@@ -735,24 +733,23 @@
     
    //CODICE ROCCE
    
-    var rockMove = function(r) {
-        if(rockSx){
-            r.position.x += 1.2;
-            console.log(r.position.x);
-            r.position.z -= 1.2;
-            /*if(r.position.x>=50){
-                scene.removeMesh(r);
-            }*/
-        }
-        else if(rockDx){
-            r.position.x -= 1.2;
-            console.log(r.position.x);
-            r.position.z -= 1.2;
+    var rockMoveSx = function(r) {
+        r.position.x -= 1.2;
+        console.log(r.position.x);
+        r.position.z -= 1.2;
             /*if(r.position.x<=50){
                 scene.removeMesh(r);
             }*/
+    };
 
-        }
+    var rockMoveDx = function(r) {
+        r.position.x += 1.2;
+        console.log(r.position.x);
+        r.position.z -= 1.2;
+            /*if(r.position.x>=50){
+                scene.removeMesh(r);
+            }*/
+        
     };
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
