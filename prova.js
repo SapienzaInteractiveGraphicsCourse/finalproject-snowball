@@ -23,6 +23,8 @@
     var rightdisc;
     var fence;
     var tongue;
+    var rockSx;
+    var rockDx;
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -339,9 +341,14 @@
             var randomX=Math.random();
             if(randomX%2==0){
                 positionX = 48;
+                rockDx=true;
+                rockSx=false;
             }
             else if (randomX%2!=0){
                 positionX = -48;
+                rockDx=false;
+                rockSx=true;
+
             }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
             rock.actionManager=new BABYLON.ActionManager(scene);      
@@ -727,18 +734,18 @@
    //CODICE ROCCE
    
     var rockMove = function(r) {
-        if(r.position.x==-48){
+        if(rockSx){
             r.position.x += 1.2;
             console.log(r.position.x);
-            //r.position.z -= 1.2;
+            r.position.z -= 1.2;
             /*if(r.position.x>=50){
                 scene.removeMesh(r);
             }*/
         }
-        else{
+        else if(rockDx){
             r.position.x -= 1.2;
             console.log(r.position.x);
-            //r.position.z -= 1.2;
+            r.position.z -= 1.2;
             /*if(r.position.x<=50){
                 scene.removeMesh(r);
             }*/
