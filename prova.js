@@ -458,7 +458,7 @@
                     tongue.position= new BABYLON.Vector3(0,-0.5,1.5);
                     tongue.material=new BABYLON.StandardMaterial("coin", scene);
                     tongue.material.diffuseColor = BABYLON.Color3.Red();
-                    //tongue.getScene().getMaterialByID("coin").diffuseColor=new BABYLON.Color3.Red();
+                    tongue.getScene().getMaterialByID("pony_tongue.Texture_0").diffuseColor=new BABYLON.Color3.Red();
                     tongue.scaling=new BABYLON.Vector3(0.1, 0.1, 0.1);
                     tongue.rotation.x=Math.PI*1.5;
         });
@@ -639,7 +639,9 @@
                                 scene.removeMesh(righteye);
                                 scene.removeMesh(rightdisc);
                                 scene.removeMesh(carrot);
-                                scene.removeMesh(tongue);
+                                //scene.removeMesh(tongue);
+                                tongue.dispose();
+                                //ball.dispose();
                             }
 
                             Crash();
