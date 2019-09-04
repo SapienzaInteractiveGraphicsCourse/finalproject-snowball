@@ -334,9 +334,6 @@
         for (var i = 0; i < numberOfRocks; i++) { 
             positionZ = randomNumber(20, 3000); 
             var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:2}, scene);
-            rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
-            rock.material=new BABYLON.StandardMaterial("coin", scene);
-            rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
             var randomX=Math.random();
             if(randomX%2==0){
                 positionX = 48;
@@ -345,6 +342,9 @@
                 positionX = -48;
             }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
+            rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
+            rock.material=new BABYLON.StandardMaterial("coin", scene);
+            rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
             rock.actionManager=new BABYLON.ActionManager(scene);
             shadowGenerator.getShadowMap().renderList.push(rock);      
             rocksArray.push(rock);
@@ -739,7 +739,7 @@
    
     var rockMoveSx = function(r) {
         r.position.x -= 1.2;
-        console.log(r.position.x);
+        console.log("ENTRATO IN ROCKMOVESX");
         r.position.z -= 1.2;
             /*if(r.position.x<=50){
                 scene.removeMesh(r);
@@ -748,7 +748,7 @@
 
     var rockMoveDx = function(r) {
         r.position.x += 1.2;
-        console.log(r.position.x);
+        console.log("ENTRATO IN ROCKMOVEDX");
         r.position.z -= 1.2;
             /*if(r.position.x>=50){
                 scene.removeMesh(r);
