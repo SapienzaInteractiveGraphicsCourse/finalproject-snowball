@@ -188,12 +188,12 @@
 
 
                     var numberOfTrees, numberOfRocks;
-                    if(difficulty=="easy") {numberOfTrees=100; numberOfRocks=2;}
-                    else if(difficulty=="medium") {numberOfTrees=200; numberOfRocks=3;}
-                    else if(difficulty=="hard") {numberOfTrees=300; numberOfRocks=4;}
-                    else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=5;}
+                    if(difficulty=="easy") {numberOfTrees=100; numberOfRocks=7;}
+                    else if(difficulty=="medium") {numberOfTrees=200; numberOfRocks=8;}
+                    else if(difficulty=="hard") {numberOfTrees=300; numberOfRocks=9;}
+                    else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=10;}
                     var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);   
-                    var numberOfCoins=10;             
+                    var numberOfCoins=15;             
                     var assetsManager = new BABYLON.AssetsManager(scene);
                     
                     //var Coins_array=[];
@@ -349,7 +349,7 @@
             console.log(rocksArray.length);
         }
         var axisRockSx= new BABYLON.Vector3(1, -1,-1);
-        var axisRockDx= new BABYLON.Vector3(1,1,1);
+        var axisRockDx= new BABYLON.Vector3(1, 1, 1);
         scene.registerAfterRender(function() {
             for(var l=0; l<rocksArray.length;l++){
                 if(rocksArray[l].position.x=-48){
