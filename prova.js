@@ -334,9 +334,10 @@
         //ROCK CODE
         
         for (var i = 0; i < numberOfRocks; i++) { 
-            positionX=0;
-            positionZ = randomNumber(20, 3000); 
             var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:2}, scene);
+            rock.material=new BABYLON.StandardMaterial("coin", scene);
+            rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
+            positionZ = randomNumber(20, 3000); 
             var randomX=Math.random();
             randomX=randomX*1000;
             console.log("randomX: ", randomX);
@@ -351,8 +352,6 @@
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
             console.log("posX: ",rock.position.x);
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
-            rock.material=new BABYLON.StandardMaterial("coin", scene);
-            rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
             rock.actionManager=new BABYLON.ActionManager(scene);
             shadowGenerator.getShadowMap().renderList.push(rock);      
             rocksArray.push(rock);
