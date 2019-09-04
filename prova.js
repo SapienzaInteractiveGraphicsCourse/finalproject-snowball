@@ -336,11 +336,14 @@
             positionZ = randomNumber(20, 3000); 
             var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:2}, scene);
             var randomX=Math.random();
+            console.log("randomX: ", randomX);
             if(randomX%2==0){
                 positionX = 48;
+                console.log("Roccia a destra");
             }
             else if (randomX%2!=0){
                 positionX = -48;
+                console.log("Roccia a sinistra");
             }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
