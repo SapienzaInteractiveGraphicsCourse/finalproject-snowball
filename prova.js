@@ -23,6 +23,7 @@
     var rightdisc;
     var fence;
     var tongue;
+    var shadowGenerator;
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -145,7 +146,7 @@
 
                     var d1 = new BABYLON.DirectionalLight("dir", new BABYLON.Vector3(1, -1, 4), scene);
                     d1.position = new BABYLON.Vector3(-300,300,600);
-                    var shadowGenerator = new BABYLON.ShadowGenerator(2048, d1);
+                    shadowGenerator = new BABYLON.ShadowGenerator(2048, d1);
                     
 
                     var image = new BABYLON.StandardMaterial('groundimage', scene);
@@ -246,7 +247,7 @@
             coin.position= new BABYLON.Vector3(positionX,2,positionZ);
             coin.scaling = new BABYLON.Vector3(2.5, 2.5, 2.5);
             coin.actionManager=new BABYLON.ActionManager(scene);
-
+            shadowGenerator.getShadowMap().renderList.push(coin);
 
 
             /*scene.registerAfterRender(function() {
@@ -344,7 +345,8 @@
                 positionX = -48;
             }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
-            rock.actionManager=new BABYLON.ActionManager(scene);      
+            rock.actionManager=new BABYLON.ActionManager(scene);
+            shadowGenerator.getShadowMap().renderList.push(rock);      
             rocksArray.push(rock);
         }
         var axisRockSx= new BABYLON.Vector3(1, -1, -1);
@@ -396,9 +398,11 @@
         var mesh = newMeshes[0];
         mesh.position= new BABYLON.Vector3(13,0,-7);
         mesh.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
+        shadowGenerator.getShadowMap().renderList.push(mesh);
         for (var j = 0; j < 2; j++) {         
             
                 var clone = mesh.clone("newname");
+                shadowGeneratorgetShadowMap().renderList.push(clone);
            if(j==0){     
         clone.position= new BABYLON.Vector3(40,0,3010);
         clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
