@@ -334,6 +334,7 @@
         //ROCK CODE
         
         for (var i = 0; i < numberOfRocks; i++) { 
+            positionX=0;
             positionZ = randomNumber(20, 3000); 
             var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:2}, scene);
             var randomX=Math.random();
@@ -348,6 +349,7 @@
                 console.log("Roccia a sinistra");
             }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
+            console.log("posX: ",rock.position.x);
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
             rock.material=new BABYLON.StandardMaterial("coin", scene);
             rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
