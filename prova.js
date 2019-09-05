@@ -188,7 +188,7 @@
                     var body = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:4}, scene);
                     //body.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
                     body.parent=ball;
-					body.position=new BABYLON.Vector3(0,-1.4,0);
+					body.position=new BABYLON.Vector3(0,-2,0);
 					body.material=image;
 					shadowGenerator.getShadowMap().renderList.push(body);
 					body.actionManager = new BABYLON.ActionManager(scene);
