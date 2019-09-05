@@ -174,7 +174,7 @@
                     //sphere.position =new BABYLON.Vector3(0,1.6,2);
                     ball = new SnowBall(scene,shadowGenerator);
                     // ROTATION AND SCALING
-                    //ball.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+                    ball.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
                     var angle=0.065;   
                     var axis = new BABYLON.Vector3(1,0,0);
 
@@ -185,12 +185,12 @@
                     
 
 
-                    var body = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:4}, scene);
+                    var body = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:3}, scene);
                     //body.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
                     body.parent=ball;
-					body.position=new BABYLON.Vector3(0,-2,0);
+					body.position=new BABYLON.Vector3(0,-1.5,0);
 					body.material=image;
-
+					shadowGenerator.getShadowMap().renderList.push(body);
 					body.actionManager = new BABYLON.ActionManager(scene);
 					var clickTriggerBis = {trigger:BABYLON.ActionManager.OnPickTrigger, parameter: body};
 					var executionBis = new BABYLON.SwitchBooleanAction(clickTriggerBis, ball, "startball");
