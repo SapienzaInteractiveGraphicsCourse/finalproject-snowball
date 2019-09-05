@@ -23,7 +23,7 @@
     var rightdisc;
     var fence;
     var tongue;
-    var shadowGenerator;
+    var shadowGenerator,shadowGenerator2,shadowGenerator3;
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -149,6 +149,10 @@
                     shadowGenerator = new BABYLON.ShadowGenerator(2048, d1);
                     shadowGenerator.transparencyShadow = true;
                     shadowGenerator.getShadowMap().refreshRate = 1;
+
+                    shadowGenerator2 = new BABYLON.ShadowGenerator(2048, d1);
+                    shadowGenerator2.transparencyShadow = true;
+                    shadowGenerator2.getShadowMap().refreshRate = 1;
                     
 
                     var image = new BABYLON.StandardMaterial('groundimage', scene);
@@ -170,7 +174,7 @@
                     //ball movement
                     //var sphere = BABYLON.VertexData.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
                     //sphere.position =new BABYLON.Vector3(0,1.6,2);
-                    ball = new SnowBall(scene,shadowGenerator);
+                    ball = new SnowBall(scene,shadowGenerator2);
                     // ROTATION AND SCALING
                     ball.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
                     var angle=0.065;   
@@ -223,7 +227,7 @@
             coin.position= new BABYLON.Vector3(positionX,2,positionZ);
             coin.scaling = new BABYLON.Vector3(2.5, 2.5, 2.5);
             coin.actionManager=new BABYLON.ActionManager(scene);
-            shadowGenerator.getShadowMap().renderList.push(coin);
+            shadowGenerator2.getShadowMap().renderList.push(coin);
 
 
             
@@ -304,7 +308,7 @@
             console.log("rock posX: ",rock.position.x);
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
             rock.actionManager=new BABYLON.ActionManager(scene);
-            shadowGenerator.getShadowMap().renderList.push(rock);      
+            shadowGenerator2.getShadowMap().renderList.push(rock);      
             rocksArray.push(rock);
         }
         var axisRockSx= new BABYLON.Vector3(1, -1, -1);
@@ -329,11 +333,11 @@
         var mesh = newMeshes[0];
         mesh.position= new BABYLON.Vector3(13,0,-7);
         mesh.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
-        shadowGenerator.getShadowMap().renderList.push(mesh);
+        shadowGenerator2.getShadowMap().renderList.push(mesh);
         for (var j = 0; j < 2; j++) {         
             
                 var clone = mesh.clone("newname");
-                shadowGenerator.getShadowMap().renderList.push(clone);
+                shadowGenerator2.getShadowMap().renderList.push(clone);
            if(j==0){     
         clone.position= new BABYLON.Vector3(40,0,3010);
         clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
