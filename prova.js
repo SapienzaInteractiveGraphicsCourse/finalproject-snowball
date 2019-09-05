@@ -443,7 +443,7 @@
                                                 ball.crash=true;
                                                 //var deleted=rocksArray.splice(k,1);
                                         }
-                                        if(rocksArray[g].position.z-ball.position.z<500){
+                                        if(rocksArray[g].position.z-ball.position.z<100){
                                             if(booleanRocksArray[g]){
                                                 rockMoveDx(rocksArray[g]);
                                             }
@@ -590,7 +590,7 @@
         r.position.x -= 1.2;
         console.log(r.position.x);
         console.log(r.position);
-        r.position.z -= 1.2;
+        r.position.z -= 1;
             if(r.position.x<=-50){
                 r.dispose();
             }
@@ -600,7 +600,7 @@
         r.position.x += 1.2;
         console.log(r.position.x);
         console.log(r.position);
-        r.position.z -= 1.2;
+        r.position.z -= 1;
             if(r.position.x>=50){
                 r.dispose();
             }
