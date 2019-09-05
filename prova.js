@@ -195,8 +195,8 @@
                     var numberOfTrees, numberOfRocks;
                     if(difficulty=="easy") {numberOfTrees=100; numberOfRocks=7;}
                     else if(difficulty=="medium") {numberOfTrees=200; numberOfRocks=8;}
-                    else if(difficulty=="hard") {numberOfTrees=300; numberOfRocks=9;}
-                    else if(difficulty=="extreme") {numberOfTrees=400; numberOfRocks=10;}
+                    else if(difficulty=="hard") {numberOfTrees=250; numberOfRocks=9;}
+                    else if(difficulty=="extreme") {numberOfTrees=300; numberOfRocks=10;}
                     var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);   
                     var numberOfCoins=15;             
                     var assetsManager = new BABYLON.AssetsManager(scene);
@@ -443,7 +443,7 @@
                                                 ball.crash=true;
                                                 //var deleted=rocksArray.splice(k,1);
                                         }
-                                        if(rocksArray[g].position.z-ball.position.z<100){
+                                        if(rocksArray[g].position.z-ball.position.z<50){
                                             if(booleanRocksArray[g]){
                                                 rockMoveDx(rocksArray[g]);
                                             }
@@ -587,20 +587,20 @@
    //CODICE ROCCE
    
     var rockMoveSx = function(r) {
-        r.position.x -= 1;
+        r.position.x -= 0.4;
         console.log(r.position.x);
         console.log(r.position);
-        r.position.z -= 1.2;
+        r.position.z += 0.6;
             if(r.position.x<=-50){
                 r.dispose();
             }
     };
 
     var rockMoveDx = function(r) {
-        r.position.x += 1;
+        r.position.x += 0.4;
         console.log(r.position.x);
         console.log(r.position);
-        r.position.z -= 1.2;
+        r.position.z += 0.6;
             if(r.position.x>=50){
                 r.dispose();
             }
