@@ -20,7 +20,7 @@ SnowBall = function(scene,sd) {
     this.sd=sd;
     sd.getShadowMap().renderList.push(this);
     this.position.x = 0;
-    this.position.y = 2.8;
+    this.position.y = 2.5;
     this.position.z = -20;
     this.crash = false;
     this.crashCoin=false;
