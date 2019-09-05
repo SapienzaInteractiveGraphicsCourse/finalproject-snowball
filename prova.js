@@ -15,6 +15,7 @@
     var textPoint;
     var coinsArray=[];
     var rocksArray=[];
+    var booleanRocksArray=[];
     var carrot;
     var hat;
     var lefteye;
@@ -23,7 +24,7 @@
     var rightdisc;
     var fence;
     var tongue;
-    var shadowGenerator,shadowGenerator2,shadowGenerator3;
+    var shadowGenerator;
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -150,9 +151,6 @@
                     shadowGenerator.transparencyShadow = true;
                     shadowGenerator.getShadowMap().refreshRate = 1;
 
-                    shadowGenerator2 = new BABYLON.ShadowGenerator(2048, d1);
-                    shadowGenerator2.transparencyShadow = true;
-                    shadowGenerator2.getShadowMap().refreshRate = 1;
                     
 
                     var image = new BABYLON.StandardMaterial('groundimage', scene);
@@ -174,7 +172,7 @@
                     //ball movement
                     //var sphere = BABYLON.VertexData.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
                     //sphere.position =new BABYLON.Vector3(0,1.6,2);
-                    ball = new SnowBall(scene,shadowGenerator2);
+                    ball = new SnowBall(scene,shadowGenerator);
                     // ROTATION AND SCALING
                     ball.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
                     var angle=0.065;   
@@ -227,7 +225,7 @@
             coin.position= new BABYLON.Vector3(positionX,2,positionZ);
             coin.scaling = new BABYLON.Vector3(2.5, 2.5, 2.5);
             coin.actionManager=new BABYLON.ActionManager(scene);
-            shadowGenerator2.getShadowMap().renderList.push(coin);
+            shadowGenerator.getShadowMap().renderList.push(coin);
 
 
             
@@ -291,16 +289,19 @@
             rock.material=new BABYLON.StandardMaterial("coin", scene);
             rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
             //positionX= randomNumber(-48, 48);
-            positionZ = randomNumber(20, 3000); 
+            positionZ = randomNumber(20, 3000);
+            var booleanaRoccia; 
             var randomX=Math.random();
             randomX=randomX*1000;
             console.log("randomX: ", randomX);
             if(randomX>=500){
                 positionX = 48;
+                booleanaRoccia=false;
                 console.log("Roccia a destra");
             }
             else if (randomX<500){
                 positionX = -48;
+                booleanaRoccia=true;
                 console.log("Roccia a sinistra");
             }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
@@ -308,8 +309,9 @@
             console.log("rock posX: ",rock.position.x);
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
             rock.actionManager=new BABYLON.ActionManager(scene);
-            shadowGenerator2.getShadowMap().renderList.push(rock);      
+            shadowGenerator.getShadowMap().renderList.push(rock);      
             rocksArray.push(rock);
+            booleanRocksArray.push(booleanaRoccia);
         }
         var axisRockSx= new BABYLON.Vector3(1, -1, -1);
         var axisRockDx= new BABYLON.Vector3(1, 1, 1);
@@ -333,11 +335,11 @@
         var mesh = newMeshes[0];
         mesh.position= new BABYLON.Vector3(13,0,-7);
         mesh.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
-        shadowGenerator2.getShadowMap().renderList.push(mesh);
+        shadowGenerator.getShadowMap().renderList.push(mesh);
         for (var j = 0; j < 2; j++) {         
             
                 var clone = mesh.clone("newname");
-                shadowGenerator2.getShadowMap().renderList.push(clone);
+                shadowGenerator.getShadowMap().renderList.push(clone);
            if(j==0){     
         clone.position= new BABYLON.Vector3(40,0,3010);
         clone.scaling = new BABYLON.Vector3(0.3, 0.3, 0.3);
@@ -442,10 +444,10 @@
                                                 //var deleted=rocksArray.splice(k,1);
                                         }
                                         if(rocksArray[g].position.z-ball.position.z<500){
-                                            if(rocksArray[g].position.x==-48){
+                                            if(booleanRocksArray[g]){
                                                 rockMoveDx(rocksArray[g]);
                                             }
-                                            else if(rocksArray[g].position.x==48){
+                                            else if(!booleanRocksArray[g]){
                                                 rockMoveSx(rocksArray[g]);   
                                             }
                                             //rockMove(rocksArray[g]);
@@ -589,9 +591,9 @@
         console.log(r.position.x);
         console.log(r.position);
         r.position.z -= 1.2;
-            /*if(r.position.x<=50){
-                scene.removeMesh(r);
-            }*/
+            if(r.position.x<=-50){
+                r.dispose();
+            }
     };
 
     var rockMoveDx = function(r) {
@@ -599,9 +601,9 @@
         console.log(r.position.x);
         console.log(r.position);
         r.position.z -= 1.2;
-            /*if(r.position.x>=50){
-                scene.removeMesh(r);
-            }*/
+            if(r.position.x>=50){
+                r.dispose();
+            }
         
     };
  /*
