@@ -204,33 +204,7 @@
 
                     
 
-       /* BABYLON.SceneLoader.ImportMesh("", "assets/", "coin.babylon", scene, function (newMeshes) {
-
-        var mesh = newMeshes[0];
-        positionZ = randomNumber(20, 3000);
-        positionX=randomNumber(-48, 48);
-        mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
-        mesh.scaling = new BABYLON.Vector3(1.8, 1.8, 1.8);
-        mesh.actionManager=new BABYLON.ActionManager(scene);
-        
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        var collider = BABYLON.Mesh.CreateBox("collider_box", 0, scene, false);     
-        var modele = mesh.getBoundingInfo();
-        console.log(modele.boundingBox);
-        collider.scaling = new BABYLON.Vector3(modele.boundingBox.maximum.x*2, modele.boundingBox.maximum.y*2, modele.boundingBox.maximum.z*2);
-        collider.parent = mesh;
-        collider.material = new BABYLON.StandardMaterial("collidermat", scene);
-        collider.material.alpha = 0.3;
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
-        //mesh.showBoundingBox = true;
-        coinsArray.push(mesh);
-        //var trigger = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-        //var exec = new BABYLON.SwitchBooleanAction(trigger, ball, "crashCoin");
-        //mesh.actionManager.registerAction(exec);
-        */
+       
         for (var j = 0; j < numberOfCoins; j++) {         
             var positionable=true;
                         for (var i=0; i<tg._trees.length;i++){
@@ -252,40 +226,15 @@
             shadowGenerator.getShadowMap().renderList.push(coin);
 
 
-            /*scene.registerAfterRender(function() {
-                coin.rotate(axisY, angle, BABYLON.Space.LOCAL);  
-            });*/
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-        /*var colliderB = BABYLON.Mesh.CreateBox("collider_boxB", 0, scene, false);     
-        var modeleB = clone.getBoundingInfo();
-        console.log(modeleB.boundingBox);
-        colliderB.scaling = new BABYLON.Vector3(modeleB.boundingBox.maximum.x*2, modeleB.boundingBox.maximum.y*2, modeleB.boundingBox.maximum.z*2);
-        colliderB.parent = clone;
-        colliderB.material = new BABYLON.StandardMaterial("collidermat", scene);
-        colliderB.material.alpha = 0.3;*/
-
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////7
-
-        //clone.showBoundingBox = true;
+            
         coinsArray.push(coin);
-        //var triggerclone = {trigger:BABYLON.ActionManager.OnIntersectionEnterTrigger, parameter: ball};
-        //var execClone = new BABYLON.SwitchBooleanAction(triggerclone, ball, "crashCoin");
-        //console.log(execClone);
-        
-        //var execClonebis=new BABYLON.IncrementValueAction(trigger, ball,"index",j+1);
-
-        //clone.actionManager.registerAction(execClonebis);
-        //PROVARE A SETTARE VARIABILE EXEC2 CON INDICE MONETA
-        //clone.actionManager.registerAction(execClone);
+      
 
         }
         else{j--; console.log("collision found, recalculating position");}
 
     }
-    //});
+    
         var angleY = Math.PI/4;
     scene.registerAfterRender(function() {
         for(var l=0; l<coinsArray.length;l++){
@@ -337,9 +286,9 @@
             var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:2}, scene);
             rock.material=new BABYLON.StandardMaterial("coin", scene);
             rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
-            positionX= randomNumber(-48, 48);
+            //positionX= randomNumber(-48, 48);
             positionZ = randomNumber(20, 3000); 
-            /*var randomX=Math.random();
+            var randomX=Math.random();
             randomX=randomX*1000;
             console.log("randomX: ", randomX);
             if(randomX>=500){
@@ -349,7 +298,7 @@
             else if (randomX<500){
                 positionX = -48;
                 console.log("Roccia a sinistra");
-            }*/
+            }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
             console.log("posX: ",positionX);
             console.log("rock posX: ",rock.position.x);
@@ -362,7 +311,7 @@
         var axisRockDx= new BABYLON.Vector3(1, 1, 1);
         scene.registerAfterRender(function() {
             for(var l=0; l<rocksArray.length;l++){
-                if(rocksArray[l].position.x=-48){
+                if(rocksArray[l].position.x==-48){
                     rocksArray[l].rotate(axisRockSx, angle, BABYLON.Space.LOCAL); 
                 } 
                 else{
@@ -373,34 +322,7 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        /*BABYLON.SceneLoader.ImportMesh("", "assets/", "rock.babylon", scene, function (newMeshes) {
-
-        var mesh = newMeshes[0];
-        positionZ = randomNumber(20, 3000);
-        var randomX=Math.random();
-                       if(randomX%2==0){
-                           positionX = 48;
-                       }
-                       else if (randomX%2!=0){
-                           positionX = -48;
-                       }
-        mesh.position= new BABYLON.Vector3(positionX,2,positionZ);
-        
-        for (var i = 0; i < numberOfRocks-1; i++) {         
-            
-                var clone = mesh.clone("newname");
-                positionZ = randomNumber(20, 3000);
-                       var randomX=Math.random();
-                       if(randomX%2==0){
-                           positionX = 48;
-                       }
-                       else if (randomX%2!=0){
-                           positionX = -48;
-                       }
-        clone.position= new BABYLON.Vector3(positionX,2,positionZ);
-            
-        }
-    });*/
+       
 
         BABYLON.SceneLoader.ImportMesh("", "assets/", "flag.babylon", scene, function (newMeshes) {
 
@@ -427,30 +349,8 @@
 
 
 
-                    /*var meshBallTask = assetsManager.addMeshTask("ball task", "", "assets/", "ball.babylon");
                     
-                    meshBallTask.onSuccess = function (task) {
-                        task.loadedMeshes[0].position= new BABYLON.Vector3(0,1,1);
-                    };
-                   
-                    meshBallTask.onError = function (task, message, exception) {
-                        console.log(message, exception);
-                    };
-
-                    var meshCarrotTask = assetsManager.addMeshTask("carrot task", "", "assets/", "carrot.babylon");
                     
-                    meshCarrotTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,2.5,-15);};
-                    meshCarrotTask.onError = function (task, message, exception) {console.log(message, exception);};
-                    //meshCarrotTask.rotation.x=Math.PI;
-                    meshCarrotTask.parent=ball;
-
-                    var meshHatTask = assetsManager.addMeshTask("hat task", "", "assets/", "hat.babylon");
-                    
-                    meshHatTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0,4,-20);};
-                    meshHatTask.onError = function (task, message, exception) {console.log(message, exception);};
-                    meshHatTask.parent=ball;
-
-                    */
         BABYLON.SceneLoader.ImportMesh("", "assets/", "hat.babylon", scene, function (newMeshes) {
                     hat = newMeshes[0];
                     hat.parent=ball;
@@ -465,7 +365,6 @@
                     tongue.material=new BABYLON.StandardMaterial("coin", scene);
                     tongue.material.diffuseColor = BABYLON.Color3.Red();
                     tongue.getScene().getMaterialByID("pony_tongue.Texture_0").diffuseColor=new BABYLON.Color3.Red();
-                    //tongue.getScene().getMaterialByID("coin").diffuseColor=new BABYLON.Color3.Red();
                     tongue.scaling=new BABYLON.Vector3(0.1, 0.1, 0.1);
                     tongue.rotation.x=Math.PI*1.5;
         });
@@ -482,7 +381,6 @@
     lefteye.position= new BABYLON.Vector3(-0.5,0.3,1);
     lefteye.rotation.x=Math.PI*0.5;
     lefteye.parent=ball;
-    //eye.position.y = -0.5;
     leftdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
     leftdisc.material=new BABYLON.StandardMaterial("coin", scene);
     leftdisc.material.diffuseColor = BABYLON.Color3.FromInts(0,0,0);
@@ -493,76 +391,15 @@
     righteye.position= new BABYLON.Vector3(0.5,0.3,1);
     righteye.rotation.x=Math.PI*0.5;
     righteye.parent=ball;
-    //eye.position.y = -0.5;
     rightdisc = BABYLON.MeshBuilder.CreateTorus("torus", {thickness: 0.08, tessellation:36, diameter:0.3}, scene);
     rightdisc.material=new BABYLON.StandardMaterial("coin", scene);
     rightdisc.material.diffuseColor = BABYLON.Color3.FromInts(0,0,0);
     rightdisc.parent=righteye;
     rightdisc.position.y=0.5;
 
-        /*
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "carrotbis.babylon", scene, function (newMeshes) {
-                    carrot = newMeshes[0];
-                    carrot.parent=ball;
-                    //carrot.position= new BABYLON.Vector3(0,2.5,-5);
-                    carrot.position= new BABYLON.Vector3(0,0.1,0.8);
-                    carrot.rotation.x=Math.PI*1.5;
-                    });
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "eye.babylon", scene, function (newMeshes) {
-                    lefteye = newMeshes[0];
-                    lefteye.parent=ball;
-                    //eyes.position= new BABYLON.Vector3(-0.5,1.8,-8);
-                    lefteye.position= new BABYLON.Vector3(-0.5,0.3,1);
-                    lefteye.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
-                    
-                    });
-        BABYLON.SceneLoader.ImportMesh("", "assets/", "eye.babylon", scene, function (newMeshes) {
-                    righteye = newMeshes[0];
-                    righteye.parent=ball;
-                    righteye.position= new BABYLON.Vector3(0.5,0.3,1);
-                    righteye.scaling = new BABYLON.Vector3(0.01, 0.01, 0.01);
-                    
-                    });
-        
-*/
+     
     			
-                    /*
-                    
-                    var leftEyeTask = assetsManager.addMeshTask("left eye", "", "assets/", "hordes-rock.babylon");
-                    
-                    leftEyeTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(-0.5,1.8,-18);};
-                    leftEyeTask.onError = function (task, message, exception) {console.log(message, exception);};
-                    leftEyeTask.parent=ball;
-
-                    var rightEyeTask = assetsManager.addMeshTask("right eye", "", "assets/", "hordes-rock.babylon");
-                    
-                    rightEyeTask.onSuccess = function (task) {task.loadedMeshes[0].position= new BABYLON.Vector3(0.5,1.8,-18);};
-                    rightEyeTask.onError = function (task, message, exception) {console.log(message, exception);};
-                    rightEyeTask.parent=ball;
-
-    				
-                    //var snowMan= BABYLON.Mesh.MergeMeshes([ball,meshCarrotTask,meshHatTask,leftEyeTask,rightEyeTask]);
-
-    				
-                    var rockTask = assetsManager.addMeshTask("rock task", "", "assets/", "rock.babylon");
-                    
-                    rockTask.onSuccess = function (task) {
-                        task.loadedMeshes[0].position= new BABYLON.Vector3(-3,0,-1);
-                    };
-                   
-                    rockTask.onError = function (task, message, exception) {
-                        console.log(message, exception);
-                    };
-
-                    
-                    */
-
-
-
-
-
-
-
+                  
                     var axisY= new BABYLON.Vector3(0,1,0);
                     var axisDx= new BABYLON.Vector3(1,-1,-1);
                     var axisSx= new BABYLON.Vector3(1,1,1);
@@ -598,18 +435,17 @@
                                         if(rocksArray[g].intersectsMesh(ball, false)){
                                                 console.log("collision");
                                                 ball.crash=true;
-                                                var deleted=rocksArray.splice(k,1);
+                                                //var deleted=rocksArray.splice(k,1);
                                         }
                                         if(rocksArray[g].position.z-ball.position.z<500){
-                                            /*if(rocksArray[g].position.x==-48){
+                                            if(rocksArray[g].position.x==-48){
                                                 rockMoveDx(rocksArray[g]);
                                             }
                                             else if(rocksArray[g].position.x==48){
                                                 rockMoveSx(rocksArray[g]);   
-                                            }*/
-                                            rockMove(rocksArray[g]);
+                                            }
+                                            //rockMove(rocksArray[g]);
                                         }
-                                    //coinsArray[k].rotate(axisY, angle, BABYLON.Space.LOCAL)
                                 }
 
                                 camera.position.z += ball.speed;
@@ -744,32 +580,34 @@
     
    //CODICE ROCCE
    
-   /* var rockMoveSx = function(r) {
+    var rockMoveSx = function(r) {
         r.position.x -= 1.2;
-        //console.log("ENTRATO IN ROCKMOVESX");
+        console.log(r.position.x);
+        console.log(r.position);
         r.position.z -= 1.2;
             /*if(r.position.x<=50){
                 scene.removeMesh(r);
             }*/
-/*    };
+    };
 
     var rockMoveDx = function(r) {
         r.position.x += 1.2;
-        //console.log("ENTRATO IN ROCKMOVEDX");
+        console.log(r.position.x);
+        console.log(r.position);
         r.position.z -= 1.2;
             /*if(r.position.x>=50){
                 scene.removeMesh(r);
             }*/
         
- //   };
-
+    };
+ /*
     var rockMove = function(r) {
         r.position.z -= 1.2;
         if(r.position.z<=20){
             scene.removeMesh(r);
         }
         
-    };
+    };*/
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
