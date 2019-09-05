@@ -174,7 +174,7 @@
                     //sphere.position =new BABYLON.Vector3(0,1.6,2);
                     ball = new SnowBall(scene,shadowGenerator);
                     // ROTATION AND SCALING
-                    ball.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+                    //ball.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
                     var angle=0.065;   
                     var axis = new BABYLON.Vector3(1,0,0);
 
@@ -183,6 +183,19 @@
                     var execution = new BABYLON.SwitchBooleanAction(clickTrigger, ball, "startball");
                     ball.actionManager.registerAction(execution);
                     
+
+
+                    var body = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:4}, scene);
+                    //body.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
+                    body.parent=ball;
+					body.position=new BABYLON.Vector3(0,-2,0);
+					body.material=image;
+
+					body.actionManager = new BABYLON.ActionManager(scene);
+					var clickTriggerBis = {trigger:BABYLON.ActionManager.OnPickTrigger, parameter: body};
+					var executionBis = new BABYLON.SwitchBooleanAction(clickTriggerBis, ball, "startball");
+					body.actionManager.registerAction(executionBis);
+
                    /* scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
                  });
@@ -197,7 +210,7 @@
                     else if(difficulty=="medium") {numberOfTrees=200; numberOfRocks=8;}
                     else if(difficulty=="hard") {numberOfTrees=250; numberOfRocks=9;}
                     else if(difficulty=="extreme") {numberOfTrees=300; numberOfRocks=10;}
-                    var tg = new TreeGenerator(scene, shadowGenerator, ball,numberOfTrees);   
+                    var tg = new TreeGenerator(scene, shadowGenerator, body,numberOfTrees);   
                     var numberOfCoins=15;             
                     var assetsManager = new BABYLON.AssetsManager(scene);
                     
@@ -414,22 +427,10 @@
 
                         if (!ball.crash && ball.startball) {
                             ball.move();
-                            /*for(var l=0;l<Rock_Array.size();l++){
-        
-                                    if(Rock_Array[l].loadedMeshes[0].position.z==ball.position.z-10){
-                                        var objRock=Rock_Array[l].loadedMeshes[0];
-                                        if(objRock.position.x==48) moveLeft(objRock);
-                                        else if(objRock.position.x==-48) moveRight(objRock);
-
-                                    }
-                                }
-
-
-                                */
-                                //NUOVO PEZZO CODICE
+                            
                                 for (var k=0; k<coinsArray.length; k++){
                                     
-                                    if(coinsArray[k].intersectsMesh(ball, false)){
+                                    if(coinsArray[k].intersectsMesh(body, false)){
                                             points+=100;
                                             textPoint.text="Points: "+points;
                                             coinsArray[k].dispose();
@@ -438,7 +439,7 @@
                                 }
 
                                 for (var g=0; g<rocksArray.length; g++){
-                                        if(rocksArray[g].intersectsMesh(ball, false)){
+                                        if(rocksArray[g].intersectsMesh(body, false)){
                                                 console.log("collision");
                                                 ball.crash=true;
                                                 //var deleted=rocksArray.splice(k,1);
@@ -457,8 +458,8 @@
                                 camera.position.z += ball.speed;
                                 ball.position.z += ball.speed;
                                 if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
-                                if(ball.diagDx){ ball.rotate(axisDx, angle, BABYLON.Space.LOCAL);  }
-                                if(!ball.diagDx){ ball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  }
+                                if(ball.diagDx){ body.rotate(axisDx, angle, BABYLON.Space.LOCAL);  }
+                                if(!ball.diagDx){ body.rotate(axisSx, angle, BABYLON.Space.LOCAL);  }
                                 if(ball.position.z >= 3010){ 
                                    ball.startball=false;
                                    Finish();

@@ -9,7 +9,7 @@
 var evt;
 SnowBall = function(scene,sd) {
     BABYLON.Mesh.call(this, "ball", scene);
-    var sphere = BABYLON.VertexData.CreateSphere({diameter:3}, scene);
+    var sphere = BABYLON.VertexData.CreateSphere({diameter:2}, scene);
     
     // Move the sphere upward 1/2 its height
     //sphere.position =new BABYLON.Vector3(0,1.6,2);
@@ -20,7 +20,7 @@ SnowBall = function(scene,sd) {
     this.sd=sd;
     sd.getShadowMap().renderList.push(this);
     this.position.x = 0;
-    this.position.y = 1;
+    this.position.y = 4.5;
     this.position.z = -20;
     this.crash = false;
     this.crashCoin=false;
@@ -97,23 +97,23 @@ SnowBall.prototype._initMovement = function() {
 
 SnowBall.prototype.move = function() {
     if (ball.moveRight) {
-        ball.position.x += 0.8;
-        camera.position.x += 0.8;
+        ball.position.x += 1;
+        camera.position.x += 1;
     }
     if (ball.moveLeft) {
-        ball.position.x += -0.8;
-        camera.position.x += -0.8;
+        ball.position.x += -1;
+        camera.position.x += -1;
     }
     if(ball.diagDx){
-        ball.position.x += 0.8;
-        camera.position.x += 0.8;
-        ball.position.z += 0.8;
-        camera.position.z += 0.8;
+        ball.position.x += 1;
+        camera.position.x += 1;
+        ball.position.z += 1;
+        camera.position.z += 1;
     }
     if(!ball.diagDx){
-        ball.position.x += -0.8;
-        camera.position.x += -0.8;
-        ball.position.z += 0.8;
-        camera.position.z += 0.8;
+        ball.position.x += -1;
+        camera.position.x += -1;
+        ball.position.z += 1;
+        camera.position.z += 1;
     }
 };
