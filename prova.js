@@ -587,20 +587,20 @@
    //CODICE ROCCE
    
     var rockMoveSx = function(r) {
-        r.position.x -= 1.2;
+        r.position.x -= 1;
         console.log(r.position.x);
         console.log(r.position);
-        r.position.z -= 1;
+        r.position.z -= 1.2;
             if(r.position.x<=-50){
                 r.dispose();
             }
     };
 
     var rockMoveDx = function(r) {
-        r.position.x += 1.2;
+        r.position.x += 1;
         console.log(r.position.x);
         console.log(r.position);
-        r.position.z -= 1;
+        r.position.z -= 1.2;
             if(r.position.x>=50){
                 r.dispose();
             }
