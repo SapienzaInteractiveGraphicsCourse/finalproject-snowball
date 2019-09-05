@@ -9,7 +9,7 @@
 var evt;
 SnowBall = function(scene,sd) {
     BABYLON.Mesh.call(this, "ball", scene);
-    var sphere = BABYLON.VertexData.CreateSphere({diameter:2}, scene);
+    var sphere = BABYLON.VertexData.CreateSphere({diameter:3}, scene);
     
     // Move the sphere upward 1/2 its height
     //sphere.position =new BABYLON.Vector3(0,1.6,2);
@@ -20,7 +20,7 @@ SnowBall = function(scene,sd) {
     this.sd=sd;
     sd.getShadowMap().renderList.push(this);
     this.position.x = 0;
-    this.position.y = 2.4;
+    this.position.y = 2.2;
     this.position.z = -20;
     this.crash = false;
     this.crashCoin=false;
