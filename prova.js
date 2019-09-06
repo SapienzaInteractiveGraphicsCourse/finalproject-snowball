@@ -25,6 +25,9 @@
     var fence;
     var tongue;
     var shadowGenerator;
+    var switched=false;
+    var switched2=false;
+    var switched3=false;
                 // createScene function that creates and return the scene
                 var createScene = function(){
                     canvas= document.getElementById('renderCanvas');
@@ -541,6 +544,8 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                     tongue.rotation.x=Math.PI*1.5;
         });
 
+        
+
     carrot = BABYLON.MeshBuilder.CreateCylinder("cone", {diameterBottom:0.014,diameterTop:0.6, height: 1.7, tessellation: 96}, scene);
     carrot.material=new BABYLON.StandardMaterial("coin", scene);
     carrot.parent=ball;
@@ -584,17 +589,24 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
 
                         if (!ball.crash && ball.startball) {
                             ball.move();
-                            armsx1.rotate(axisArmSx, angle, BABYLON.Space.LOCAL);
-                            if(armsx1.rotationQuaternion.x>=0.2){
-                                armsx1.rotate(axisArmDx, angle*2, BABYLON.Space.LOCAL);
-                                console.log(armsx1.rotationQuaternion.x);
+                            if(!switched){
+                                armsx1.rotate(axisArmSx, angle, BABYLON.Space.LOCAL);
+                                armdx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
+                                if(armsx1.rotationQuaternion.x>=0.4||armdx1.rotationQuaternion.x<=-0.15){
+                                    switched=true;
+                                }
+                                    /*armsx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
                                 if(armsx1.rotationQuaternion.x<=-0.38){
                                     armsx1.rotate(axisArmSx, angle*2, BABYLON.Space.LOCAL);
+                                }*/
+                            }
+                            if(switched){
+                                armsx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
+                                armdx1.rotate(axisArmSx, angle, BABYLON.Space.LOCAL);
+                                if(armsx1.rotationQuaternion.x<=-0.15||armdx1.rotationQuaternion.x>=0.4){
+                                    switched=false;
                                 }
                             }
-                            //console.log(armsx1.rotationQuaternion);
-                            armdx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
-                            //console.log(armdx1.rotationQuaternion);
                             
                                 for (var k=0; k<coinsArray.length; k++){
                                     
@@ -628,11 +640,35 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                 if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
                                 if(ball.diagDx){ 
                                     lowestball.rotate(axisDx, angle, BABYLON.Space.LOCAL); 
-                                    //ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL); 
+                                    if(!switched2){
+                                        ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
+                                        console.log(ball.rotationQuaternion.y);
+                                        if(ball.rotationQuaternion.y>=0.7){
+                                            switched2=true;
+                                        }
+                                    }
+                                    if(switched){
+                                        ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
+                                        if(ball.rotationQuaternion.y<=0){
+                                            switched2=false;
+                                        }
+                                    } 
                                 }
                                 if(!ball.diagDx){ 
                                     lowestball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  
-                                    //ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL); 
+                                    if(!switched3){
+                                        ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
+                                        console.log(ball.rotationQuaternion.y);
+                                        if(ball.rotationQuaternion.y<=-0.7){
+                                            switched3=true;
+                                        }
+                                    }
+                                    if(switched3){
+                                        ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
+                                        if(ball.rotationQuaternion.y>=0){
+                                            switched3=false;
+                                        }
+                                    } 
                                 }
                                 if(ball.position.z >= 3010){ 
                                    ball.startball=false;
