@@ -185,16 +185,169 @@
                     
 
 
-                    var body = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:4}, scene);
+                    var body = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:3.5}, scene);
                     //body.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
                     body.parent=ball;
-					body.position=new BABYLON.Vector3(0,-2.7,0);
-					body.material=image;
+					body.position=new BABYLON.Vector3(0,-2.5,0);
 					shadowGenerator.getShadowMap().renderList.push(body);
 					body.actionManager = new BABYLON.ActionManager(scene);
 					var clickTriggerBis = {trigger:BABYLON.ActionManager.OnPickTrigger, parameter: body};
 					var executionBis = new BABYLON.SwitchBooleanAction(clickTriggerBis, ball, "startball");
 					body.actionManager.registerAction(executionBis);
+
+                    
+
+                    var lowestball = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:4}, scene);
+                    lowestball.parent=ball;
+                    lowestball.position=new BABYLON.Vector3(0,-5.4,0);
+                    lowestball.material=image;
+                    shadowGenerator.getShadowMap().renderList.push(lowestball);
+                    lowestball.actionManager = new BABYLON.ActionManager(scene);
+                    var clickTriggerTris = {trigger:BABYLON.ActionManager.OnPickTrigger, parameter: lowestball};
+                    var executionTris = new BABYLON.SwitchBooleanAction(clickTriggerTris, ball, "startball");
+                    lowestball.actionManager.registerAction(executionTris);
+
+
+                    var armsx1 = BABYLON.MeshBuilder.CreateBox("", {height: 0.5, width: 0.05, depth: 0.05, updatable: true});
+   armsx1.material=new BABYLON.StandardMaterial("coin", scene);
+   armsx1.position=new BABYLON.Vector3(-1.85,0.5,0);
+   armsx1.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+   armsx1.parent=body;
+   armsx1.rotation.z=Math.PI*0.75;
+   armsx1.scaling = new BABYLON.Vector3(3.0,3.0,3.0);
+
+var armsx2 = BABYLON.MeshBuilder.CreateBox("", {height: 0.4, width: 0.05, depth: 0.05, updatable: true});
+   armsx2.material=new BABYLON.StandardMaterial("coin", scene);
+   armsx2.parent=armsx1;
+   armsx2.position=new BABYLON.Vector3(-0.08,0.4,0);
+   armsx2.rotation.z=Math.PI*0.15;
+   armsx2.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+var fingersx1 = BABYLON.MeshBuilder.CreateBox("", {height: 0.1, width: 0.02, depth: 0.02, updatable: true});
+   fingersx1.material=new BABYLON.StandardMaterial("coin", scene);
+   fingersx1.parent=armsx2;
+   fingersx1.position=new BABYLON.Vector3(0.04,0.23,0.02);
+   fingersx1.rotation.z=Math.PI*-0.15;
+   fingersx1.rotation.x=Math.PI*0.1;
+   fingersx1.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+   
+var fingersx2 = BABYLON.MeshBuilder.CreateBox("", {height: 0.13, width: 0.02, depth: 0.02, updatable: true});
+   fingersx2.material=new BABYLON.StandardMaterial("coin", scene);
+   fingersx2.parent=armsx2;
+   fingersx2.position=new BABYLON.Vector3(0.015,0.25,0.03);
+   fingersx2.rotation.z=Math.PI*-0.1;
+   fingersx2.rotation.x=Math.PI*0.1;
+   fingersx2.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+   
+var fingersx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.13, width: 0.02, depth: 0.02, updatable: true});
+   fingersx3.material=new BABYLON.StandardMaterial("coin", scene);
+   fingersx3.parent=armsx2;
+   fingersx3.position=new BABYLON.Vector3(-0.022,0.25,0.03);
+   fingersx3.rotation.z=Math.PI*0.03;
+   fingersx3.rotation.x=Math.PI*0.1;
+   fingersx3.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+   
+var fingersx4 = BABYLON.MeshBuilder.CreateBox("", {height: 0.1, width: 0.02, depth: 0.02, updatable: true});
+   fingersx4.material=new BABYLON.StandardMaterial("coin", scene);
+   fingersx4.parent=armsx2;
+   fingersx4.position=new BABYLON.Vector3(-0.04,0.21,0.015);
+   fingersx4.rotation.z=Math.PI*0.25;
+   fingersx4.rotation.x=Math.PI*0.1;
+   fingersx4.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+
+var fingerbissx1 = BABYLON.MeshBuilder.CreateBox("", {height: 0.05, width: 0.015, depth: 0.015, updatable: true}); 
+    fingerbissx1.material=new BABYLON.StandardMaterial("coin", scene);
+    fingerbissx1.parent=fingersx1;
+    fingerbissx1.position=new BABYLON.Vector3(0,0.053,-0.014);
+    fingerbissx1.rotation.x=Math.PI*-0.3;
+    fingerbissx1.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+var fingerbissx2 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015, depth: 0.015, updatable: true}); 
+    fingerbissx2.material=new BABYLON.StandardMaterial("coin", scene);
+    fingerbissx2.parent=fingersx2;
+    fingerbissx2.position=new BABYLON.Vector3(0,0.08,-0.017);
+    fingerbissx2.rotation.x=Math.PI*-0.3;
+    fingerbissx2.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+var fingerbissx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015, depth: 0.015, updatable: true}); 
+    fingerbissx3.material=new BABYLON.StandardMaterial("coin", scene);
+    fingerbissx3.parent=fingersx3;
+    fingerbissx3.position=new BABYLON.Vector3(0,0.08,-0.017);
+    fingerbissx3.rotation.x=Math.PI*-0.3;
+    fingerbissx3.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+var armdx1 = BABYLON.MeshBuilder.CreateBox("", {height: 0.5, width: 0.05, depth: 0.05, updatable: true});
+   armdx1.material=new BABYLON.StandardMaterial("coin", scene);
+   armdx1.position=new BABYLON.Vector3(1.85,0.5,0);
+   armdx1.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+   armdx1.parent=body;
+   armdx1.rotation.z=-Math.PI*0.75;
+   armdx1.scaling = new BABYLON.Vector3(3.0,3.0,3.0);
+var armdx2 = BABYLON.MeshBuilder.CreateBox("", {height: 0.4, width: 0.05, depth: 0.05, updatable: true});
+   armdx2.material=new BABYLON.StandardMaterial("coin", scene);
+   armdx2.parent=armdx1;
+   armdx2.position=new BABYLON.Vector3(0.08,0.4,0);
+   armdx2.rotation.z=Math.PI*-0.15;
+   armdx2.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+var fingerdx1 = BABYLON.MeshBuilder.CreateBox("", {height: 0.1, width: 0.02, depth: 0.02, updatable: true});
+   fingerdx1.material=new BABYLON.StandardMaterial("coin", scene);
+   fingerdx1.parent=armdx2;
+   fingerdx1.position=new BABYLON.Vector3(-0.04,0.23,0.015);
+   fingerdx1.rotation.z=Math.PI*0.15;
+   fingerdx1.rotation.x=Math.PI*0.1;
+   fingerdx1.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+   
+var fingerdx2 = BABYLON.MeshBuilder.CreateBox("", {height: 0.13, width: 0.02, depth: 0.02, updatable: true});
+   fingerdx2.material=new BABYLON.StandardMaterial("coin", scene);
+   fingerdx2.parent=armdx2;
+   fingerdx2.position=new BABYLON.Vector3(-0.022,0.25,0.03);
+   fingerdx2.rotation.z=Math.PI*0.1;
+   fingerdx2.rotation.x=Math.PI*0.1;
+   fingerdx2.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+   
+var fingerdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.13, width: 0.02, depth: 0.02, updatable: true});
+   fingerdx3.material=new BABYLON.StandardMaterial("coin", scene);
+   fingerdx3.parent=armdx2;
+   fingerdx3.position=new BABYLON.Vector3(0.015,0.25,0.03);
+   
+   fingerdx3.rotation.z=Math.PI*-0.03;
+   fingerdx3.rotation.x=Math.PI*0.1;
+   fingerdx3.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+   
+var fingerdx4 = BABYLON.MeshBuilder.CreateBox("", {height: 0.1, width: 0.02, depth: 0.02, updatable: true});
+   fingerdx4.material=new BABYLON.StandardMaterial("coin", scene);
+   fingerdx4.parent=armdx2;
+   fingerdx4.position=new BABYLON.Vector3(0.04,0.21,0.02);
+   fingerdx4.rotation.z=Math.PI*-0.25;
+   fingerdx4.rotation.x=Math.PI*0.1;
+   fingerdx4.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+
+var fingerbisdx1 = BABYLON.MeshBuilder.CreateBox("", {height: 0.05, width: 0.015, depth: 0.015, updatable: true}); 
+    fingerbisdx1.material=new BABYLON.StandardMaterial("coin", scene);
+    fingerbisdx1.parent=fingerdx1;
+    fingerbisdx1.position=new BABYLON.Vector3(0,0.053,-0.014);
+    fingerbisdx1.rotation.x=Math.PI*-0.3;
+    fingerbisdx1.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+var fingerbisdx2 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015, depth: 0.015, updatable: true}); 
+    fingerbisdx2.material=new BABYLON.StandardMaterial("coin", scene);
+    fingerbisdx2.parent=fingerdx2;
+    fingerbisdx2.position=new BABYLON.Vector3(0,0.08,-0.017);
+    fingerbisdx2.rotation.x=Math.PI*-0.3;
+    fingerbisdx2.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015, depth: 0.015, updatable: true}); 
+    fingerbisdx3.material=new BABYLON.StandardMaterial("coin", scene);
+    fingerbisdx3.parent=fingerdx3;
+    fingerbisdx3.position=new BABYLON.Vector3(0,0.08,-0.017);
+    fingerbisdx3.rotation.x=Math.PI*-0.3;
+    fingerbisdx3.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
+
+    
+
 
                    /* scene.registerAfterRender(function() {
                      ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
@@ -306,20 +459,20 @@
             var booleanaRoccia; 
             var randomX=Math.random();
             randomX=randomX*1000;
-            console.log("randomX: ", randomX);
+            //console.log("randomX: ", randomX);
             if(randomX>=500){
                 positionX = 48;
                 booleanaRoccia=false;
-                console.log("Roccia a destra");
+                //console.log("Roccia a destra");
             }
             else if (randomX<500){
                 positionX = -48;
                 booleanaRoccia=true;
-                console.log("Roccia a sinistra");
+                //console.log("Roccia a sinistra");
             }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
-            console.log("posX: ",positionX);
-            console.log("rock posX: ",rock.position.x);
+            //console.log("posX: ",positionX);
+            //console.log("rock posX: ",rock.position.x);
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
             rock.actionManager=new BABYLON.ActionManager(scene);
             shadowGenerator.getShadowMap().renderList.push(rock);      
@@ -422,11 +575,26 @@
                     var axisY= new BABYLON.Vector3(0,1,0);
                     var axisDx= new BABYLON.Vector3(1,-1,-1);
                     var axisSx= new BABYLON.Vector3(1,1,1);
+                    var axisArmSx= new BABYLON.Vector3(1,0,0);
+                    var axisArmDx= new BABYLON.Vector3(-1,0,0);
+                    var axisBallDx= new BABYLON.Vector3(0,1,0);
+                    var axisBallSx= new BABYLON.Vector3(0,-1,0);
                     var explosion=false;
                     engine.runRenderLoop(function(){
 
                         if (!ball.crash && ball.startball) {
                             ball.move();
+                            armsx1.rotate(axisArmSx, angle, BABYLON.Space.LOCAL);
+                            if(armsx1.rotationQuaternion.x>=0.2){
+                                armsx1.rotate(axisArmDx, angle*2, BABYLON.Space.LOCAL);
+                                console.log(armsx1.rotationQuaternion.x);
+                                if(armsx1.rotationQuaternion.x<=-0.38){
+                                    armsx1.rotate(axisArmSx, angle*2, BABYLON.Space.LOCAL);
+                                }
+                            }
+                            //console.log(armsx1.rotationQuaternion);
+                            armdx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
+                            //console.log(armdx1.rotationQuaternion);
                             
                                 for (var k=0; k<coinsArray.length; k++){
                                     
@@ -440,7 +608,7 @@
 
                                 for (var g=0; g<rocksArray.length; g++){
                                         if(rocksArray[g].intersectsMesh(body, false)){
-                                                console.log("collision");
+                                                //console.log("collision");
                                                 ball.crash=true;
                                                 //var deleted=rocksArray.splice(k,1);
                                         }
@@ -458,8 +626,14 @@
                                 camera.position.z += ball.speed;
                                 ball.position.z += ball.speed;
                                 if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
-                                if(ball.diagDx){ body.rotate(axisDx, angle, BABYLON.Space.LOCAL);  }
-                                if(!ball.diagDx){ body.rotate(axisSx, angle, BABYLON.Space.LOCAL);  }
+                                if(ball.diagDx){ 
+                                    lowestball.rotate(axisDx, angle, BABYLON.Space.LOCAL); 
+                                    //ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL); 
+                                }
+                                if(!ball.diagDx){ 
+                                    lowestball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  
+                                    //ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL); 
+                                }
                                 if(ball.position.z >= 3010){ 
                                    ball.startball=false;
                                    Finish();
@@ -559,7 +733,7 @@
            function Finish(){
             points+=3000;
             textPoint.text="Points: "+points;
-            console.log(points);
+            //console.log(points);
 
             $("#finishing").dialog({
                 dialogClass: "no-close",
@@ -589,8 +763,8 @@
    
     var rockMoveSx = function(r) {
         r.position.x -= 0.4;
-        console.log(r.position.x);
-        console.log(r.position);
+        //console.log(r.position.x);
+        //console.log(r.position);
         r.position.z += 0.6;
             if(r.position.x<=-50){
                 r.dispose();
@@ -599,8 +773,8 @@
 
     var rockMoveDx = function(r) {
         r.position.x += 0.4;
-        console.log(r.position.x);
-        console.log(r.position);
+        //console.log(r.position.x);
+        //console.log(r.position);
         r.position.z += 0.6;
             if(r.position.x>=50){
                 r.dispose();
