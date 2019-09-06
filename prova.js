@@ -649,7 +649,7 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                     }
                                     if(switched){
                                         ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
-                                        if(ball.rotationQuaternion.y<=0){
+                                        if(ball.rotationQuaternion.y<=-0.3){
                                             switched2=false;
                                         }
                                     } 
@@ -665,7 +665,7 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                     }
                                     if(switched3){
                                         ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
-                                        if(ball.rotationQuaternion.y>=0){
+                                        if(ball.rotationQuaternion.y>=0.3){
                                             switched3=false;
                                         }
                                     } 
