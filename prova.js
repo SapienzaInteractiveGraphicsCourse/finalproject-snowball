@@ -642,10 +642,10 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                 if(ball.diagDx){ 
                                     lowestball.rotate(axisDx, angle, BABYLON.Space.LOCAL); 
                                     if(!switched2){
-                                        //ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
+                                        ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
                                         console.log(ball.rotationQuaternion.y);
                                         if(ball.rotationQuaternion.y>=0.7){
-                                            ball.rotate(axisBallDx, 0, BABYLON.Space.LOCAL);
+                                            //ball.rotate(axisBallDx, 0, BABYLON.Space.LOCAL);
                                             switched2=true;
                                             switched3=false;
                                         }
@@ -655,10 +655,10 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                 if(!ball.diagDx){ 
                                     lowestball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  
                                     if(!switched3){
-                                        //ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
+                                        ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
                                         console.log(ball.rotationQuaternion.y);
                                         if(ball.rotationQuaternion.y<=-0.7){
-                                            ball.rotate(axisBallSx, 0, BABYLON.Space.LOCAL);
+                                            //ball.rotate(axisBallSx, 0, BABYLON.Space.LOCAL);
                                             switched3=true;
                                             switched2=false;
                                         }
