@@ -159,7 +159,8 @@
                     var image = new BABYLON.StandardMaterial('groundimage', scene);
                     var texture = new BABYLON.Texture('https://thumbs.dreamstime.com/t/groomed-snow-ski-slope-close-up-groomed-snow-ski-resort-slope-banner-background-texture-125764946.jpg', scene);
                     image.diffuseTexture = texture;
-
+                    var bodyTex= new BABYLON.StandardMaterial("tex", scene);
+                    var texture2= new BABYLON.Texture('https://previews.123rf.com/images/ruslan/ruslan1704/ruslan170400207/76134309-spring-dirty-snow.jpg');
                     var ground = BABYLON.Mesh.CreateGround("ground", 100, 30000, 1, scene);
                     ground.material =image;
                     //ground.material.diffuseColor = BABYLON.Color3.FromInts(255, 255, 255);
@@ -203,7 +204,7 @@
                     var lowestball = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:4}, scene);
                     lowestball.parent=ball;
                     lowestball.position=new BABYLON.Vector3(0,-5.4,0);
-                    lowestball.material=image;
+                    lowestball.material=bodyTex;
                     shadowGenerator.getShadowMap().renderList.push(lowestball);
                     lowestball.actionManager = new BABYLON.ActionManager(scene);
                     var clickTriggerTris = {trigger:BABYLON.ActionManager.OnPickTrigger, parameter: lowestball};
@@ -641,34 +642,28 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                 if(ball.diagDx){ 
                                     lowestball.rotate(axisDx, angle, BABYLON.Space.LOCAL); 
                                     if(!switched2){
-                                        ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
+                                        //ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
                                         console.log(ball.rotationQuaternion.y);
                                         if(ball.rotationQuaternion.y>=0.7){
+                                            ball.rotate(axisBallDx, 0, BABYLON.Space.LOCAL);
                                             switched2=true;
+                                            switched3=false;
                                         }
                                     }
-                                    if(switched){
-                                        ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
-                                        if(ball.rotationQuaternion.y<=-0.3){
-                                            switched2=false;
-                                        }
-                                    } 
+                                    
                                 }
                                 if(!ball.diagDx){ 
                                     lowestball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  
                                     if(!switched3){
-                                        ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
+                                        //ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
                                         console.log(ball.rotationQuaternion.y);
                                         if(ball.rotationQuaternion.y<=-0.7){
+                                            ball.rotate(axisBallSx, 0, BABYLON.Space.LOCAL);
                                             switched3=true;
+                                            switched2=false;
                                         }
                                     }
-                                    if(switched3){
-                                        ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
-                                        if(ball.rotationQuaternion.y>=0.3){
-                                            switched3=false;
-                                        }
-                                    } 
+                                     
                                 }
                                 if(ball.position.z >= 3010){ 
                                    ball.startball=false;
