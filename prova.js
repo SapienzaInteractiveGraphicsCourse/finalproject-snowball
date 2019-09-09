@@ -70,7 +70,7 @@
                     var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
                     skybox.infiniteDistance=true;
                     skyboxMaterial.backFaceCulling = false;
-                    skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("https://www.babylonjs-playground.com/textures/skybox", scene);
+                    skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("https://www.babylonjs-playground.com/textures/skybox4", scene);
                     skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
                     skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
                     skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
