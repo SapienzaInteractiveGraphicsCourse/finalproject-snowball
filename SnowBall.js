@@ -7,9 +7,12 @@
  */
 
 var evt;
+var frameSx=1;
+var frameDx=1;
 SnowBall = function(scene,sd) {
     BABYLON.Mesh.call(this, "ball", scene);
     var sphere = BABYLON.VertexData.CreateSphere({diameter:3}, scene);
+    this.anim=false;
     
     // Move the sphere upward 1/2 its height
     //sphere.position =new BABYLON.Vector3(0,1.6,2);
@@ -46,9 +49,11 @@ SnowBall.prototype._initMovement = function() {
         if(kbInfo.event.key==" "){
             if(ball.diagDx){
                             ball.diagDx=false;
+                            ball.anim=true;
                         }
                         else{
                             ball.diagDx=true;
+                            ball.anim=true;
                         }
                     
         }
@@ -94,26 +99,228 @@ SnowBall.prototype._initMovement = function() {
                      handler: onKeyUp
                      }]);*/
             };
+SnowBall.prototype.moveAnimationSx = function(x,z) {
+    frameDx=1;
+    if(frameSx==1){
+        console.log("fs: "+frameSx);
+        ball.position.x+=0.4;
+        ball.position.z+=0.3;
+        camera.position.x+=0.4;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==2){
+        console.log("fs: "+frameSx);
+        ball.position.x+=0.4;
+        ball.position.z+=0.3;
+        camera.position.x+=0.4;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==3){
+        console.log("fs: "+frameSx);
+        ball.position.x+=0.3;
+        ball.position.z+=0.3;
+        camera.position.x+=0.3;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==4){
+        console.log("fs: "+frameSx);
+        ball.position.x+=0.3;
+        ball.position.z+=0.3;
+        camera.position.x+=0.3;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==5){
+        console.log("fs: "+frameSx);
+        ball.position.x+=0;
+        ball.position.z+=0.3;
+        camera.position.x+=0;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==6){
+        console.log("fs: "+frameSx);
+        ball.position.x+=0;
+        ball.position.z+=0.3;
+        camera.position.x+=0;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==7){
+        console.log("fs: "+frameSx);
+        ball.position.x-=0;
+        ball.position.z+=0.3;
+        camera.position.x-=0;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==8){
+        console.log("fs: "+frameSx);
+        ball.position.x-=0;
+        ball.position.z+=0.3;
+        camera.position.x-=0;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==9){
+        console.log("fs: "+frameSx);
+        ball.position.x-=0.3;
+        ball.position.z+=0.3;
+        camera.position.x-=0.3;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==10){
+        console.log("fs: "+frameSx);
+        ball.position.x-=0.3;
+        ball.position.z+=0.3;
+        camera.position.x-=0.3;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==11){
+        console.log("fs: "+frameSx);
+        ball.position.x-=0.4;
+        ball.position.z+=0.3;
+        camera.position.x-=0.4;
+        camera.position.z+=0.3;
+        frameSx+=1;
+    }
+    else if(frameSx==12){
+        console.log("fs: "+frameSx);
+        ball.position.x-=0.4;
+        ball.position.z+=0.3;
+        camera.position.x-=0.4;
+        camera.position.z+=0.3;
+        frameSx=1;
+        ball.anim=false;
+    }
 
+    
+};
+SnowBall.prototype.moveAnimationDx = function(x,z) {
+    frameSx=1;
+    if(frameDx==1){
+        console.log("fd: "+frameDx);
+        ball.position.x-=0.4;
+        ball.position.z+=0.3;
+        camera.position.x-=0.4;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==2){
+        console.log("fd: "+frameDx);
+        ball.position.x-=0.4;
+        ball.position.z+=0.3;
+        camera.position.x-=0.4;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==3){
+        console.log("fd: "+frameDx);
+        ball.position.x-=0.3;
+        ball.position.z+=0.3;
+        camera.position.x-=0.3;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==4){
+        console.log("fd: "+frameDx);
+        ball.position.x-=0.3;
+        ball.position.z+=0.3;
+        camera.position.x-=0.3;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==5){
+        console.log("fd: "+frameDx);
+        ball.position.x-=0;
+        ball.position.z+=0.3;
+        camera.position.x-=0;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==6){
+        console.log("fd: "+frameDx);
+        ball.position.x-=0;
+        ball.position.z+=0.3;
+        camera.position.x-=0;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==7){
+        console.log("fd: "+frameDx);
+        ball.position.x+=0;
+        ball.position.z+=0.3;
+        camera.position.x+=0;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==8){
+        console.log("fd: "+frameDx);
+        ball.position.x+=0;
+        ball.position.z+=0.3;
+        camera.position.x+=0;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==9){
+        console.log("fd: "+frameDx);
+        ball.position.x+=0.3;
+        ball.position.z+=0.3;
+        camera.position.x+=0.3;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==10){
+        console.log("fd: "+frameDx);
+        ball.position.x+=0.3;
+        ball.position.z+=0.3;
+        camera.position.x+=0.3;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+    else if(frameDx==11){
+        console.log("fd: "+frameDx);
+        ball.position.x+=0.4;
+        ball.position.z+=0.3;
+        camera.position.x+=0.4;
+        camera.position.z+=0.3;
+        frameDx+=1;
+    }
+     else if(frameDx==12){
+        console.log("fd: "+frameDx);
+        ball.position.x+=0.4;
+        ball.position.z+=0.3;
+        camera.position.x+=0.4;
+        camera.position.z+=0.3;
+        frameDx=1;
+        ball.anim=false;
+    }
+};
 SnowBall.prototype.move = function() {
+    var s=1;
     if (ball.moveRight) {
-        ball.position.x += 1;
-        camera.position.x += 1;
+        ball.position.x += s;
+        camera.position.x += s;
     }
     if (ball.moveLeft) {
-        ball.position.x += -1;
-        camera.position.x += -1;
+        ball.position.x += -s;
+        camera.position.x += -s;
     }
     if(ball.diagDx){
-        ball.position.x += 1;
-        camera.position.x += 1;
-        ball.position.z += 1;
-        camera.position.z += 1;
+        ball.position.x += s;
+        camera.position.x += s;
+        ball.position.z += s;
+        camera.position.z += s;
     }
     if(!ball.diagDx){
-        ball.position.x += -1;
-        camera.position.x += -1;
-        ball.position.z += 1;
-        camera.position.z += 1;
+        ball.position.x += -s;
+        camera.position.x += -s;
+        ball.position.z += s;
+        camera.position.z += s;
     }
 };

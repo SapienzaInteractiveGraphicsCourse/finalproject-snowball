@@ -135,7 +135,7 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-    camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-30), scene);
+    camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-35), scene);
 
 
     camera.setTarget(new BABYLON.Vector3(0,0,20));
@@ -586,10 +586,11 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                     var axisBallDx= new BABYLON.Vector3(0,1,0);
                     var axisBallSx= new BABYLON.Vector3(0,-1,0);
                     var explosion=false;
+                    var xBall, zBall;
                     engine.runRenderLoop(function(){
 
                         if (!ball.crash && ball.startball) {
-                            ball.move();
+                            //ball.move();
                             if(!switched){
                                 armsx1.rotate(axisArmSx, angle, BABYLON.Space.LOCAL);
                                 armdx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
@@ -640,10 +641,18 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                 ball.position.z += ball.speed;
                                 if(ball.position.x<=-50 || ball.position.x>=50){ball.crash=true;}
                                 if(ball.diagDx){ 
+                                  if(!ball.anim){
+                                    ball.move();
+                                  }
+                                    else{
+                                      zBall=ball.position.z;
+                                      xBall=ball.position.x;
+                                      ball.moveAnimationSx(xBall,zBall);
+                                    }
                                     lowestball.rotate(axisDx, angle, BABYLON.Space.LOCAL); 
                                     if(!switched2){
                                         ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
-                                        console.log(ball.rotationQuaternion.y);
+                                        console.log("DX    "+ball.rotationQuaternion.y);
                                         if(ball.rotationQuaternion.y>=0.7){
                                             //ball.rotate(axisBallDx, 0, BABYLON.Space.LOCAL);
                                             switched2=true;
@@ -653,10 +662,18 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                     
                                 }
                                 if(!ball.diagDx){ 
+                                  if(!ball.anim){
+                                    ball.move();
+                                  }
+                                    else{
+                                      zBall=ball.position.z;
+                                      xBall=ball.position.x;
+                                      ball.moveAnimationDx(xBall,zBall);
+                                    }
                                     lowestball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  
                                     if(!switched3){
                                         ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
-                                        console.log(ball.rotationQuaternion.y);
+                                        console.log("SX    "+ball.rotationQuaternion.y);
                                         if(ball.rotationQuaternion.y<=-0.7){
                                             //ball.rotate(axisBallSx, 0, BABYLON.Space.LOCAL);
                                             switched3=true;
