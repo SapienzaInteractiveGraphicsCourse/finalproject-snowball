@@ -546,7 +546,6 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                     tongue.rotation.x=Math.PI*1.5;
         });
 
-        
 
     carrot = BABYLON.MeshBuilder.CreateCylinder("cone", {diameterBottom:0.014,diameterTop:0.6, height: 1.7, tessellation: 96}, scene);
     carrot.material=new BABYLON.StandardMaterial("coin", scene);
@@ -795,12 +794,34 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
    
     var rockMoveSx = function(r) {
         r.position.x -= 0.4;
-        //console.log(r.position.x);
-        //console.log(r.position);
         r.position.z += 0.6;
             if(r.position.x<=-50){
                 r.dispose();
             }
+        if (r.position.y==1.3){
+            r.position.y=1.45;
+        }
+         else if (r.position.y==1.45){
+            r.position.y=1.7;
+        }
+        else if (r.position.y==1.7){
+            r.position.y=1.9;
+        }
+        else if (r.position.y==1.9){
+            r.position.y=2.1;
+        }
+        else if (r.position.y==2.1){
+            r.position.y=1.95;
+        }
+        else if (r.position.y==1.95){
+            r.position.y=1.75;
+        }
+        else if (r.position.y==1.75){
+          r.position.y=1.5;
+        }
+        else if (r.position.y==1.5){
+          r.position.y=1.3;
+        }
     };
 
     var rockMoveDx = function(r) {
@@ -811,6 +832,30 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
             if(r.position.x>=50){
                 r.dispose();
             }
+        if (r.position.y==1.3){
+            r.position.y=1.45;
+        }
+        else if (r.position.y==1.45){
+            r.position.y=1.7;
+        }
+        else if (r.position.y==1.7){
+            r.position.y=1.9;
+        }
+        else if (r.position.y==1.9){
+            r.position.y=2.1;
+        }
+        else if (r.position.y==2.1){
+            r.position.y=1.95;
+        }
+        else if (r.position.y==1.95){
+            r.position.y=1.75;
+        }
+        else if (r.position.y==1.75){
+          r.position.y=1.5;
+        }
+        else if (r.position.y==1.5){
+          r.position.y=1.3;
+        }
         
     };
  /*
