@@ -160,7 +160,8 @@
                     var texture = new BABYLON.Texture('https://thumbs.dreamstime.com/t/groomed-snow-ski-slope-close-up-groomed-snow-ski-resort-slope-banner-background-texture-125764946.jpg', scene);
                     image.diffuseTexture = texture;
                     var bodyTex= new BABYLON.StandardMaterial("tex", scene);
-                    var texture2= new BABYLON.Texture('https://previews.123rf.com/images/ruslan/ruslan1704/ruslan170400207/76134309-spring-dirty-snow.jpg');
+                    var texture2= new BABYLON.Texture('https://3.bp.blogspot.com/-4AaauF44vWk/Urkthm2SJDI/AAAAAAAACQk/qJPYt0sPNbU/s1600/dirty+snow+cake.jpg');
+                    bodyTex.diffuseTexture=texture2;
                     var ground = BABYLON.Mesh.CreateGround("ground", 100, 30000, 1, scene);
                     ground.material =image;
                     //ground.material.diffuseColor = BABYLON.Color3.FromInts(255, 255, 255);
