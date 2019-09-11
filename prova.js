@@ -133,54 +133,7 @@
 
         // Start the particle system
         particleSystem.start();
-        ///////////////////////////////////////////////////////////
-        //PARTICLE SYSTEM SNOWMAN
-        var particleSystem3 = new BABYLON.ParticleSystem("particles", 2000, scene);
-
-    //Texture of each particle
-    particleSystem3.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/flare.png", scene);
-
-    // Where the particles come from
-    
-    particleSystem3.minEmitBox = new BABYLON.Vector3(-2, 0, 0); // Starting all from
-    particleSystem3.maxEmitBox = new BABYLON.Vector3(2, 0, 0); // To...
-
-    // Colors of all particles
-    particleSystem3.color1 = new BABYLON.Color4(0.7, 0.8, 1.0, 1.0);
-    particleSystem3.color2 = new BABYLON.Color4(0.2, 0.5, 1.0, 1.0);
-    particleSystem3.colorDead = new BABYLON.Color4(0, 0, 0.2, 0.0);
-
-    // Size of each particle (random between...
-    particleSystem3.minSize = 0.1;
-    particleSystem3.maxSize = 0.5;
-
-    // Life time of each particle (random between...
-    particleSystem3.minLifeTime = 0.3;
-    particleSystem3.maxLifeTime = 1.5;
-
-    // Emission rate
-    particleSystem3.emitRate = 1000;
-
-    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
-    particleSystem3.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
-
-    // Set the gravity of all particles
-    particleSystem3.gravity = new BABYLON.Vector3(0, -9.81, 0);
-
-    // Direction of each particle after it has been emitted
-    particleSystem3.direction1 = new BABYLON.Vector3(0, -2, 0);
-
-    // Angular speed, in radians
-    particleSystem3.minAngularSpeed = 0;
-    particleSystem3.maxAngularSpeed = Math.PI;
-
-    // Speed
-    particleSystem3.minEmitPower = 1;
-    particleSystem3.maxEmitPower = 3;
-    particleSystem3.updateSpeed = 0.005;
-
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
 
 
     camera = new BABYLON.FreeCamera('camera1', new BABYLON.Vector3(0, 5,-35), scene);
@@ -252,6 +205,8 @@
                     var clickTriggerTris = {trigger:BABYLON.ActionManager.OnPickTrigger, parameter: lowestball};
                     var executionTris = new BABYLON.SwitchBooleanAction(clickTriggerTris, ball, "startball");
                     lowestball.actionManager.registerAction(executionTris);
+
+
 
 
                     var armsx1 = BABYLON.MeshBuilder.CreateBox("", {height: 0.5, width: 0.05, depth: 0.05, updatable: true});
@@ -612,8 +567,56 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                     engine.runRenderLoop(function(){
 
                         if (!ball.crash && ball.startball) {
-                          particleSystem3.emitter = new BABYLON.Vector3(lowestball.position.x, lowestball.position.y, lowestball.position.z-1);
-                          particleSystem3.start();
+                          ///////////////////////////////////////////////////////////
+        //PARTICLE SYSTEM SNOWMAN
+        var particleSystem3 = new BABYLON.ParticleSystem("particles", 2000, scene);
+
+    //Texture of each particle
+    particleSystem3.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/flare.png", scene);
+
+    // Where the particles come from
+    
+    particleSystem3.minEmitBox = new BABYLON.Vector3(-2, 0, 0); // Starting all from
+    particleSystem3.maxEmitBox = new BABYLON.Vector3(2, 0, 0); // To...
+
+    // Colors of all particles
+    particleSystem3.color1 = new BABYLON.Color4(0.7, 0.8, 1.0, 1.0);
+    particleSystem3.color2 = new BABYLON.Color4(0.2, 0.5, 1.0, 1.0);
+    particleSystem3.colorDead = new BABYLON.Color4(0, 0, 0.2, 0.0);
+
+    // Size of each particle (random between...
+    particleSystem3.minSize = 0.1;
+    particleSystem3.maxSize = 0.5;
+
+    // Life time of each particle (random between...
+    particleSystem3.minLifeTime = 0.3;
+    particleSystem3.maxLifeTime = 1.5;
+
+    // Emission rate
+    particleSystem3.emitRate = 1000;
+
+    // Blend mode : BLENDMODE_ONEONE, or BLENDMODE_STANDARD
+    particleSystem3.blendMode = BABYLON.ParticleSystem.BLENDMODE_ONEONE;
+
+    // Set the gravity of all particles
+    particleSystem3.gravity = new BABYLON.Vector3(0, -9.81, 0);
+
+    // Direction of each particle after it has been emitted
+    particleSystem3.direction1 = new BABYLON.Vector3(0, -2, 0);
+
+    // Angular speed, in radians
+    particleSystem3.minAngularSpeed = 0;
+    particleSystem3.maxAngularSpeed = Math.PI;
+
+    // Speed
+    particleSystem3.minEmitPower = 1;
+    particleSystem3.maxEmitPower = 3;
+    particleSystem3.updateSpeed = 0.005;
+    particleSystem3.emitter = new BABYLON.Vector3(lowestball.position.x, lowestball.position.y, lowestball.position.z-1);
+    particleSystem3.start();
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+                          
                             if(!switched){
                                 armsx1.rotate(axisArmSx, angle, BABYLON.Space.LOCAL);
                                 armdx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
