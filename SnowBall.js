@@ -62,139 +62,109 @@ SnowBall.prototype._initMovement = function() {
         
          
     });
-/*
 
-
-   
-            var onKeyDown = function(evt) {
-                    console.log(evt.keyCode);
-                    if (evt.keyCode == 37) {
-                            ball.moveLeft = true;
-                            ball.moveRight = false;
-                    } else if (evt.keyCode == 39) {
-                            ball.moveRight = true;
-                            ball.moveLeft = false;
-                    }
-                    else if(evt.keyCode == 32){
-                        if(ball.diagDx){
-                            ball.diagDx=false;
-                        }
-                        else{
-                            ball.diagDx=true;
-                        }
-                    }
-            };
-
-            var onKeyUp = function(evt) {
-                    ball.moveRight = false;
-                    ball.moveLeft = false;
-            };
-
-            // Register events
-            BABYLON.Tools.RegisterTopRootEvents([{
-                     name: "keydown",
-                     handler: onKeyDown
-                     }, {
-                     name: "keyup",
-                     handler: onKeyUp
-                     }]);*/
-            };
 SnowBall.prototype.moveAnimationSx = function(x,z) {
     frameDx=1;
     if(frameSx==1){
         console.log("fs: "+frameSx);
-        ball.position.x+=0.4;
-        ball.position.z+=0.3;
-        camera.position.x+=0.4;
-        camera.position.z+=0.3;
+        ball.position.x+=0.1;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x+=0.1;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==2){
         console.log("fs: "+frameSx);
-        ball.position.x+=0.4;
-        ball.position.z+=0.3;
-        camera.position.x+=0.4;
-        camera.position.z+=0.3;
+        ball.position.x+=0.1;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x+=0.1;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==3){
         console.log("fs: "+frameSx);
-        ball.position.x+=0.3;
-        ball.position.z+=0.3;
-        camera.position.x+=0.3;
-        camera.position.z+=0.3;
+        ball.position.x+=0.1;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x+=0.1;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==4){
         console.log("fs: "+frameSx);
-        ball.position.x+=0.3;
-        ball.position.z+=0.3;
-        camera.position.x+=0.3;
-        camera.position.z+=0.3;
+        ball.position.x+=0.05;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x+=0.05;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==5){
         console.log("fs: "+frameSx);
-        ball.position.x+=0;
-        ball.position.z+=0.3;
-        camera.position.x+=0;
-        camera.position.z+=0.3;
+        ball.position.x+=0.025;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x+=0.025;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==6){
         console.log("fs: "+frameSx);
         ball.position.x+=0;
-        ball.position.z+=0.3;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
         camera.position.x+=0;
-        camera.position.z+=0.3;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==7){
         console.log("fs: "+frameSx);
         ball.position.x-=0;
-        ball.position.z+=0.3;
+        ball.position.z+=0.1;
         camera.position.x-=0;
-        camera.position.z+=0.3;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==8){
         console.log("fs: "+frameSx);
-        ball.position.x-=0;
-        ball.position.z+=0.3;
-        camera.position.x-=0;
-        camera.position.z+=0.3;
+        ball.position.x-=0.025;
+        ball.position.z+=0.1;
+        camera.position.x-=0.025;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==9){
         console.log("fs: "+frameSx);
-        ball.position.x-=0.3;
-        ball.position.z+=0.3;
-        camera.position.x-=0.3;
-        camera.position.z+=0.3;
+        ball.position.x-=0.05;
+        ball.position.z+=0.1;
+        camera.position.x-=0.05;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==10){
         console.log("fs: "+frameSx);
-        ball.position.x-=0.3;
-        ball.position.z+=0.3;
-        camera.position.x-=0.3;
-        camera.position.z+=0.3;
+        ball.position.x-=0.1;
+        ball.position.z+=0.1;
+        camera.position.x-=0.1;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==11){
         console.log("fs: "+frameSx);
-        ball.position.x-=0.4;
-        ball.position.z+=0.3;
-        camera.position.x-=0.4;
-        camera.position.z+=0.3;
+        ball.position.x-=0.1;
+        ball.position.z+=0.1;
+        camera.position.x-=0.1;
+        camera.position.z+=0.1;
         frameSx+=1;
     }
     else if(frameSx==12){
         console.log("fs: "+frameSx);
-        ball.position.x-=0.4;
-        ball.position.z+=0.3;
-        camera.position.x-=0.4;
-        camera.position.z+=0.3;
+        ball.position.x-=0.1;
+        ball.position.z+=0.1;
+        camera.position.x-=0.1;
+        camera.position.z+=0.1;
         frameSx=1;
         ball.anim=false;
     }
@@ -205,98 +175,103 @@ SnowBall.prototype.moveAnimationDx = function(x,z) {
     frameSx=1;
     if(frameDx==1){
         console.log("fd: "+frameDx);
-        ball.position.x-=0.4;
-        ball.position.z+=0.3;
-        camera.position.x-=0.4;
-        camera.position.z+=0.3;
+        ball.position.x-=0.1;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x-=0.1;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==2){
         console.log("fd: "+frameDx);
-        ball.position.x-=0.4;
-        ball.position.z+=0.3;
-        camera.position.x-=0.4;
-        camera.position.z+=0.3;
+        ball.position.x-=0.1;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x-=0.1;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==3){
         console.log("fd: "+frameDx);
-        ball.position.x-=0.3;
-        ball.position.z+=0.3;
-        camera.position.x-=0.3;
-        camera.position.z+=0.3;
+        ball.position.x-=0.1;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x-=0.1;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==4){
         console.log("fd: "+frameDx);
-        ball.position.x-=0.3;
-        ball.position.z+=0.3;
-        camera.position.x-=0.3;
-        camera.position.z+=0.3;
+        ball.position.x-=0.05;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x-=0.05;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==5){
         console.log("fd: "+frameDx);
-        ball.position.x-=0;
-        ball.position.z+=0.3;
-        camera.position.x-=0;
-        camera.position.z+=0.3;
+        ball.position.x-=0.025;
+        console.log("x: "+ ball.position.x);
+        ball.position.z+=0.1;
+        camera.position.x-=0.025;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==6){
         console.log("fd: "+frameDx);
         ball.position.x-=0;
-        ball.position.z+=0.3;
+        ball.position.z+=0.1;
         camera.position.x-=0;
-        camera.position.z+=0.3;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==7){
         console.log("fd: "+frameDx);
         ball.position.x+=0;
-        ball.position.z+=0.3;
+        ball.position.z+=0.1;
         camera.position.x+=0;
-        camera.position.z+=0.3;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==8){
         console.log("fd: "+frameDx);
-        ball.position.x+=0;
-        ball.position.z+=0.3;
-        camera.position.x+=0;
-        camera.position.z+=0.3;
+        ball.position.x+=0.025;
+        ball.position.z+=0.1;
+        camera.position.x+=0.025;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==9){
         console.log("fd: "+frameDx);
-        ball.position.x+=0.3;
-        ball.position.z+=0.3;
-        camera.position.x+=0.3;
-        camera.position.z+=0.3;
+        ball.position.x+=0.05;
+        ball.position.z+=0.1;
+        camera.position.x+=0.05;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==10){
         console.log("fd: "+frameDx);
-        ball.position.x+=0.3;
-        ball.position.z+=0.3;
-        camera.position.x+=0.3;
-        camera.position.z+=0.3;
+        ball.position.x+=0.1;
+        ball.position.z+=0.1;
+        camera.position.x+=0.1;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
     else if(frameDx==11){
         console.log("fd: "+frameDx);
-        ball.position.x+=0.4;
-        ball.position.z+=0.3;
-        camera.position.x+=0.4;
-        camera.position.z+=0.3;
+        ball.position.x+=0.1;
+        ball.position.z+=0.1;
+        camera.position.x+=0.1;
+        camera.position.z+=0.1;
         frameDx+=1;
     }
      else if(frameDx==12){
         console.log("fd: "+frameDx);
-        ball.position.x+=0.4;
-        ball.position.z+=0.3;
-        camera.position.x+=0.4;
-        camera.position.z+=0.3;
+        ball.position.x+=0.1;
+        ball.position.z+=0.1;
+        camera.position.x+=0.1;
+        camera.position.z+=0.1;
         frameDx=1;
         ball.anim=false;
     }
