@@ -142,10 +142,9 @@
     camera.attachControl(canvas, true);
     camera.maxZ = 1000;
     camera.speed = 4;
-                    // create a basic light, aiming 0,1,0 - meaning, to the sky
+                    // create a basic light
                     var light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0,1,-1), scene);
                     light.position = new BABYLON.Vector3(0,10,10);
-                    //light.intensity = 0.75;
                     light.specular = BABYLON.Color3.Black();
 
                     var d1 = new BABYLON.DirectionalLight("dir", new BABYLON.Vector3(1, -1, 4), scene);
@@ -164,7 +163,6 @@
                     bodyTex.diffuseTexture=texture2;
                     var ground = BABYLON.Mesh.CreateGround("ground", 100, 30000, 1, scene);
                     ground.material =image;
-                    //ground.material.diffuseColor = BABYLON.Color3.FromInts(255, 255, 255);
                     ground.material.specularColor = BABYLON.Color3.Black();
 
                     ground.receiveShadows = true;
@@ -173,10 +171,6 @@
                     window.addEventListener('resize', function(){
                         engine.resize();
                     });
-
-                    //ball movement
-                    //var sphere = BABYLON.VertexData.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
-                    //sphere.position =new BABYLON.Vector3(0,1.6,2);
                     ball = new SnowBall(scene,shadowGenerator);
                     // ROTATION AND SCALING
                     ball.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
@@ -191,7 +185,6 @@
 
 
                     var body = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter:3.5}, scene);
-                    //body.scaling = new BABYLON.Vector3(0.4, 0.4, 0.4);
                     body.parent=ball;
 					body.position=new BABYLON.Vector3(0,-2.5,0);
 					shadowGenerator.getShadowMap().renderList.push(body);
@@ -351,14 +344,6 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
     fingerbisdx3.rotation.x=Math.PI*-0.3;
     fingerbisdx3.material.diffuseColor = BABYLON.Color3.FromInts(102,68,0);
 
-    
-
-
-                   /* scene.registerAfterRender(function() {
-                     ball.rotate(axis, angle, BABYLON.Space.LOCAL);  
-                 });
-                        DISATTIVATO PER POSIZIONAMENTO MODELLO GERARCHICO
-                 */
 
 
 
@@ -372,7 +357,6 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                     var numberOfCoins=15;             
                     var assetsManager = new BABYLON.AssetsManager(scene);
                     
-                    //var Coins_array=[];
                     var positionZ,positionX;
 
                     
@@ -418,13 +402,11 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
         var boxleft = BABYLON.MeshBuilder.CreateBox("", {height: 3, width: 0.5, depth: 100, updatable: true});
         boxleft.material=new BABYLON.StandardMaterial("coin", scene);
         boxleft.position=new BABYLON.Vector3(-50,0,-20);
-        //boxleft.rotation.z=Math.PI*0.5;
         boxleft.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
 
         var boxright = BABYLON.MeshBuilder.CreateBox("", {height: 3, width: 0.5, depth: 100, updatable: true});
         boxright.material=new BABYLON.StandardMaterial("coin", scene);
         boxright.position=new BABYLON.Vector3(50,0,-20);
-        //boxright.rotation.z=Math.PI*0.5;
         boxright.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
         
         var counterposition=-20;
@@ -432,7 +414,6 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                 counterposition+=100;
                 var box = BABYLON.MeshBuilder.CreateBox("", {height: 3, width: 0.5, depth: 100, updatable: true});
                 box.material=new BABYLON.StandardMaterial("coin", scene);
-                //box.rotation.z=Math.PI*0.5;
                 box.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
                 box.position=new BABYLON.Vector3(-50,0,counterposition);
 
@@ -442,7 +423,6 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                 counterposition+=100;
                 var box = BABYLON.MeshBuilder.CreateBox("", {height: 3, width: 0.5, depth: 100, updatable: true});
                 box.material=new BABYLON.StandardMaterial("coin", scene);
-                //box.rotation.z=Math.PI*0.5;
                 box.material.diffuseColor = BABYLON.Color3.FromInts(128,43,0);
                 box.position=new BABYLON.Vector3(50,0,counterposition);
                     
@@ -459,25 +439,19 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
             var rock = BABYLON.MeshBuilder.CreateSphere("sphere", {segments:2}, scene);
             rock.material=new BABYLON.StandardMaterial("coin", scene);
             rock.material.diffuseColor = BABYLON.Color3.FromInts(109, 113, 120);
-            //positionX= randomNumber(-48, 48);
             positionZ = randomNumber(20, 3000);
             var booleanaRoccia; 
             var randomX=Math.random();
             randomX=randomX*1000;
-            //console.log("randomX: ", randomX);
             if(randomX>=500){
                 positionX = 48;
                 booleanaRoccia=false;
-                //console.log("Roccia a destra");
             }
             else if (randomX<500){
                 positionX = -48;
                 booleanaRoccia=true;
-                //console.log("Roccia a sinistra");
             }
             rock.position= new BABYLON.Vector3(positionX,1.3,positionZ); 
-            //console.log("posX: ",positionX);
-            //console.log("rock posX: ",rock.position.x);
             rock.scaling = new BABYLON.Vector3(4.0, 4.0, 4.0);
             rock.actionManager=new BABYLON.ActionManager(scene);
             shadowGenerator.getShadowMap().renderList.push(rock);      
@@ -590,17 +564,12 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                     engine.runRenderLoop(function(){
 
                         if (!ball.crash && ball.startball) {
-                            //ball.move();
                             if(!switched){
                                 armsx1.rotate(axisArmSx, angle, BABYLON.Space.LOCAL);
                                 armdx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
                                 if(armsx1.rotationQuaternion.x>=0.4||armdx1.rotationQuaternion.x<=-0.15){
                                     switched=true;
                                 }
-                                    /*armsx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
-                                if(armsx1.rotationQuaternion.x<=-0.38){
-                                    armsx1.rotate(axisArmSx, angle*2, BABYLON.Space.LOCAL);
-                                }*/
                             }
                             if(switched){
                                 armsx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
@@ -622,9 +591,7 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
 
                                 for (var g=0; g<rocksArray.length; g++){
                                         if(rocksArray[g].intersectsMesh(body, false)){
-                                                //console.log("collision");
                                                 ball.crash=true;
-                                                //var deleted=rocksArray.splice(k,1);
                                         }
                                         if(rocksArray[g].position.z-ball.position.z<50){
                                             if(booleanRocksArray[g]){
@@ -633,7 +600,6 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                             else if(!booleanRocksArray[g]){
                                                 rockMoveSx(rocksArray[g]);   
                                             }
-                                            //rockMove(rocksArray[g]);
                                         }
                                 }
 
@@ -652,9 +618,7 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                     lowestball.rotate(axisDx, angle, BABYLON.Space.LOCAL); 
                                     if(!switched2){
                                         ball.rotate(axisBallDx, angle, BABYLON.Space.LOCAL);
-                                        //console.log("DX    "+ball.rotationQuaternion.y);
                                         if(ball.rotationQuaternion.y>=0.7){
-                                            //ball.rotate(axisBallDx, 0, BABYLON.Space.LOCAL);
                                             switched2=true;
                                             switched3=false;
                                         }
@@ -673,9 +637,7 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                     lowestball.rotate(axisSx, angle, BABYLON.Space.LOCAL);  
                                     if(!switched3){
                                         ball.rotate(axisBallSx, angle, BABYLON.Space.LOCAL);
-                                        //console.log("SX    "+ball.rotationQuaternion.y);
                                         if(ball.rotationQuaternion.y<=-0.7){
-                                            //ball.rotate(axisBallSx, 0, BABYLON.Space.LOCAL);
                                             switched3=true;
                                             switched2=false;
                                         }
@@ -688,14 +650,12 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                }
                            }
                            if(ball.crash){
-                            //ball.rotate(axis, 0, BABYLON.Space.LOCAL);
                             if(!explosion){
                                 explosion=true;
                                 var particleSystem2 = new BABYLON.ParticleSystem("particles2", 2000, scene);
 
                                 //Texture of each particle
                                 particleSystem2.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/sparkle2.jpg", scene);
-                                   // particleSystem2.particleTexture = new BABYLON.Texture("https://freepngimg.com/thumb/snowflakes/12-snowflake-png-image-thumb.png", scene);
                                 // Where the particles come from
                                 particleSystem2.emitter = new BABYLON.Vector3(ball.position.x, ball.position.y, ball.position.z); // the starting object, the emitter
                                 particleSystem2.minEmitBox = new BABYLON.Vector3(-5, -5, -5); // Starting all from
@@ -705,40 +665,18 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                 musiccrash = new BABYLON.Sound("MusicCrash", "sounds/jab.mp3", scene,null,{autoplay:true});
                                 // Start the particle system
                                 particleSystem2.start();
-                                //particleSystem.stop();
 
-                                /*scene.removeMesh(ball);
-                                scene.removeMesh(hat);
-                                scene.removeMesh(lefteye);
-                                scene.removeMesh(leftdisc);
-                                scene.removeMesh(righteye);
-                                scene.removeMesh(rightdisc);
-                                scene.removeMesh(carrot);*/
                                 tongue.dispose();
                                 ball.dispose();
                             }
 
                             Crash();
                         }
-                        //VECCHIO PEZZO CODICE
-                        /*if(ball.crashCoin){
-                            points+=100;
-                            textPoint.text="Points: "+points;
-                            crashCoin=false;
-                            console.log("points: "+points);
-                            //scene.removeMesh(Coins_array[ball.index]);
-                            ball.index=-1;
-                           // Coins_array[crashingCoinId].dispose();
-
-                        }*/
+                        
 
                         scene.render();
                     });
                     assetsManager.load();
-                    
-                    //var ground = BABYLON.Mesh.CreateGround('ground1', 6, 6, 2, scene);
-
-                    // return the created scene
                     return scene;
                 };
 
@@ -754,8 +692,6 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                });
 
                   $("#buttonPlay").click(function(event){
-                      //start=true;
-    						//music = new BABYLON.Sound("Music", "sounds/crystallize.mp3", scene, null, {loop:true, autoplay:true});
                           $("#play").dialog("close");
                       });
 
@@ -781,7 +717,6 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
            function Finish(){
             points+=3000;
             textPoint.text="Points: "+points;
-            //console.log(points);
 
             $("#finishing").dialog({
                 dialogClass: "no-close",
@@ -875,14 +810,7 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
         }
         
     };
- /*
-    var rockMove = function(r) {
-        r.position.z -= 1.2;
-        if(r.position.z<=20){
-            scene.removeMesh(r);
-        }
-        
-    };*/
+
 
    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -26,7 +26,6 @@ Tree = function(sizeBranch, sizeTrunk, radius, scene, sd, ball) {
 
 
     trunk.material = new BABYLON.StandardMaterial("trunk", scene);
-    //trunk.material.diffuseColor = BABYLON.Color3.FromInts(165,42,42);
     trunk.material.diffuseColor = BABYLON.Color3.FromInts(128,0,0);
     trunk.material.specularColor = BABYLON.Color3.Black();
     trunk.convertToFlatShadedMesh();
@@ -53,8 +52,6 @@ Tree.prototype._init = function(sizeBranch) {
     var numberOfPoints = positions.length/3;
 
     var map = [];
-
-    // The higher point in the sphere
     var v3 = BABYLON.Vector3;
     var max = [];
 

@@ -1,11 +1,3 @@
-/**
- * A mesh representing the player snowball
- * @param size The snowball size
- * @param scene The scene
- * @param camera
- * @constructor
- */
-
 var evt;
 var frameSx=1;
 var frameDx=1;
@@ -13,11 +5,6 @@ SnowBall = function(scene,sd) {
     BABYLON.Mesh.call(this, "ball", scene);
     var sphere = BABYLON.VertexData.CreateSphere({diameter:3}, scene);
     this.anim=false;
-    
-    // Move the sphere upward 1/2 its height
-    //sphere.position =new BABYLON.Vector3(0,1.6,2);
-    //sphere.convertToFlatShadedMesh();
-
     sphere.applyToMesh(this, false);
     this.scene=scene;
     this.sd=sd;
