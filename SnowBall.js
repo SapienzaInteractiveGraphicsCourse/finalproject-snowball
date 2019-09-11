@@ -63,6 +63,7 @@ SnowBall.prototype._initMovement = function() {
          
     });
 
+            };
 SnowBall.prototype.moveAnimationSx = function(x,z) {
     frameDx=1;
     if(frameSx==1){
