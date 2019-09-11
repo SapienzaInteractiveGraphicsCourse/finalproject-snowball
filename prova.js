@@ -138,7 +138,7 @@
         var particleSystem3 = new BABYLON.ParticleSystem("particles", 2000, scene);
 
     //Texture of each particle
-    particleSystem3.particleTexture = new BABYLON.Texture("textures/flare.png", scene);
+    particleSystem3.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/flare.png", scene);
 
     // Where the particles come from
     particleSystem3.emitter = lowestball; // the starting object, the emitter
@@ -168,8 +168,7 @@
     particleSystem3.gravity = new BABYLON.Vector3(0, -9.81, 0);
 
     // Direction of each particle after it has been emitted
-    particleSystem3.direction1 = new BABYLON.Vector3(-7, 8, 3);
-    particleSystem3.direction2 = new BABYLON.Vector3(7, 8, -3);
+    particleSystem3.direction1 = new BABYLON.Vector3(0, -2, 0);
 
     // Angular speed, in radians
     particleSystem3.minAngularSpeed = 0;
@@ -704,6 +703,7 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                             if(!explosion){
                                 explosion=true;
                                 var particleSystem2 = new BABYLON.ParticleSystem("particles2", 2000, scene);
+                                particleSystem3.stop();
 
                                 //Texture of each particle
                                 particleSystem2.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/sparkle2.jpg", scene);
