@@ -141,9 +141,9 @@
     particleSystem3.particleTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/flare.png", scene);
 
     // Where the particles come from
-    particleSystem3.emitter = lowestball; // the starting object, the emitter
-    particleSystem3.minEmitBox = new BABYLON.Vector3(-1, 0, 0); // Starting all from
-    particleSystem3.maxEmitBox = new BABYLON.Vector3(1, 0, 0); // To...
+    
+    particleSystem3.minEmitBox = new BABYLON.Vector3(-2, 0, 0); // Starting all from
+    particleSystem3.maxEmitBox = new BABYLON.Vector3(2, 0, 0); // To...
 
     // Colors of all particles
     particleSystem3.color1 = new BABYLON.Color4(0.7, 0.8, 1.0, 1.0);
@@ -179,8 +179,6 @@
     particleSystem3.maxEmitPower = 3;
     particleSystem3.updateSpeed = 0.005;
 
-    // Start the particle system
-    particleSystem3.start();
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -614,6 +612,8 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                     engine.runRenderLoop(function(){
 
                         if (!ball.crash && ball.startball) {
+                          particleSystem3.emitter = new BABYLON.Vector3(lowestball.position.x, lowestball.position.y, lowestball.position.z-1);
+                          particleSystem3.start();
                             if(!switched){
                                 armsx1.rotate(axisArmSx, angle, BABYLON.Space.LOCAL);
                                 armdx1.rotate(axisArmDx, angle, BABYLON.Space.LOCAL);
