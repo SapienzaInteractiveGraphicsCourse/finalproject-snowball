@@ -35,7 +35,7 @@
                     engine= new BABYLON.Engine(canvas, true);
                     scene = new BABYLON.Scene(engine);
                     points=0;
-                    music = new BABYLON.Sound("Music", "sounds/crystallize-trimmered.mp3", scene, null, {loop:true, autoplay:true});
+                    //music = new BABYLON.Sound("Music", "sounds/crystallize-trimmered.mp3", scene, null, {loop:true, autoplay:true});
                     
                     
 
