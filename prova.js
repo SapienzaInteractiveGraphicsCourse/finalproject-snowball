@@ -662,7 +662,7 @@ var fingerbisdx3 = BABYLON.MeshBuilder.CreateBox("", {height: 0.06, width: 0.015
                                 particleSystem2.maxEmitBox = new BABYLON.Vector3(5, 5, 5); // To...
                                 particleSystem2.emitRate = 1000;
                                 particleSystem2.maxSize = 0.5;
-                                musiccrash = new BABYLON.Sound("MusicCrash", "sounds/jab.mp3", scene,null,{autoplay:true});
+                                //musiccrash = new BABYLON.Sound("MusicCrash", "sounds/jab.mp3", scene,null,{autoplay:true});
                                 // Start the particle system
                                 particleSystem2.start();
 
